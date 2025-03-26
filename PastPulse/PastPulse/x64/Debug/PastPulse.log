@@ -1,6 +1,10 @@
-﻿  Riddle.cpp
+﻿  Admin.cpp
+  Menu.cpp
+  Program.cpp
+  Riddle.cpp
   Riddle.h
+  User.cpp
   Generating Code...
 x64\Debug\Riddle.obj : warning LNK4042: object specified more than once; extras ignored
 MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\polin\source\repos\linked-list-sprint-project-pastpulse\PastPulse\x64\Debug\PastPulse.exe : fatal error LNK1120: 1 unresolved externals
+C:\Users\Teodora\Desktop\yfgj\linked-list-sprint-project-pastpulse\PastPulse\x64\Debug\PastPulse.exe : fatal error LNK1120: 1 unresolved externals

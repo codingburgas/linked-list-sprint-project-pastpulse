@@ -123,3 +123,13 @@ void addRiddle(Riddle* head) {
 	newRiddle->next = head;
 	head = newRiddle;
 }
+
+// Function to release all riddles from memory
+void freeRiddles(Riddle* head) {
+	while (head) {
+		Riddle* temp = head;
+		head = head->next;
+		delete temp;
+	}
+	std::cout << "You seccessfully stop the game" << std::endl;
+}

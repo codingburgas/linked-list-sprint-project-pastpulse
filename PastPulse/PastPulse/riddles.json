@@ -1,0 +1,18 @@
+[
+    {
+      "question": "What is the capital of France?",
+      "answer": "Paris",
+      "hints": [
+        "Starts with 'P'",
+        "Famous for the Eiffel Tower"
+      ]
+    },
+    {
+      "question": "How many legs does a spider have?",
+      "answer": "8",
+      "hints": [
+        "It weaves a web",
+        "Has four pairs of legs"
+      ]
+    }
+  ]

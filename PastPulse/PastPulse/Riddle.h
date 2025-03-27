@@ -20,3 +20,4 @@ Riddle* loadRiddlesFromFile(std::string& filename);
 void displayRiddles(Riddle* head);
 void saveRiddleToFile(Riddle* head, std::string& filename);
 void addRiddle(Riddle* head);
+void freeRiddles(Riddle* head);

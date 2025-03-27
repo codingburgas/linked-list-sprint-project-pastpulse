@@ -93,3 +93,33 @@ void saveRiddlesToFile(Riddle* head, std::string& filename) {
 	file.close();
 	std::cout << "The new riddles were added";
 }
+
+void addRiddle(Riddle* head) {
+	if (!isAdmin()) {
+		return;
+	}
+	Riddle* newRiddle = new Riddle;
+	std::cout << "Add the riddle here: ";
+	std::getline(std::cin, newRiddle->question);
+
+	std::cout << "Write the corect answer: ";
+	std::getline(std::cin, newRiddle->answer);
+
+	int hintNumber;
+	std::cout << "How many hints they are?";
+	std::cin >> hintNumber;
+	// Clears the input buffer of residual characters (such as newlines)
+	std::cin.ignore();
+
+	for (int i = 0; i < hintNumber; i++) {
+		std::string hint;
+		std::cout << "Hint " << i + 1 << ": " << std::endl;
+		std::getline(std::cin, hint);
+		// Add the hint to the hint vector
+		newRiddle->hints.push_back(hint);
+	}
+	std::cout << "Successful added!" << std::endl;
+	// Change the pointer of the new riddle to point to the current first element
+	newRiddle->next = head;
+	head = newRiddle;
+}

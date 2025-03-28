@@ -22,6 +22,8 @@ Riddle* loadRiddlesFromFile(std::string& filename) {
 		newRiddle->question = item["question"];
 		newRiddle->answer = item["answer"];
 		newRiddle->hints = item["hints"];
+		newRiddle->lastQuestion = item["lastQuestion"];
+		newRiddle->facts = item["facts"];
 		// Add the new riddle to the beginning of the linked list
 		newRiddle->next = head;
 		head = newRiddle;
@@ -49,6 +51,11 @@ void displayRiddles(Riddle* head) {
 				std::cout << " - " << current->hints[i] << std::endl;
 			}
 		}
+		std::cout << "Final question" << current->lastQuestion << std::endl;
+		for (size_t i = 0; i < current->facts.size(); i++)
+		{
+			std::cout << " - " << current->facts[i] << std::endl;
+		}
 		// Move to the next riddle in the list
 		current = current->next;
 	}
@@ -70,9 +77,6 @@ bool isAdmin() {
 }
 
 void saveRiddlesToFile(Riddle* head, std::string& filename) {
-	if (!isAdmin()) {
-		return;
-	}
 	std::ofstream file(filename);
 	// JSON array that will store the riddles
 	json riddlesJson = json::array();
@@ -83,7 +87,9 @@ void saveRiddlesToFile(Riddle* head, std::string& filename) {
 		riddlesJson.push_back({
 			{"question", current->question},
 			{"answer", current->answer},
-			{"hints", current->hints}
+			{"hints", current->hints},
+			{"lastQuestion", current->lastQuestion},
+			{"facts", current->facts}
 			});
 		current = current->next;
 	}
@@ -94,16 +100,17 @@ void saveRiddlesToFile(Riddle* head, std::string& filename) {
 	std::cout << "The new riddles were added";
 }
 
-void addRiddle(Riddle* head) {
+void addRiddle(Riddle* head, std::string& filename) {
 	if (!isAdmin()) {
 		return;
 	}
 	Riddle* newRiddle = new Riddle;
 	std::cout << "Add the riddle here: ";
 	std::getline(std::cin, newRiddle->question);
-
+	std::cin.ignore();
 	std::cout << "Write the corect answer: ";
 	std::getline(std::cin, newRiddle->answer);
+	std::cin.ignore();
 
 	int hintNumber;
 	std::cout << "How many hints they are?";
@@ -118,10 +125,26 @@ void addRiddle(Riddle* head) {
 		// Add the hint to the hint vector
 		newRiddle->hints.push_back(hint);
 	}
+	std::cout << "Write the valid final answer";
+	std::getline(std::cin, newRiddle->lastQuestion);
+
+	int factsNumber;
+	std::cout << "How many fun facts they are?";
+	std::cin >> factsNumber;
+	std::cin.ignore();
+	for (int i = 0; i < factsNumber; i++) {
+		std::string funFact;
+		std::cout << "Fact " << i + 1 << ": " << std::endl;
+		std::getline(std::cin, funFact);
+
+		newRiddle->facts.push_back(funFact);
+	}
 	std::cout << "Successful added!" << std::endl;
 	// Change the pointer of the new riddle to point to the current first element
 	newRiddle->next = head;
 	head = newRiddle;
+
+	saveRiddlesToFile(head, filename);
 }
 
 // Function to release all riddles from memory

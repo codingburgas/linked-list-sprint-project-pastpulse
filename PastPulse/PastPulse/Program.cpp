@@ -33,6 +33,26 @@ json readUsersFromJson(const string& filename) {
 	}
 	return j;
 }
+
+
+bool autehnticate(const json& users, const string& username, const string& password) {
+	for (const auto& user : users["users"]) {
+		if (user["username"] == username && user["password"] == password) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void hideCursor() {
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO info;
+	info.dwSize = 100;
+	info.bVisible = FALSE;
+	SetConsoleCursorInfo(consoleHandle, &info);
+
+}
+
 int main() {
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);

@@ -1,7 +1,67 @@
 [
     {
-        "question": "What is the capital of France?",
+        "answer": "",
+        "facts": [
+            "p",
+            "p"
+        ],
+        "hints": [
+            "p",
+            "p"
+        ],
+        "lastQuestion": "p",
+        "question": ""
+    },
+    {
+        "answer": "",
+        "facts": [
+            "p",
+            "p",
+            "p",
+            "p"
+        ],
+        "hints": [
+            "p",
+            "p"
+        ],
+        "lastQuestion": "p",
+        "question": ""
+    },
+    {
+        "answer": "",
+        "facts": [
+            "p",
+            "p",
+            "p"
+        ],
+        "hints": [
+            "p"
+        ],
+        "lastQuestion": "p",
+        "question": ""
+    },
+    {
+        "answer": "",
+        "facts": [],
+        "hints": [],
+        "lastQuestion": "",
+        "question": ""
+    },
+    {
+        "answer": "",
+        "facts": [],
+        "hints": [],
+        "lastQuestion": "",
+        "question": ""
+    },
+    {
         "answer": "Paris",
+        "facts": [
+            "Paris is known as the City of Lights.",
+            "The Eiffel Tower was completed in 1889.",
+            "Paris is one of the most visited cities in the world.",
+            "The Louvre is the world's largest museum and a historic monument in Paris."
+        ],
         "hints": [
             "Starts with 'P'",
             "Famous for the Eiffel Tower",
@@ -9,11 +69,46 @@
             "A major European cultural center"
         ],
         "lastQuestion": "What city is home to the Eiffel Tower?",
-        "facts": [
-            "Paris is known as the City of Lights.",
-            "The Eiffel Tower was completed in 1889.",
-            "Paris is one of the most visited cities in the world.",
-            "The Louvre is the world's largest museum and a historic monument in Paris."
-        ]
+        "question": "What is the capital of France?"
+    },
+    {
+        "answer": "",
+        "facts": [],
+        "hints": [],
+        "lastQuestion": "",
+        "question": ""
+    },
+    {
+        "answer": "",
+        "facts": [],
+        "hints": [],
+        "lastQuestion": "",
+        "question": ""
+    },
+    {
+        "answer": "",
+        "facts": [],
+        "hints": [],
+        "lastQuestion": "",
+        "question": ""
+    },
+    {
+        "answer": "",
+        "facts": [],
+        "hints": [
+            "p"
+        ],
+        "lastQuestion": "p",
+        "question": ""
+    },
+    {
+        "answer": "",
+        "facts": [],
+        "hints": [
+            "p",
+            "p"
+        ],
+        "lastQuestion": "p",
+        "question": ""
     }
 ]

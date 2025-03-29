@@ -115,6 +115,14 @@ void addRiddle(Riddle* head, std::string& filename) {
 	int hintNumber;
 	std::cout << "How many hints they are?";
 	std::cin >> hintNumber;
+	if(std::cin.fail()) {
+		// Resets the error flag so that he can accept input again
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		// Ignore up to 1000 characters or until a newline '\n' is encountered to clear out bad input
+		std::cout << "Invalid try again ";
+		std::cin >> hintNumber;
+	}
 	// Clears the input buffer of residual characters (such as newlines)
 	std::cin.ignore();
 
@@ -131,6 +139,13 @@ void addRiddle(Riddle* head, std::string& filename) {
 	int factsNumber;
 	std::cout << "How many fun facts they are?";
 	std::cin >> factsNumber;
+	if (std::cin.fail()) {
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "Invalid try again ";
+		std::cin >> factsNumber;
+	}
+
 	std::cin.ignore();
 	for (int i = 0; i < factsNumber; i++) {
 		std::string funFact;

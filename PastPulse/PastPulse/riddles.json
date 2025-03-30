@@ -17,5 +17,39 @@
         "complexity":5,
         "lastQuestion": "What city is home to the Eiffel Tower?",
         "question": "What is the capital of France?"
+    },
+    {
+        "answer": "4",
+        "facts": [
+            "It's an even number",
+            "It's the sum of 2 + 2",
+            "It's the smallest composite number"
+        ],
+        "hints": [
+            "It's the answer to a basic math problem",
+            "It's the number after 3",
+            "It's a square number"
+        ],
+        "period": "Before",
+        "complexity": 2,
+        "lastQuestion": "What is 2 + 2?",
+        "question": "What is the result of 2 + 2?"
+    },
+    {
+        "answer": "New York",
+        "facts": [
+            "It is the most populous city in the U.S.",
+            "It's home to the Statue of Liberty",
+            "Known as 'The Big Apple'"
+        ],
+        "hints": [
+            "It's a city in the United States",
+            "It starts with 'N'",
+            "It is famous for its skyline"
+        ],
+        "period": "After",
+        "complexity": 6,
+        "lastQuestion": "What city is known for Times Square?",
+        "question": "What is the capital of New York?"
     }
 ]

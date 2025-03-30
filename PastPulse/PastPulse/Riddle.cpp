@@ -57,6 +57,7 @@ void displayRiddles(Riddle* head) {
 		std::cout << "Complexity " << current->complexity << std::endl;
 		// Move to the next riddle in the list
 		current = current->next;
+		std::cout << "__________________________________" << std::endl;
 	}
 }
 
@@ -201,6 +202,33 @@ Riddle* merge(Riddle* left, Riddle* right) {
 		right->next = merge(left, right->next);
 		return right;
 	}
+}
+
+
+Riddle* mergeSort(Riddle* head) {
+	if (!head || !head->next) {
+		return head;
+	}
+	// middle will point to the middle of the list
+	Riddle* middle = head;
+	// fast moves twice as fast as middle
+	Riddle* fast = head->next;
+
+	// Fast and slow pointer to find the middle of the list
+	while (fast && fast->next) {
+		middle = middle->next;
+		fast = fast->next->next;
+	}
+	// Split the list into two parts
+	Riddle* left = head;
+	Riddle* right = middle->next;
+	middle->next = nullptr;
+
+	left = mergeSort(left);
+	right = mergeSort(right);
+
+	// Merge the two sorted parts and return the result
+	return merge(left, right);
 }
 
 

@@ -1,9 +1,5 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-#include "json.hpp"
-
+#pragma once
+#include "pch.h"
 using json = nlohmann::json;
 
 // Structure that represents a riddle

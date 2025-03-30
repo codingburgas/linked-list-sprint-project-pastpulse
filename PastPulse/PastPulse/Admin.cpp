@@ -1,10 +1,9 @@
+#include "User.h"
 #include "Admin.h"
-#include <iostream>
-#include <string>
+#include "Menu.h"
+#include "Riddle.h" 
 
-using namespace std;
-
-bool adminLogin(string username, string password) {
+bool adminLogin ( string username, string password ) {
 	string Admin_User = "admin";
 	string Admin_Pass = "admin";
 

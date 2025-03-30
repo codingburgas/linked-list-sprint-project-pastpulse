@@ -133,12 +133,15 @@
     <ClCompile Include="Riddle.cpp" />
     <ClCompile Include="Riddle.h" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="Validation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="pch.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="Validation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

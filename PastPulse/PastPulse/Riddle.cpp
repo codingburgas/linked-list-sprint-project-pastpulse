@@ -1,10 +1,5 @@
 #include "Riddle.h"
-#include <fstream>
-#include <iostream>
-#include "json.hpp"
-
-using json = nlohmann::json;
-
+#include "Validation.h"
 Riddle* loadRiddlesFromFile(std::string& filename) {
 	Riddle* head = nullptr;
 	std::ifstream file(filename);
@@ -62,19 +57,7 @@ void displayRiddles(Riddle* head) {
 }
 
 // Function to check if the entered password is correct for an administrator
-bool isAdmin() {
-	std::string password;
-	std::string correctPassword = "admin";
-	std::cout << "Enter admin password: ";
-	std::cin >> password;
-	if (password == correctPassword) {
-		return true;
-	}
-	else {
-		std::cout << "Incorrect password!";
-		return false;
-	}
-}
+
 
 void saveRiddlesToFile(Riddle* head, std::string& filename) {
 	std::ofstream file(filename);

@@ -21,3 +21,5 @@ void displayRiddles(Riddle* head);
 void saveRiddleToFile(Riddle* head, std::string& filename);
 void addRiddle(Riddle* head, std::string& filename);
 void freeRiddles(Riddle* head);
+bool compareByPeriod(Riddle* a, Riddle* b);
+Riddle* merge(Riddle* left, Riddle* right);

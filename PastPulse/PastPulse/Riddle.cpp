@@ -172,6 +172,38 @@ void addRiddle(Riddle* head, std::string& filename) {
 	saveRiddlesToFile(head, filename);
 }
 
+bool compareByPeriod(Riddle* a, Riddle* b) {
+	if (a->period == "Before" && b->period == "After") {
+		return true;
+	}
+	else {
+		return false;
+	}
+	// If the period is the same, we sort by complexity
+	return a->complexity < b->complexity;
+}
+
+Riddle* merge(Riddle* left, Riddle* right) {
+	// If one of the lists is empty, return the other one
+	if (!left) {
+		return right;
+	}
+	if (!right) {
+		return left;
+	}
+
+	// Compare the first elements of the two lists
+	if (compareByPeriod(left, right)) {
+		left->next = merge(left->next, right);
+		return left;
+	}
+	else {
+		right->next = merge(left, right->next);
+		return right;
+	}
+}
+
+
 // Function to release all riddles from memory
 void freeRiddles(Riddle* head) {
 	while (head) {

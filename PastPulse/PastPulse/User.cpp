@@ -4,7 +4,20 @@
 using json = nlohmann::json;
 using namespace std;
 
+json readUsersFromJson(const string& filename) {
+	ifstream file(filename);
+	json j;
+	if (file.is_open()) {
+		file >> j;
+		file.close();
 
+
+	}
+	else {
+		j = { {"users", json::array()} };
+	}
+	return j;
+}
 
 int  userRegister(json& users) {
 	string username;

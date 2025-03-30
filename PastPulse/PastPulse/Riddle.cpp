@@ -19,6 +19,8 @@ Riddle* loadRiddlesFromFile(std::string& filename) {
 		newRiddle->hints = item["hints"];
 		newRiddle->lastQuestion = item["lastQuestion"];
 		newRiddle->facts = item["facts"];
+		newRiddle->period = item["period"];
+		newRiddle->complexity = item["complexity"];
 		// Add the new riddle to the beginning of the linked list
 		newRiddle->next = head;
 		head = newRiddle;
@@ -51,6 +53,8 @@ void displayRiddles(Riddle* head) {
 		{
 			std::cout << " - " << current->facts[i] << std::endl;
 		}
+		std::cout << "Period " << current->period << std::endl;
+		std::cout << "Complexity " << current->complexity << std::endl;
 		// Move to the next riddle in the list
 		current = current->next;
 	}
@@ -72,7 +76,9 @@ void saveRiddlesToFile(Riddle* head, std::string& filename) {
 			{"answer", current->answer},
 			{"hints", current->hints},
 			{"lastQuestion", current->lastQuestion},
-			{"facts", current->facts}
+			{"facts", current->facts},
+			{"period", current->period},
+			{"complexity", current->complexity}
 			});
 		current = current->next;
 	}
@@ -137,6 +143,27 @@ void addRiddle(Riddle* head, std::string& filename) {
 
 		newRiddle->facts.push_back(funFact);
 	}
+
+
+	std::cout << "Enter period(Before WWI or After WWI): ";
+	while (true) {
+		std::getline(std::cin, newRiddle->period);
+		if (newRiddle->period == "Before WWI" || newRiddle->period == "After WWI") {
+			break;
+		}
+		std::cout << "Invalid input!";
+	}
+
+
+	std::cout << "Enter complexity from 1 to 10: ";
+	std::cin >> newRiddle->complexity;
+	if (std::cin.fail()) {
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "Invalid input!";
+		std::cin >> newRiddle->complexity;
+	}
+
 	std::cout << "Successful added!" << std::endl;
 	// Change the pointer of the new riddle to point to the current first element
 	newRiddle->next = head;
@@ -154,3 +181,5 @@ void freeRiddles(Riddle* head) {
 	}
 	std::cout << "You seccessfully stop the game" << std::endl;
 }
+
+

@@ -2,8 +2,11 @@
 #include "Admin.h"
 #include "Menu.h"
 #include "Riddle.h"
+
 int main() 
 {
-	
-	menu();
+	std::string filename = "riddles.json";
+	Riddle* riddlesHead = loadRiddlesFromFile(filename);
+	displayRiddles(riddlesHead);
+	//menu();
 }

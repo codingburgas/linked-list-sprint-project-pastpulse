@@ -1,60 +1,5 @@
 [
     {
-        "answer": "",
-        "facts": [
-            "p",
-            "p"
-        ],
-        "hints": [
-            "p",
-            "p"
-        ],
-        "lastQuestion": "p",
-        "question": ""
-    },
-    {
-        "answer": "",
-        "facts": [
-            "p",
-            "p",
-            "p",
-            "p"
-        ],
-        "hints": [
-            "p",
-            "p"
-        ],
-        "lastQuestion": "p",
-        "question": ""
-    },
-    {
-        "answer": "",
-        "facts": [
-            "p",
-            "p",
-            "p"
-        ],
-        "hints": [
-            "p"
-        ],
-        "lastQuestion": "p",
-        "question": ""
-    },
-    {
-        "answer": "",
-        "facts": [],
-        "hints": [],
-        "lastQuestion": "",
-        "question": ""
-    },
-    {
-        "answer": "",
-        "facts": [],
-        "hints": [],
-        "lastQuestion": "",
-        "question": ""
-    },
-    {
         "answer": "Paris",
         "facts": [
             "Paris is known as the City of Lights.",
@@ -68,47 +13,9 @@
             "Known as the City of Lights",
             "A major European cultural center"
         ],
+        "period":"Before",
+        "complexity":5,
         "lastQuestion": "What city is home to the Eiffel Tower?",
         "question": "What is the capital of France?"
-    },
-    {
-        "answer": "",
-        "facts": [],
-        "hints": [],
-        "lastQuestion": "",
-        "question": ""
-    },
-    {
-        "answer": "",
-        "facts": [],
-        "hints": [],
-        "lastQuestion": "",
-        "question": ""
-    },
-    {
-        "answer": "",
-        "facts": [],
-        "hints": [],
-        "lastQuestion": "",
-        "question": ""
-    },
-    {
-        "answer": "",
-        "facts": [],
-        "hints": [
-            "p"
-        ],
-        "lastQuestion": "p",
-        "question": ""
-    },
-    {
-        "answer": "",
-        "facts": [],
-        "hints": [
-            "p",
-            "p"
-        ],
-        "lastQuestion": "p",
-        "question": ""
     }
 ]

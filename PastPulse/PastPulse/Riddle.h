@@ -9,6 +9,8 @@ struct Riddle {
 	std::vector<std::string> hints;
 	std::string lastQuestion;
 	std::vector<std::string> facts;
+	std::string period;
+	int complexity;
 
 	// Pointer to the next riddle
 	Riddle* next;

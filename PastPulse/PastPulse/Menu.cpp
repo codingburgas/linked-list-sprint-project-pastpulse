@@ -1,18 +1,6 @@
-#include "pch.h"
+#include "Menu.h"
+#include "User.h"
 
-void gotoxy(int x, int y) {
-	COORD coord = { static_cast<SHORT>(x),static_cast<SHORT>(y) };
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
-
-void hideCursor() {
-	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO info;
-	info.dwSize = 100;
-	info.bVisible = FALSE;
-	SetConsoleCursorInfo(consoleHandle, &info);
-
-}
 void printCentered(const string& text, int y) {
     int padding = (80 - text.length() + 35) / 2;
     COORD pos = { (SHORT)padding, (SHORT)y };
@@ -81,7 +69,7 @@ void menu() {
             }
             else {
                 system("cls");
-                printCentered("Exiting...", 10);
+                printCentered("Goodbye! You can close the app by pressing any key button...", 10);
                 running = false;
             }
             break;

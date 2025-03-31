@@ -7,5 +7,5 @@ using json = nlohmann::json;
 
 int userRegister(json& users);
 bool userLogin(const json& users);
-
+json readUsersFromJson(const string& filename);
 #endif

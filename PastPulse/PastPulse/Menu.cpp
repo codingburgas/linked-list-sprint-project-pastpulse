@@ -76,3 +76,26 @@ void menu() {
         }
     }
 }
+void displayOptions(const vector<string>& options, int selected, const vector<string>& fileContent) {
+    system("cls");
+
+    for (const string& line : fileContent) {
+        cout << line << endl;
+    }
+    cout << "===========================" << endl;
+
+    for (int i = 0; i < options.size(); i++)
+    {
+        cout << "| ";
+        if (i == selected) {
+            cout << ">" << options[i];
+            for (int j = options[i].length(); j < 23; j++) cout << " ";
+        }
+        else {
+            cout << " " << options[i];
+            for (int j = options[i].length(); j < 23; j++) cout << " ";
+        }
+        cout << "|" << endl;
+    }
+    cout << "===========================" << endl;
+}

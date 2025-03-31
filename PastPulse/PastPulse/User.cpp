@@ -1,6 +1,10 @@
 #include "User.h"
 #include "Program.h"
 #include "Validation.h"
+#include <iostream>
+#include <conio.h>
+#include <fstream>
+#include "json.hpp"
 using json = nlohmann::json;
 using namespace std;
 
@@ -23,23 +27,9 @@ int  userRegister(json& users) {
 	string username;
 	string password;
 
-
 	cout << "=== Registration ===\n";
 	cout << "Enter username: ";
 	cin >> username;
-
-	//if (users.find(username) != users.end()) {
-	//	cout << "Error: username already exists!\n";
-	//	system("pause");
-	//	return;
-	//}
-
-	//cout << "Enter password: ";
-	//cin >> password;
-	//users[username] = password;
-	//
-	//cout << "Successful registration!\n";
-	//system("pause");
 
 	for (const auto& user : users["users"]) {
 		if (user["username"] == username) {

@@ -16,6 +16,15 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
+void hideCursor() {
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO info;
+	info.dwSize = 100;
+	info.bVisible = FALSE;
+	SetConsoleCursorInfo(consoleHandle, &info);
+
+}
+
 int main() 
 {
 	menu();
@@ -24,6 +33,7 @@ int main()
 	vector<string> options = { "Login as ADMIN" , "Login as USER" };
 	int selected = 0;
 	bool running = true;
+	hideCursor();
 
 	json users = readUsersFromJson("users.json");
 

@@ -74,3 +74,17 @@ int  userRegister(json& users) {
 
 	system("pause");
 }
+bool userLogin(const json& users) {
+	string username;
+	string password;
+
+	cout << "=== Login ===\n";
+	cout << "Enter username: ";
+	cin >> username;
+	cout << "Enter password: ";
+	cin >> password;
+
+	return autehnticate(users, username, password);
+
+	system("pause");
+}

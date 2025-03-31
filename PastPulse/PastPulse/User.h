@@ -6,5 +6,6 @@
 using json = nlohmann::json;
 
 int userRegister(json& users);
+bool userLogin(const json& users);
 
 #endif

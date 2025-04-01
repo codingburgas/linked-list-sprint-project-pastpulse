@@ -2,6 +2,7 @@
 #include "Menu.h"
 void simulator()
 {
+    system("cls");
     hideCursor();
     ifstream file("riddles.json");
     if (!file) {

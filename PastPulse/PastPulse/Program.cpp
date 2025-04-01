@@ -15,7 +15,7 @@ void gotoxy(int x, int y) {
 int main() 
 {
 	menu();
-
+	bool userLogged = false;
 	vector<string> options = { "Login as ADMIN" , "Login as USER" };
 	int selected = 0;
 	bool running = true;
@@ -48,6 +48,7 @@ int main()
 				cin >> password;
 				if (adminLogin(username, password)) {
 					cout << "Admin login successful!" << endl;
+					userLogged = true; //Trqbva da se naravi nova promenliva za admi,koqto da vodi kum modifyinga
 					//admin func
 				}
 				else {
@@ -77,7 +78,7 @@ int main()
 						if (userSelected == 0) {
 							if (userLogin(users)) {
 								cout << "Login successful!\n";
-								simulator();
+								userLogged = true;
 							}
 							else {
 								cout << "Failed to login!\n";
@@ -101,6 +102,12 @@ int main()
 			}
 			cout << "\nPress enter to continue...";
 			cin.get();
+			if (userLogged)
+			{
+				simulator();
+			}
+
+
 		}
 
 	}

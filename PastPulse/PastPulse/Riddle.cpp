@@ -1,11 +1,11 @@
 ﻿#include "Riddle.h"
 #include "Validation.h"
 
-Riddle* loadRiddlesFromFile(std::string& filename) {
+Riddle* loadRiddlesFromFile(string& filename) {
 	Riddle* head = nullptr;
-	std::ifstream file(filename);
+	ifstream file(filename);
 	if (file.fail()) {
-		std::cout << "Unable to open file " << filename << std::endl;
+		cout << "Unable to open file " << filename << endl;
 	}
 	// JSON object that will contain the data from the file
 	json riddlesJson;
@@ -37,44 +37,44 @@ Riddle* loadRiddlesFromFile(std::string& filename) {
 
 void displayRiddles(Riddle* head) {
 	if (!head) {
-		std::cout << "There aren't any riddles";
+		cout << "There aren't any riddles";
 		return;
 	}
 	// Pointer to the current list item
 	Riddle* current = head;
 	while (current) {
-		std::cout << "Riddle Name: " << current->name << std::endl;
-		std::cout << "Introduction: " << current->introduction << std::endl;
-		std::cout << "Answer" << current->answer << std::endl;
-		std::cout << "Hints: ";
+		cout << "Riddle Name: " << current->name << endl;
+		cout << "Introduction: " << current->introduction << endl;
+		cout << "Answer" << current->answer << endl;
+		cout << "Hints: ";
 		if (current->hints.empty()) {
-			std::cout << "No hints available!" << std::endl;
+			cout << "No hints available!" << endl;
 		}
 		else {
 			for (size_t i = 0; i < 4; i++) {
 				if (i < current->hints.size()) {
-					std::cout << " - " << current->hints[i] << std::endl;
+					cout << " - " << current->hints[i] << endl;
 				}
 			}
 		}
-		std::cout << "Correct Answer: " << current->answer << std::endl;
+		cout << "Correct Answer: " << current->answer << endl;
 		for (size_t i = 0; i < current->facts.size(); i++)
 		{
-			std::cout << " - " << current->facts[i] << std::endl;
+			cout << " - " << current->facts[i] << endl;
 		}
-		std::cout << "Period " << current->period << std::endl;
-		std::cout << "Complexity " << current->complexity << std::endl;
+		cout << "Period " << current->period << endl;
+		cout << "Complexity " << current->complexity << endl;
 		// Move to the next riddle in the list
 		current = current->next;
-		std::cout << "__________________________________" << std::endl;
+		cout << "__________________________________" << endl;
 	}
 }
 
 // Function to check if the entered password is correct for an administrator
 
 
-void saveRiddlesToFile(Riddle* head, std::string& filename) {
-	std::ofstream file(filename);
+void saveRiddlesToFile(Riddle* head, string& filename) {
+	ofstream file(filename);
 	// JSON array that will store the riddles
 	json riddlesJson = json::array();
 	Riddle* current = head;
@@ -96,92 +96,92 @@ void saveRiddlesToFile(Riddle* head, std::string& filename) {
 	// Write the JSON data to the file, indented by 4 spaces for better formatting
 	file << riddlesJson.dump(4);
 	file.close();
-	std::cout << "The new riddles were added";
+	cout << "The new riddles were added";
 }
 
-void addRiddle(Riddle* head, std::string& filename) {
+void addRiddle(Riddle* head, string& filename) {
 	if (!isAdmin()) {
 		return;
 	}
 	Riddle* newRiddle = new Riddle;
-	std::cout << "Enter the riddle name: ";
-	std::getline(std::cin, newRiddle->name);
-	std::cout << "Enter the introduction to the riddle: ";
-	std::getline(std::cin, newRiddle->introduction);
+	cout << "Enter the riddle name: ";
+	getline(cin, newRiddle->name);
+	cout << "Enter the introduction to the riddle: ";
+	getline(cin, newRiddle->introduction);
 	int hintNumber = 4;
-	std::cout << "Enter 4 hints:" << std::endl;
+	cout << "Enter 4 hints:" << endl;
 
 	for (int i = 0; i < hintNumber; i++) {
-		std::string hint;
-		std::cout << "Hint " << i + 1 << ": ";
-		std::getline(std::cin, hint);
+		string hint;
+		cout << "Hint " << i + 1 << ": ";
+		getline(cin, hint);
 		newRiddle->hints.push_back(hint);
 	}
-	std::cout << "Write the corect answer: ";
-	std::getline(std::cin, newRiddle->answer);
+	cout << "Write the corect answer: ";
+	getline(cin, newRiddle->answer);
 
-	std::cout << "How many hints they are?";
-	std::cin >> hintNumber;
-	if(std::cin.fail()) {
+	cout << "How many hints they are?";
+	cin >> hintNumber;
+	if(cin.fail()) {
 		// Resets the error flag so that he can accept input again
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
+		cin.clear();
+		cin.ignore(1000, '\n');
 		// Ignore up to 1000 characters or until a newline '\n' is encountered to clear out bad input
-		std::cout << "Invalid try again ";
-		std::cin >> hintNumber;
+		cout << "Invalid try again ";
+		cin >> hintNumber;
 	}
 	// Clears the input buffer of residual characters (such as newlines)
-	std::cin.ignore();
+	cin.ignore();
 
 	for (int i = 0; i < hintNumber; i++) {
-		std::string hint;
-		std::cout << "Hint " << i + 1 << ": " << std::endl;
-		std::getline(std::cin, hint);
+		string hint;
+		cout << "Hint " << i + 1 << ": " << endl;
+		getline(cin, hint);
 		// Add the hint to the hint vector
 		newRiddle->hints.push_back(hint);
 	}
-	std::cout << "Write the valid final answer";
+	cout << "Write the valid final answer";
 
 	int factsNumber;
-	std::cout << "How many fun facts they are?";
-	std::cin >> factsNumber;
-	if (std::cin.fail()) {
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
-		std::cout << "Invalid try again ";
-		std::cin >> factsNumber;
+	cout << "How many fun facts they are?";
+	cin >> factsNumber;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << "Invalid try again ";
+		cin >> factsNumber;
 	}
 
-	std::cin.ignore();
+	cin.ignore();
 	for (int i = 0; i < factsNumber; i++) {
-		std::string funFact;
-		std::cout << "Fact " << i + 1 << ": " << std::endl;
-		std::getline(std::cin, funFact);
+		string funFact;
+		cout << "Fact " << i + 1 << ": " << endl;
+		getline(cin, funFact);
 
 		newRiddle->facts.push_back(funFact);
 	}
 
 
-	std::cout << "Enter period(Before WWI or After WWI): ";
+	cout << "Enter period(Before WWI or After WWI): ";
 	while (true) {
-		std::getline(std::cin, newRiddle->period);
+		getline(cin, newRiddle->period);
 		if (newRiddle->period == "Before WWI" || newRiddle->period == "After WWI") {
 			break;
 		}
-		std::cout << "Invalid input!";
+		cout << "Invalid input!";
 	}
 
 
-	std::cout << "Enter complexity from 1 to 10: ";
-	std::cin >> newRiddle->complexity;
-	if (std::cin.fail()) {
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
-		std::cout << "Invalid input!";
-		std::cin >> newRiddle->complexity;
+	cout << "Enter complexity from 1 to 10: ";
+	cin >> newRiddle->complexity;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << "Invalid input!";
+		cin >> newRiddle->complexity;
 	}
 
-	std::cout << "Successful added!" << std::endl;
+	cout << "Successful added!" << endl;
 	// Change the pointer of the new riddle to point to the current first element
 	newRiddle->next = head;
 	head = newRiddle;
@@ -255,18 +255,18 @@ void freeRiddles(Riddle* head) {
 		head = head->next;
 		delete temp;
 	}
-	std::cout << "You seccessfully stop the game" << std::endl;
+	cout << "You seccessfully stop the game" << endl;
 }
 
 
 void deleteRiddle(Riddle* head, string& filename) {
 	if (head == nullptr) {
-		std::cout << "Empty list" << std::endl;
+		cout << "Empty list" << endl;
 		return;
 	}
 
 	// Display all available riddles to choose from
-	cout << "Pick riddle to delete" << std::endl;
+	cout << "Pick riddle to delete" << endl;
 	int count = 1;
 	Riddle* current = head;
 	vector<Riddle*> riddlesList;
@@ -333,108 +333,108 @@ void deleteRiddle(Riddle* head, string& filename) {
 
 void editRiddle(Riddle* head, string& filename) {
 	if (head == nullptr) {
-		std::cout << "Empty list!" << std::endl;
+		cout << "Empty list!" << endl;
 	}
 
-	std::cout << "Pick riddle to edit:" << std::endl;
+	cout << "Pick riddle to edit:" << endl;
 	int count = 1;
 	Riddle* current = head;
 	vector<Riddle*> riddlesList;
 	while (current != nullptr) {
-		std::cout << count << ". " << current->name << std::endl;
+		cout << count << ". " << current->name << endl;
 		riddlesList.push_back(current);
 		current = current->next;
 		count++;
 	}
 
 	int choice;
-	std::cout << "Enter the number of the riddle: ";
-	std::cin >> choice;
+	cout << "Enter the number of the riddle: ";
+	cin >> choice;
 
 	if (choice < 1 || choice > riddlesList.size()) {
-		std::cout << "Incorrect choice!" << std::endl;
+		cout << "Incorrect choice!" << endl;
 	}
 
 	Riddle* toEdit = riddlesList[choice - 1];
 	
 	// Edit name
-	std::cout << "Edit the riddle details" << std::endl;
-	std::cout << "Current name: " << toEdit->name << std::endl;
-	std::cout << "Enter new name: ";
+	cout << "Edit the riddle details" << endl;
+	cout << "Current name: " << toEdit->name << endl;
+	cout << "Enter new name: ";
 	string newName;
-	std::cin.ignore();
-	std::getline(std::cin, newName);
+	cin.ignore();
+	getline(cin, newName);
 	if (!newName.empty()) {
 		toEdit->name = newName;
 	}
 	// Edit the introduction
-	std::cout << "Current introduction: " << toEdit->introduction << std::endl;
-	std::cout << "Enter new introduction: ";
+	cout << "Current introduction: " << toEdit->introduction << endl;
+	cout << "Enter new introduction: ";
 	string newIntroduction;
-	std::getline(std::cin, newIntroduction);
+	getline(cin, newIntroduction);
 	if (!newIntroduction.empty()) {
 		toEdit->introduction = newIntroduction;
 	}
 
 	// Edit the answer
-	std::cout << "Current answer: " << toEdit->answer << std::endl;
-	std::cout << "Enter new answer: ";
+	cout << "Current answer: " << toEdit->answer << endl;
+	cout << "Enter new answer: ";
 	string newAnswer;
-	std::getline(std::cin, newAnswer);
+	getline(cin, newAnswer);
 	if (!newAnswer.empty()) {
 		toEdit->answer = newAnswer;
 	}
 
 	// Edit the facts
-	std::cout << "Current facts: " << std::endl;
+	cout << "Current facts: " << endl;
 	for (size_t i = 0; i < toEdit->facts.size(); ++i) {
-		std::cout << i + 1 << ". " << toEdit->facts[i] << std::endl;
+		cout << i + 1 << ". " << toEdit->facts[i] << endl;
 	}
 
-	std::cout << "Enter the number of the fact you want to edit: ";
+	cout << "Enter the number of the fact you want to edit: ";
 	int factChoice;
-	std::cin >> factChoice;
-	std::cin.ignore();
+	cin >> factChoice;
+	cin.ignore();
 
 	// Edit the selected fact
 	if (factChoice > 0 && factChoice <= toEdit->facts.size()) {
 		cout << "Enter new fact: ";
 		string newFact;
-		std::getline(std::cin, newFact);
+		getline(cin, newFact);
 		// Replace the old fact with the new one
 		toEdit->facts[factChoice - 1] = newFact; 
 	}
 	// Edit hints
-	std::cout << "Current hints: " << std::endl;
+	cout << "Current hints: " << endl;
 	for (size_t i = 0; i < toEdit->hints.size(); ++i) {
-		std::cout << i + 1 << ". " << toEdit->hints[i] << std::endl;
+		cout << i + 1 << ". " << toEdit->hints[i] << endl;
 	}
 
-	std::cout << "Enter the number of the hint you want to edit : ";
+	cout << "Enter the number of the hint you want to edit : ";
 	int hintChoice;
-	std::cin >> hintChoice;
-	std::cin.ignore();
+	cin >> hintChoice;
+	cin.ignore();
 
 	if (hintChoice > 0 && hintChoice <= toEdit->hints.size()) {
-		std::cout << "Enter new hint: ";
+		cout << "Enter new hint: ";
 		string newHint;
-		std::getline(std::cin, newHint);
+		getline(cin, newHint);
 		toEdit->hints[hintChoice - 1] = newHint;
 	}
 
 	// Edit the period
-	std::cout << "Current period: " << toEdit->period << std::endl;
-	std::cout << "Enter new period: ";
+	cout << "Current period: " << toEdit->period << endl;
+	cout << "Enter new period: ";
     string newPeriod;
-	std::getline(std::cin, newPeriod);
+	getline(cin, newPeriod);
 	if (!newPeriod.empty()) {
 		toEdit->period = newPeriod;
 	}
 	// Edit complexity
-	std::cout << "Current complexity: " << toEdit->complexity << std::endl;
-	std::cout << "Enter new complexity: ";
+	cout << "Current complexity: " << toEdit->complexity << endl;
+	cout << "Enter new complexity: ";
 	int newComplexity;
-	std::cin >> newComplexity;
+	cin >> newComplexity;
 	if (newComplexity > 0) {
 		toEdit->complexity = newComplexity;
 	}
@@ -455,5 +455,5 @@ void editRiddle(Riddle* head, string& filename) {
 		current = current->next;
 	}
 	file.close();
-	std::cout << "Riddle has been updated!" << std::endl;
+	cout << "Riddle has been updated!" << endl;
 }

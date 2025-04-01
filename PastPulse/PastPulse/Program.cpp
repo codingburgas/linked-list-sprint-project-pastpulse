@@ -2,26 +2,14 @@
 #include "Admin.h"
 #include "Menu.h"
 #include "Riddle.h"
-#include <iostream>
-#include <vector>
-#include <conio.h>
-#include <fstream>
-#include "json.hpp"
+#include "Simulator.h"
+
 
 using json = nlohmann::json;
 
 void gotoxy(int x, int y) {
 	COORD coord = { static_cast<SHORT>(x),static_cast<SHORT>(y) };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
-
-void hideCursor() {
-	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO info;
-	info.dwSize = 100;
-	info.bVisible = FALSE;
-	SetConsoleCursorInfo(consoleHandle, &info);
-
 }
 
 int main() 
@@ -89,6 +77,7 @@ int main()
 						if (userSelected == 0) {
 							if (userLogin(users)) {
 								cout << "Login successful!\n";
+								simulator();
 							}
 							else {
 								cout << "Failed to login!\n";
@@ -111,7 +100,7 @@ int main()
 				}
 			}
 			cout << "\nPress enter to continue...";
-			std::cin.get();
+			cin.get();
 		}
 
 	}

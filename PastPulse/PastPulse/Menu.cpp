@@ -1,6 +1,15 @@
 #include "Menu.h"
 #include "User.h"
 
+void hideCursor() {
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO info;
+    info.dwSize = 100;
+    info.bVisible = FALSE;
+    SetConsoleCursorInfo(consoleHandle, &info);
+
+}
+
 void printCentered(const string& text, int y) {
     int padding = (80 - text.length() + 35) / 2;
     COORD pos = { (SHORT)padding, (SHORT)y };
@@ -58,6 +67,7 @@ void menu() {
         switch (key) {
         case 72:  
             selected = (selected == 0) ? 1 : 0;
+            break;
         case 80: 
             selected = (selected == 1) ? 0 : 1; 
             break;

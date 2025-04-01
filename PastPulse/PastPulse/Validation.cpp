@@ -42,15 +42,15 @@ bool isValidPassword(const string& password) {
 }
 
 bool isAdmin() {
-	std::string password;
-	std::string correctPassword = "admin";
-	std::cout << "Enter admin password: ";
-	std::cin >> password;
+	string password;
+	string correctPassword = "admin";
+	cout << "Enter admin password: ";
+	cin >> password;
 	if (password == correctPassword) {
 		return true;
 	}
 	else {
-		std::cout << "Incorrect password!";
+		cout << "Incorrect password!";
 		return false;
 	}
 }

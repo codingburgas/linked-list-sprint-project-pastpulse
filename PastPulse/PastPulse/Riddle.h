@@ -1,5 +1,8 @@
 #pragma once
-#include "pch.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include "json.hpp"
 using json = nlohmann::json;
 
 // Structure that represents a riddle
@@ -25,3 +28,4 @@ bool compareByPeriod(Riddle* a, Riddle* b);
 Riddle* merge(Riddle* left, Riddle* right);
 Riddle* mergeSort(Riddle* head);
 void deleteRiddle(Riddle* head, std::string& filename);
+void editRiddle(Riddle* head, std::string& filename);

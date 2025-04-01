@@ -1,5 +1,6 @@
 ﻿#include "Riddle.h"
 #include "Validation.h"
+
 Riddle* loadRiddlesFromFile(std::string& filename) {
 	Riddle* head = nullptr;
 	std::ifstream file(filename);
@@ -328,4 +329,131 @@ void deleteRiddle(Riddle* head, string& filename) {
 
 	file.close();
 	cout << "Riddle was deleted" << endl;
+}
+
+void editRiddle(Riddle* head, string& filename) {
+	if (head == nullptr) {
+		std::cout << "Empty list!" << std::endl;
+	}
+
+	std::cout << "Pick riddle to edit:" << std::endl;
+	int count = 1;
+	Riddle* current = head;
+	vector<Riddle*> riddlesList;
+	while (current != nullptr) {
+		std::cout << count << ". " << current->name << std::endl;
+		riddlesList.push_back(current);
+		current = current->next;
+		count++;
+	}
+
+	int choice;
+	std::cout << "Enter the number of the riddle: ";
+	std::cin >> choice;
+
+	if (choice < 1 || choice > riddlesList.size()) {
+		std::cout << "Incorrect choice!" << std::endl;
+	}
+
+	Riddle* toEdit = riddlesList[choice - 1];
+	
+	// Edit name
+	std::cout << "Edit the riddle details" << std::endl;
+	std::cout << "Current name: " << toEdit->name << std::endl;
+	std::cout << "Enter new name: ";
+	string newName;
+	std::cin.ignore();
+	std::getline(std::cin, newName);
+	if (!newName.empty()) {
+		toEdit->name = newName;
+	}
+	// Edit the introduction
+	std::cout << "Current introduction: " << toEdit->introduction << std::endl;
+	std::cout << "Enter new introduction: ";
+	string newIntroduction;
+	std::getline(std::cin, newIntroduction);
+	if (!newIntroduction.empty()) {
+		toEdit->introduction = newIntroduction;
+	}
+
+	// Edit the answer
+	std::cout << "Current answer: " << toEdit->answer << std::endl;
+	std::cout << "Enter new answer: ";
+	string newAnswer;
+	std::getline(std::cin, newAnswer);
+	if (!newAnswer.empty()) {
+		toEdit->answer = newAnswer;
+	}
+
+	// Edit the facts
+	std::cout << "Current facts: " << std::endl;
+	for (size_t i = 0; i < toEdit->facts.size(); ++i) {
+		std::cout << i + 1 << ". " << toEdit->facts[i] << std::endl;
+	}
+
+	std::cout << "Enter the number of the fact you want to edit: ";
+	int factChoice;
+	std::cin >> factChoice;
+	std::cin.ignore();
+
+	// Edit the selected fact
+	if (factChoice > 0 && factChoice <= toEdit->facts.size()) {
+		cout << "Enter new fact: ";
+		string newFact;
+		std::getline(std::cin, newFact);
+		// Replace the old fact with the new one
+		toEdit->facts[factChoice - 1] = newFact; 
+	}
+	// Edit hints
+	std::cout << "Current hints: " << std::endl;
+	for (size_t i = 0; i < toEdit->hints.size(); ++i) {
+		std::cout << i + 1 << ". " << toEdit->hints[i] << std::endl;
+	}
+
+	std::cout << "Enter the number of the hint you want to edit : ";
+	int hintChoice;
+	std::cin >> hintChoice;
+	std::cin.ignore();
+
+	if (hintChoice > 0 && hintChoice <= toEdit->hints.size()) {
+		std::cout << "Enter new hint: ";
+		string newHint;
+		std::getline(std::cin, newHint);
+		toEdit->hints[hintChoice - 1] = newHint;
+	}
+
+	// Edit the period
+	std::cout << "Current period: " << toEdit->period << std::endl;
+	std::cout << "Enter new period: ";
+    string newPeriod;
+	std::getline(std::cin, newPeriod);
+	if (!newPeriod.empty()) {
+		toEdit->period = newPeriod;
+	}
+	// Edit complexity
+	std::cout << "Current complexity: " << toEdit->complexity << std::endl;
+	std::cout << "Enter new complexity: ";
+	int newComplexity;
+	std::cin >> newComplexity;
+	if (newComplexity > 0) {
+		toEdit->complexity = newComplexity;
+	}
+	ofstream file(filename);
+	json j;
+	current = head;
+	while (current != nullptr) {
+		json riddleJson;
+		riddleJson["name"] = current->name;
+		riddleJson["introduction"] = current->introduction;
+		riddleJson["answer"] = current->answer;
+		riddleJson["facts"] = current->facts;
+		riddleJson["hints"] = current->hints;
+		riddleJson["period"] = current->period;
+		riddleJson["complexity"] = current->complexity;
+		j.push_back(riddleJson);
+
+		current = current->next;
+	}
+	file.close();
+	std::cout << "Riddle has been updated!" << std::endl;
 }

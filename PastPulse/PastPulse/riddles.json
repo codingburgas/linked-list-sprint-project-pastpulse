@@ -1,57 +1,21 @@
 [
-  {
-    "answer": "April Uprising",
-    "facts": [
-      "",
-      "",
-      "",
-      ""
-    ],
-    "hints": [
-      "The year in which the uprising breaks out is 3 years after the death of Vasil Levski.",
-      "The uprising breaks out in a region known for its rebellious spirit and numerous revolutionary committees.",
-      "Immediately after the START OF THE UPRISING, Todor Kableshkov writes a letter informing the apostles in Panagyurishte about the events in Koprivshtitsa.",
-      "One of the famous organizers of the uprising is a revolutionary who led the 'flying squad'."
-    ],
-    "period": "Before",
-    "complexity": 2,
-    "introduction": "At the end of the 19th century, in the heart of the Balkans, an uprising is planned, which shakes the veins of an empire. Despite the bloody suppression, this rebellion forever changed the destiny of a people.",
-    "name": "Echo of Freedom"
-  },
-  {
-    "answer": "Kresna-Razlog Uprising",
-    "facts": [
-      "",
-      "",
-      ""
-    ],
-    "hints": [
-      "The uprising breaks out immediately after the Congress of Berlin.",
-      "The general command of 400 rebels, divided into detachments, who attack the Ottoman garrisons, is under which leader?",
-      "What is the goal of the 'Appeal by the Temporary Bulgarian Administration in Macedonia'.",
-      "Who sends a memorandum to the Great Powers, seeking the creation of a single vilayet?"
-    ],
-    "period": "Before",
-    "complexity": 5,
-    "introduction": "After the Liberation of Bulgaria, remaining territories yearn for unification. At this moment, a wave of discontent arises, whose goal is the unification of all Bulgarians.",
-    "name": "A Call for Unification"
-  },
-  {
-    "answer": "Ilinden-Preobrazhenie Uprising",
-    "facts": [
-      "",
-      "",
-      ""
-    ],
-    "hints": [
-      "The uprising breaks out a year before the Russo-Japanese War",
-      "In three districts the uprising begins approximately during three major holidays - 02.08, 10.08, 27.09.",
-      "The uprising develops in two geographical regions, known for their strategic position and desire for unification with Bulgaria.",
-      "Which revolutionary organization leads the uprising, whose goal is the liberation of Bulgarians remaining under foreign rule?"
-    ],
-    "period": "Before",
-    "complexity": 6,
-    "intorduction": "At the beginning of the 20th century, in lands torn by contradictions, an uprising flares up. Despite the difficulties, the fighters for freedom do not give up their goal.",
-    "name": "Fire from Two Sides"
-  }
+    {
+        "answer": "April Uprising",
+        "facts": [
+          "Paris is known as the City of Lights.",
+          "The Eiffel Tower was completed in 1889.",
+          "Paris is one of the most visited cities in the world.",
+          "The Louvre is the world's largest museum and a historic monument in Paris."
+        ],
+        "hints": [
+          "The year in which the uprising breaks out is 3 years after the death of Vasil Levski.",
+          "The uprising breaks out in a region known for its rebellious spirit and numerous revolutionary committees.",
+          "Immediately after the START OF THE UPRISING, Todor Kableshkov writes a letter informing the apostles in Panagyurishte about the events in Koprivshtitsa.",
+          "One of the famous organizers of the uprising is a revolutionary who led the 'flying squad'."
+        ],
+        "period": "Before",
+        "complexity": 2,
+        "name":"Paris",
+        "introduction":"P"
+      }
 ]

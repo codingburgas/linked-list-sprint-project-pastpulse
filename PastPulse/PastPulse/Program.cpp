@@ -1,4 +1,4 @@
-#include "User.h"
+﻿#include "User.h"
 #include "Admin.h"
 #include "Menu.h"
 #include "Riddle.h"
@@ -9,7 +9,6 @@
 #include "json.hpp"
 
 using json = nlohmann::json;
-using namespace std;
 
 void gotoxy(int x, int y) {
 	COORD coord = { static_cast<SHORT>(x),static_cast<SHORT>(y) };
@@ -28,7 +27,6 @@ void hideCursor() {
 int main() 
 {
 	menu();
-	//displayRiddles(riddlesHead);
 
 	vector<string> options = { "Login as ADMIN" , "Login as USER" };
 	int selected = 0;
@@ -120,4 +118,5 @@ int main()
 
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);
+	displayRiddles(riddlesHead);
 }

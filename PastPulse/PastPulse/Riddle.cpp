@@ -3,6 +3,9 @@
 Riddle* loadRiddlesFromFile(std::string& filename) {
 	Riddle* head = nullptr;
 	std::ifstream file(filename);
+	if (file.fail()) {
+		std::cout << "Unable to open file " << filename << std::endl;
+	}
 
 	// JSON object that will contain the data from the file
 	json riddlesJson;

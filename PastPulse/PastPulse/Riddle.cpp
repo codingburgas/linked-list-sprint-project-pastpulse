@@ -14,10 +14,14 @@ Riddle* loadRiddlesFromFile(std::string& filename) {
 	for (const auto& item : riddlesJson) {
 		// Create a new riddle
 		Riddle* newRiddle = new Riddle;
-		newRiddle->question = item["question"];
+		newRiddle->name = item["name"];
+		newRiddle->introduction = item["introduction"];
+
+		for (int i = 0; i < 4 && i < item["hints"].size(); i++) {
+			newRiddle->hints.push_back(item["hints"][i]);
+		}
+
 		newRiddle->answer = item["answer"];
-		newRiddle->hints = item["hints"];
-		newRiddle->lastQuestion = item["lastQuestion"];
 		newRiddle->facts = item["facts"];
 		newRiddle->period = item["period"];
 		newRiddle->complexity = item["complexity"];
@@ -36,19 +40,21 @@ void displayRiddles(Riddle* head) {
 	// Pointer to the current list item
 	Riddle* current = head;
 	while (current) {
-		std::cout << "Riddle" << current->question << std::endl;
+		std::cout << "Riddle Name: " << current->name << std::endl;
+		std::cout << "Introduction: " << current->introduction << std::endl;
 		std::cout << "Answer" << current->answer << std::endl;
-		std::cout << "Hint";
-		if (current->hints.size()==0) {
-			std::cout << "No RIddle!" << std::endl;
+		std::cout << "Hints: ";
+		if (current->hints.empty()) {
+			std::cout << "No hints available!" << std::endl;
 		}
 		else {
-			for (size_t i = 0; i < current->hints.size(); i++)
-			{
-				std::cout << " - " << current->hints[i] << std::endl;
+			for (size_t i = 0; i < 4; i++) {
+				if (i < current->hints.size()) {
+					std::cout << " - " << current->hints[i] << std::endl;
+				}
 			}
 		}
-		std::cout << "Final question" << current->lastQuestion << std::endl;
+		std::cout << "Correct Answer: " << current->answer << std::endl;
 		for (size_t i = 0; i < current->facts.size(); i++)
 		{
 			std::cout << " - " << current->facts[i] << std::endl;
@@ -73,10 +79,10 @@ void saveRiddlesToFile(Riddle* head, std::string& filename) {
 	while (current) {
 		// Add each riddle as a JSON object to the array
 		riddlesJson.push_back({
-			{"question", current->question},
-			{"answer", current->answer},
+			{"name", current->name},
+			{"introduction", current->introduction},
 			{"hints", current->hints},
-			{"lastQuestion", current->lastQuestion},
+			{"answer", current->answer},
 			{"facts", current->facts},
 			{"period", current->period},
 			{"complexity", current->complexity}
@@ -95,14 +101,22 @@ void addRiddle(Riddle* head, std::string& filename) {
 		return;
 	}
 	Riddle* newRiddle = new Riddle;
-	std::cout << "Add the riddle here: ";
-	std::getline(std::cin, newRiddle->question);
-	std::cin.ignore();
+	std::cout << "Enter the riddle name: ";
+	std::getline(std::cin, newRiddle->name);
+	std::cout << "Enter the introduction to the riddle: ";
+	std::getline(std::cin, newRiddle->introduction);
+	int hintNumber = 4;
+	std::cout << "Enter 4 hints:" << std::endl;
+
+	for (int i = 0; i < hintNumber; i++) {
+		std::string hint;
+		std::cout << "Hint " << i + 1 << ": ";
+		std::getline(std::cin, hint);
+		newRiddle->hints.push_back(hint);
+	}
 	std::cout << "Write the corect answer: ";
 	std::getline(std::cin, newRiddle->answer);
-	std::cin.ignore();
 
-	int hintNumber;
 	std::cout << "How many hints they are?";
 	std::cin >> hintNumber;
 	if(std::cin.fail()) {
@@ -124,7 +138,6 @@ void addRiddle(Riddle* head, std::string& filename) {
 		newRiddle->hints.push_back(hint);
 	}
 	std::cout << "Write the valid final answer";
-	std::getline(std::cin, newRiddle->lastQuestion);
 
 	int factsNumber;
 	std::cout << "How many fun facts they are?";

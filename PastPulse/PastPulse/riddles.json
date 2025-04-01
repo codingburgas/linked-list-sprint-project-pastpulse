@@ -15,8 +15,8 @@
     ],
     "period": "Before",
     "complexity": 2,
-    "lastQuestion": "",
-    "question": ""
+    "introduction": "At the end of the 19th century, in the heart of the Balkans, an uprising is planned, which shakes the veins of an empire. Despite the bloody suppression, this rebellion forever changed the destiny of a people.",
+    "name": "Echo of Freedom"
   },
   {
     "answer": "Kresna-Razlog Uprising",
@@ -33,8 +33,8 @@
     ],
     "period": "Before",
     "complexity": 5,
-    "lastQuestion": "",
-    "question": ""
+    "introduction": "After the Liberation of Bulgaria, remaining territories yearn for unification. At this moment, a wave of discontent arises, whose goal is the unification of all Bulgarians.",
+    "name": "A Call for Unification"
   },
   {
     "answer": "Ilinden-Preobrazhenie Uprising",
@@ -51,7 +51,7 @@
     ],
     "period": "Before",
     "complexity": 6,
-    "lastQuestion": "",
-    "question": ""
+    "intorduction": "At the beginning of the 20th century, in lands torn by contradictions, an uprising flares up. Despite the difficulties, the fighters for freedom do not give up their goal.",
+    "name": "Fire from Two Sides"
   }
 ]

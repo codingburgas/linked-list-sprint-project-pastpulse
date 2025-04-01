@@ -4,10 +4,10 @@ using json = nlohmann::json;
 
 // Structure that represents a riddle
 struct Riddle {
-	std::string question;
+	std::string name;
+	std::string introduction;
 	std::string answer;
 	std::vector<std::string> hints;
-	std::string lastQuestion;
 	std::vector<std::string> facts;
 	std::string period;
 	int complexity;

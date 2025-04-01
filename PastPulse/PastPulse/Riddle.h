@@ -24,3 +24,4 @@ void freeRiddles(Riddle* head);
 bool compareByPeriod(Riddle* a, Riddle* b);
 Riddle* merge(Riddle* left, Riddle* right);
 Riddle* mergeSort(Riddle* head);
+void deleteRiddle(Riddle* head, std::string& filename);

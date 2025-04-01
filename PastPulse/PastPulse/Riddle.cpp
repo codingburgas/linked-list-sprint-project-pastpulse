@@ -1,4 +1,4 @@
-#include "Riddle.h"
+﻿#include "Riddle.h"
 #include "Validation.h"
 Riddle* loadRiddlesFromFile(std::string& filename) {
 	Riddle* head = nullptr;
@@ -6,7 +6,6 @@ Riddle* loadRiddlesFromFile(std::string& filename) {
 	if (file.fail()) {
 		std::cout << "Unable to open file " << filename << std::endl;
 	}
-
 	// JSON object that will contain the data from the file
 	json riddlesJson;
 	// Read JSON data from the file and load it into the object
@@ -259,3 +258,74 @@ void freeRiddles(Riddle* head) {
 }
 
 
+void deleteRiddle(Riddle* head, string& filename) {
+	if (head == nullptr) {
+		std::cout << "Empty list" << std::endl;
+		return;
+	}
+
+	// Display all available riddles to choose from
+	cout << "Pick riddle to delete" << std::endl;
+	int count = 1;
+	Riddle* current = head;
+	vector<Riddle*> riddlesList;
+
+	while (current != nullptr) {
+		// Displays the sequence number and name of the riddle
+		cout << count << ". " << current->name << endl;
+		riddlesList.push_back(current);
+		// Moving on to the next riddle
+		current = current->next;
+		count++;
+	}
+
+	int choice;
+	cout << "Enter the number of the riddle: ";
+	cin >> choice;
+
+	if (choice < 1 || choice > riddlesList.size()) {
+		cout << "Incorrect choice" << endl;
+		return;
+	}
+	// Select the riddle from the list
+	Riddle* toDelete = riddlesList[choice - 1];
+	
+	// If it removes the first riddle, the head pointer is changed
+	if (toDelete == head) {
+		head = head->next;
+	}
+	else {
+		// Search for the previous element in the list to connect to the next one
+		current = head;
+		while (current != nullptr && current->next != toDelete) {
+			current = current->next;
+		}
+		if (current != nullptr) {
+			current->next = toDelete->next;
+		}
+	}
+
+	delete toDelete;
+
+	ofstream file(filename);
+	// An empty JSON array in which the riddles will be stored
+	json riddlesArray = json::array();  
+
+	current = head;
+	while (current != nullptr) {
+		json riddleJson;
+		riddleJson["name"] = current->name;
+		riddleJson["introduction"] = current->introduction;
+		riddleJson["answer"] = current->answer;
+		riddleJson["facts"] = current->facts;
+		riddleJson["hints"] = current->hints;
+		riddleJson["period"] = current->period;
+		riddleJson["complexity"] = current->complexity;
+
+		riddlesArray.push_back(riddleJson); 
+		current = current->next;
+	}
+
+	file.close();
+	cout << "Riddle was deleted" << endl;
+}

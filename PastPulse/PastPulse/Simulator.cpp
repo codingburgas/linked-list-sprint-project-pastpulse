@@ -1,5 +1,10 @@
 #include "Simulator.h"
 #include "Menu.h"
+void leading()
+{
+    system("cls");
+    cout << "Welcome, sir! What are your orders?" << endl;
+}
 void simulator()
 {
     system("cls");
@@ -59,5 +64,21 @@ void simulator()
     cout << "\nHere is some additional information about the uprising:\n";
     for (const auto& fact : facts) {
         cout << "- " << fact << endl;
+    }
+    newLine(2);
+    cout << "1.Lead this uprising" << endl;
+    cout << "2.Solve new riddle" << endl;
+    cout << "3.Go back to the main menu" << endl;
+    int choice;
+    cout << "Enter your choice here: ";
+    cin >> choice;
+    switch (choice)
+    {
+    case 1:
+        leading(); break;
+    case 2:
+        simulator(); break;
+    case 3:
+        menu(); break;
     }
 }

@@ -111,7 +111,6 @@ int main()
 		}
 
 	}
-
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);
 }

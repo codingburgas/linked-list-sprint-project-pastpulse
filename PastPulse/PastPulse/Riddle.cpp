@@ -23,7 +23,7 @@ Riddle* loadRiddlesFromFile(string& filename) {
 		for (int i = 0; i < 4 && i < item["hints"].size(); i++) {
 			newRiddle->hints.push_back(item["hints"][i]);
 		}
-
+		newRiddle->answerHints = item["answerHints"];
 		newRiddle->answer = item["answer"];
 		newRiddle->facts = item["facts"];
 		newRiddle->period = item["period"];
@@ -33,6 +33,23 @@ Riddle* loadRiddlesFromFile(string& filename) {
 		head = newRiddle;
 	}
 	return head;
+}
+bool askHint(Riddle* riddle) {
+
+
+	bool allHintsCorrect = true;
+	for (size_t i = 0; i < riddle->hints.size(); i++)
+	{
+		string userAnswer;
+		cout << "Hint " << i + 1 << ": " << riddle->hints[i] << endl;
+		cout << "Your asnwer: ";
+		getline(cin, userAnswer);
+		if (userAnswer != riddle->answerHints[i]) {
+			allHintsCorrect = false;
+			cout << "Wrong asnwer. The correct answer is: "<< riddle->answerHints[i] << endl;
+		}
+	}
+	return allHintsCorrect;
 }
 
 void displayRiddles(Riddle* head) {
@@ -50,11 +67,8 @@ void displayRiddles(Riddle* head) {
 			cout << "No hints available!" << endl;
 		}
 		else {
-			for (size_t i = 0; i < 4; i++) {
-				if (i < current->hints.size()) {
-					cout << " - " << current->hints[i] << endl;
-				}
-			}
+			// The function for checking the answers to the clues is called
+			bool allHintsCorrect = askHint(current);
 		}
 		cout << "Correct Answer: " << current->answer << endl;
 		cout << "Answer" << current->answer << endl;
@@ -70,8 +84,6 @@ void displayRiddles(Riddle* head) {
 	}
 }
 
-// Function to check if the entered password is correct for an administrator
-
 
 void saveRiddlesToFile(Riddle* head, string& filename) {
 	ofstream file(filename);
@@ -85,6 +97,7 @@ void saveRiddlesToFile(Riddle* head, string& filename) {
 			{"name", current->name},
 			{"introduction", current->introduction},
 			{"hints", current->hints},
+			{"answerHints", current->answerHints},
 			{"answer", current->answer},
 			{"facts", current->facts},
 			{"period", current->period},
@@ -108,37 +121,21 @@ void addRiddle(Riddle* head, string& filename) {
 	getline(cin, newRiddle->name);
 	cout << "Enter the introduction to the riddle: ";
 	getline(cin, newRiddle->introduction);
+	
 	int hintNumber = 4;
-	cout << "Enter 4 hints:" << endl;
+	cout << "Enter 4 hints" << endl;
 
 	for (int i = 0; i < hintNumber; i++) {
 		string hint;
-		cout << "Hint " << i + 1 << ": ";
-		getline(cin, hint);
-		newRiddle->hints.push_back(hint);
-	}
-	cout << "Write the corect answer: ";
-	getline(cin, newRiddle->answer);
-
-	cout << "How many hints they are?";
-	cin >> hintNumber;
-	if(cin.fail()) {
-		// Resets the error flag so that he can accept input again
-		cin.clear();
-		cin.ignore(1000, '\n');
-		// Ignore up to 1000 characters or until a newline '\n' is encountered to clear out bad input
-		cout << "Invalid try again ";
-		cin >> hintNumber;
-	}
-	// Clears the input buffer of residual characters (such as newlines)
-	cin.ignore();
-
-	for (int i = 0; i < hintNumber; i++) {
-		string hint;
+		string answerHint;
 		cout << "Hint " << i + 1 << ": " << endl;
 		getline(cin, hint);
 		// Add the hint to the hint vector
 		newRiddle->hints.push_back(hint);
+
+		cout << "Enter the correct answer";
+		getline(cin, answerHint);
+		newRiddle->answerHints.push_back(answerHint);
 	}
 	cout << "Write the valid final answer";
 
@@ -320,6 +317,7 @@ void deleteRiddle(Riddle* head, string& filename) {
 		riddleJson["answer"] = current->answer;
 		riddleJson["facts"] = current->facts;
 		riddleJson["hints"] = current->hints;
+		riddleJson["asnwerHints"] = current->answerHints;
 		riddleJson["period"] = current->period;
 		riddleJson["complexity"] = current->complexity;
 
@@ -422,6 +420,23 @@ void editRiddle(Riddle* head, string& filename) {
 		toEdit->hints[hintChoice - 1] = newHint;
 	}
 
+
+	// Edit the answer for the seleted hint
+	cout << "Current answer for the selected hint: " << endl;
+	cout << "Enter new answer for the hint: ";
+	string newAnswerHint;
+	getline(cin, newAnswerHint);
+	// Replace the old answer for the hint with the new one
+	if (newAnswerHint.size() > 0) {
+		if (hintChoice > 0 && hintChoice <= toEdit->answerHints.size()) {
+			toEdit->answerHints[hintChoice - 1] = newAnswerHint;
+		}
+		else {
+			// Add a new answer if it's a new hint
+			toEdit->answerHints.push_back(newAnswerHint);
+		}
+	}
+
 	// Edit the period
 	cout << "Current period: " << toEdit->period << endl;
 	cout << "Enter new period: ";
@@ -448,6 +463,7 @@ void editRiddle(Riddle* head, string& filename) {
 		riddleJson["answer"] = current->answer;
 		riddleJson["facts"] = current->facts;
 		riddleJson["hints"] = current->hints;
+		riddleJson["answerHints"] = current->answerHints;
 		riddleJson["period"] = current->period;
 		riddleJson["complexity"] = current->complexity;
 		j.push_back(riddleJson);

@@ -8,6 +8,7 @@ struct Riddle {
 	string name;
 	string introduction;
 	vector<string> hints;
+	vector<string> answerHints;
 	string answer;
 	vector<string> facts;
 
@@ -25,3 +26,4 @@ Riddle* merge(Riddle* left, Riddle* right);
 Riddle* mergeSort(Riddle* head);
 void deleteRiddle(Riddle* head, string& filename);
 void editRiddle(Riddle* head, string& filename);
+bool askHint(Riddle* riddle);

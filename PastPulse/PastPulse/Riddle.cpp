@@ -45,7 +45,6 @@ void displayRiddles(Riddle* head) {
 	while (current) {
 		cout << "Riddle Name: " << current->name << endl;
 		cout << "Introduction: " << current->introduction << endl;
-		cout << "Answer" << current->answer << endl;
 		cout << "Hints: ";
 		if (current->hints.empty()) {
 			cout << "No hints available!" << endl;
@@ -58,6 +57,7 @@ void displayRiddles(Riddle* head) {
 			}
 		}
 		cout << "Correct Answer: " << current->answer << endl;
+		cout << "Answer" << current->answer << endl;
 		for (size_t i = 0; i < current->facts.size(); i++)
 		{
 			cout << " - " << current->facts[i] << endl;

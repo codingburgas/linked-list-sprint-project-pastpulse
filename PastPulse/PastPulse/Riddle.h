@@ -3,13 +3,13 @@
 
 // Structure that represents a riddle
 struct Riddle {
-	string name;
-	string introduction;
-	string answer;
-	vector<string> hints;
-	vector<string> facts;
 	string period;
 	int complexity;
+	string name;
+	string introduction;
+	vector<string> hints;
+	string answer;
+	vector<string> facts;
 
 	// Pointer to the next riddle
 	Riddle* next;

@@ -1,5 +1,7 @@
 ﻿#include "Riddle.h"
 #include "Validation.h"
+#include "Menu.h"
+#include "Simulator.h"
 
 Riddle* loadRiddlesFromFile(string& filename) {
 	Riddle* head = nullptr;
@@ -8,13 +10,15 @@ Riddle* loadRiddlesFromFile(string& filename) {
 		cout << "Unable to open file " << filename << endl;
 	}
 	// JSON object that will contain the data from the file
-	json riddlesJson;
-	// Read JSON data from the file and load it into the object
-	file >> riddlesJson;
+	json j;
+	file >> j;
+	srand(time(nullptr));
+	int randomIndex = rand() % j.size();
+	json selectedRiddle = j[randomIndex];
 	file.close();
 
 	// (range-based loop) to iterate over all elements in the JSON object 'riddlesJson'
-	for (const auto& item : riddlesJson) {
+	for (const auto& item : j) {
 		// Create a new riddle
 		Riddle* newRiddle = new Riddle;
 		newRiddle->name = item["name"];
@@ -53,13 +57,20 @@ bool askHint(Riddle* riddle) {
 }
 
 void displayRiddles(Riddle* head) {
+	system("cls");
 	if (!head) {
 		cout << "There aren't any riddles";
 		return;
 	}
 	// Pointer to the current list item
 	Riddle* current = head;
-	while (current) {
+	printCentered("  _________      .__                ___________.__             __________.__    .___  .___.__          ", 5);
+	printCentered(" /   _____/ ____ |  |___  __ ____   \\__    ___/|  |__   ____   \\______   \\__| __| _/__| _/|  |   ____  ", 6);
+	printCentered(" \\_____  \\ /  _ \\|  |\\  \\/ // __ \\    |    |   |  |  \_/ __ \\   |       _/  |/ __ |/ __ | |  | _/ __ \\ ", 7);
+	printCentered(" /        (  <_> )  |_\\   /\\  ___/    |    |   |   Y  \\  ___/   |    |   \\  / /_/ / /_/ | |  |_\\  ___/ ", 8);
+	printCentered("/_______  /\____/|____/\\_/  \\___  >   |____|   |___|  /\\___  >  |____|_  /__\\____ \\____ | |____/\\___  >", 9);
+	printCentered("        \\/                      \\/                  \\/     \\/          \\/        \\/    \\/           \\/ ", 10);
+	newLine(2);
 		cout << "Riddle Name: " << current->name << endl;
 		cout << "Introduction: " << current->introduction << endl;
 		cout << "Hints: ";
@@ -80,8 +91,23 @@ void displayRiddles(Riddle* head) {
 		cout << "Complexity " << current->complexity << endl;
 		// Move to the next riddle in the list
 		current = current->next;
-		cout << "__________________________________" << endl;
-	}
+		newLine(2);
+		cout << "1.Lead this uprising" << endl;
+		cout << "2.Solve new riddle" << endl;
+		cout << "3.Go back to the main menu" << endl;
+		int choice;
+		cout << "Enter your choice here: ";
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			leading(); break;
+		case 2:
+			displayRiddles(head); break;
+		case 3:
+			menu(); break;
+		}
+	
 }
 
 

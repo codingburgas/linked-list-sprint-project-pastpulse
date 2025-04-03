@@ -86,6 +86,62 @@ void displayRoleMenu(int selected) {
         printCentered("> User <", userOptionY + 1);
     }
 }
+
+void adminMenu(Riddle* riddlesHead, string& filename) {
+    int selected = 0;
+    bool adminRunning = true;
+
+    while (adminRunning) {
+        system("cls");
+
+        for (int i = 0; i < 4; i++) {
+            if (i == selected)
+                cout << "> ";  
+            else
+                cout << "  ";  
+
+            if (i == 0) cout << "Add Riddle\n";
+            if (i == 1) cout << "Edit Riddle\n";
+            if (i == 2) cout << "Delete Riddle\n";
+            if (i == 3) cout << "Exit Admin Menu\n";
+        }
+
+        char key = _getch(); 
+
+        if (key == 72) {  
+            selected = (selected > 0) ? selected - 1 : 3;
+        }
+        else if (key == 80) {  
+            selected = (selected < 3) ? selected + 1 : 0;
+        }
+        else if (key == 13) { 
+            switch (selected) {
+            case 0:
+                addRiddle(riddlesHead, filename);
+                break;
+            case 1:
+                editRiddle(riddlesHead, filename);
+                break;
+            case 2:
+                deleteRiddle(riddlesHead, filename);
+                break;
+            case 3:
+                cout << "Exiting Admin Menu...\n";
+                adminRunning = false;
+                break;
+            }
+        }
+    }
+}
+
+void displaySortMenu(int selected) {
+    system("cls");
+    cout << "=== Sort Riddles ===\n";
+    cout << "Select sort criteria:\n";
+    cout << (selected == 0 ? "> " : "  ") << "1. Sort by Period (Before/After)\n";
+    cout << (selected == 1 ? "> " : "  ") << "2. Sort by Complexity (1 to 10)\n";
+}
+
 void menu() {
     int selected = 0; 
     bool running = true;
@@ -127,6 +183,7 @@ void menu() {
                         break;
                     case 13:  
                         if (roleSelected == 0) {  
+                            system("cls");
                             string username, password;
                             cout << "Enter admin username: ";
                             cin >> username;
@@ -135,12 +192,11 @@ void menu() {
 
                             if (adminLogin(username, password)) {
                                 cout << "Admin login successful!" << endl;
-                                break;
                                 //roleRunning = false;  
+                               adminMenu(riddlesHead, filename);
                             }
                             else {
                                 cout << "Admin login failed.\n";
-                                break;
                                 system("pause");
                             }
                         }
@@ -154,7 +210,7 @@ void menu() {
                             cout << "=== User Options ===\n";
                             for (int i = 0; i < userOptions.size(); ++i) {
                                 if (i == userSelected)
-                                    cout << "> " << userOptions[i] << " <\n"; // Активиране на избраната опция
+                                    cout << "> " << userOptions[i] << " <\n";
                                 else
                                     cout << userOptions[i] << endl;
                             }
@@ -177,8 +233,33 @@ void menu() {
                                         if (userLogin(users)) {
                                             cout << "Login successful!\n";
                                             userRunning = false;
-                                      
-                                            displayRiddles(riddlesHead);
+
+                                            bool sortRunning = true;
+                                            while (sortRunning) {
+                                                displaySortMenu(selected);
+
+                                                char keySort = _getch();
+                                                switch (keySort) {
+                                                case 72:  // Arrow Up
+                                                    selected = (selected == 0) ? 1 : 0;
+                                                    break;
+                                                case 80:  // Arrow Down
+                                                    selected = (selected == 1) ? 0 : 1;
+                                                    break;
+                                                case 13:  // Enter
+                                                    if (selected == 0) {  
+                                                        riddlesHead = mergeSortByPeriod(riddlesHead);
+                                                        displayRiddles(riddlesHead);
+                                                        system("pause");
+                                                    }
+                                                    else if (selected == 1) {  
+                                                        riddlesHead = mergeSortByComplexity(riddlesHead);
+                                                        displayRiddles(riddlesHead);
+                                                        system("pause");
+                                                    }
+                                                    break;
+                                                }
+                                            }
                                         }
                                         else {
                                             cout << "Failed to login!\n";

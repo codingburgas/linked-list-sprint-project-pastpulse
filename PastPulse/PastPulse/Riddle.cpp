@@ -53,6 +53,7 @@ bool askHint(Riddle* riddle) {
 		string userAnswer;
 		cout << "Hint " << i + 1 << ": " << riddle->hints[i] << endl;
 		cout << "Your asnwer: ";
+		cin.ignore();
 		getline(cin, userAnswer);
 		if (userAnswer != riddle->answerHints[i]) {
 			allHintsCorrect = false;
@@ -70,13 +71,13 @@ void displayRiddles(Riddle* head) {
 	}
 	// Pointer to the current list item
 	Riddle* current = head;
-	printCentered("  _________      .__                ___________.__             __________.__    .___  .___.__          ", 5);
-	printCentered(" /   _____/ ____ |  |___  __ ____   \\__    ___/|  |__   ____   \\______   \\__| __| _/__| _/|  |   ____  ", 6);
-	printCentered(" \\_____  \\ /  _ \\|  |\\  \\/ // __ \\    |    |   |  |  \_/ __ \\   |       _/  |/ __ |/ __ | |  | _/ __ \\ ", 7);
-	printCentered(" /        (  <_> )  |_\\   /\\  ___/    |    |   |   Y  \\  ___/   |    |   \\  / /_/ / /_/ | |  |_\\  ___/ ", 8);
-	printCentered("/_______  /\____/|____/\\_/  \\___  >   |____|   |___|  /\\___  >  |____|_  /__\\____ \\____ | |____/\\___  >", 9);
-	printCentered("        \\/                      \\/                  \\/     \\/          \\/        \\/    \\/           \\/ ", 10);
-	newLine(2);
+		printCentered("  _________      .__                ___________.__             __________.__    .___  .___.__          ", 5);
+		printCentered(" /   _____/ ____ |  |___  __ ____   \\__    ___/|  |__   ____   \\______   \\__| __| _/__| _/|  |   ____  ", 6);
+		printCentered(" \\_____  \\ /  _ \\|  |\\  \\/ // __ \\    |    |   |  |  \_/ __ \\   |       _/  |/ __ |/ __ | |  | _/ __ \\ ", 7);
+		printCentered(" /        (  <_> )  |_\\   /\\  ___/    |    |   |   Y  \\  ___/   |    |   \\  / /_/ / /_/ | |  |_\\  ___/ ", 8);
+		printCentered("/_______  /\____/|____/\\_/  \\___  >   |____|   |___|  /\\___  >  |____|_  /__\\____ \\____ | |____/\\___  >", 9);
+		printCentered("        \\/                      \\/                  \\/     \\/          \\/        \\/    \\/           \\/ ", 10);
+		newLine(2);
 		cout << "Riddle Name: " << current->name << endl;
 		cout << "Introduction: " << current->introduction << endl;
 		cout << "Hints: ";
@@ -128,15 +129,18 @@ void displayRiddles(Riddle* head) {
 					leading();
 					return;
 				case 1:
-					displayRiddles(head);
-					return;
+					current = current->next;
+					if (!current) {
+						menu(); 
+						return;
+					}
 				case 2:
 					menu();
 					return;
 				}
 			}
 		}
-	
+
 }
 
 
@@ -174,9 +178,10 @@ void addRiddle(Riddle* head, string& filename) {
 	Riddle* newRiddle = new Riddle;
 	cout << "Enter the riddle name: ";
 	getline(cin, newRiddle->name);
+	cin.ignore();
 	cout << "Enter the introduction to the riddle: ";
 	getline(cin, newRiddle->introduction);
-	
+	cin.ignore();
 	int hintNumber = 4;
 	cout << "Enter 4 hints" << endl;
 
@@ -184,16 +189,16 @@ void addRiddle(Riddle* head, string& filename) {
 		string hint;
 		string answerHint;
 		cout << "Hint " << i + 1 << ": " << endl;
+		cin.ignore();
 		getline(cin, hint);
 		// Add the hint to the hint vector
 		newRiddle->hints.push_back(hint);
-
 		cout << "Enter the correct answer";
 		getline(cin, answerHint);
 		newRiddle->answerHints.push_back(answerHint);
 	}
 	cout << "Write the valid final answer";
-
+	cin.ignore();
 	int factsNumber;
 	cout << "How many fun facts they are?";
 	cin >> factsNumber;
@@ -213,7 +218,7 @@ void addRiddle(Riddle* head, string& filename) {
 		newRiddle->facts.push_back(funFact);
 	}
 
-
+	cin.ignore();
 	cout << "Enter period(Before WWI or After WWI): ";
 	while (true) {
 		getline(cin, newRiddle->period);
@@ -223,8 +228,8 @@ void addRiddle(Riddle* head, string& filename) {
 		cout << "Invalid input!";
 	}
 
-
-	cout << "Enter complexity from 1 to 10: ";
+	cin.ignore();
+	cout << "Enter complexity from 1 to 10: " << endl;
 	cin >> newRiddle->complexity;
 	if (cin.fail()) {
 		cin.clear();
@@ -239,6 +244,51 @@ void addRiddle(Riddle* head, string& filename) {
 	head = newRiddle;
 
 	saveRiddlesToFile(head, filename);
+}
+
+
+Riddle* splitComplexity(Riddle* head) {
+	if (head == nullptr || head->next == nullptr) {
+		return nullptr;
+	}
+
+	Riddle* slow = head;
+	Riddle* fast = head->next;
+
+	while (fast != nullptr && fast->next != nullptr) {
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+
+	Riddle* middle = slow->next;
+	slow->next = nullptr;
+	return middle;
+}
+
+Riddle* mergeByComplexity(Riddle* left, Riddle* right) {
+	if (left == nullptr) return right;
+	if (right == nullptr) return left;
+
+	if (left->complexity < right->complexity) {
+		left->next = mergeByComplexity(left->next, right);
+		return left;
+	}
+	else {
+		right->next = mergeByComplexity(left, right->next);
+		return right;
+	}
+}
+
+
+Riddle* mergeSortByComplexity(Riddle* head) {
+	if (head == nullptr || head->next == nullptr) {
+		return head;
+	}
+	Riddle* middle = splitComplexity(head);
+	Riddle* left = mergeSortByComplexity(head);
+	Riddle* right = mergeSortByComplexity(middle);
+
+	return merge(left, right);
 }
 
 bool compareByPeriod(Riddle* a, Riddle* b) {
@@ -272,8 +322,7 @@ Riddle* merge(Riddle* left, Riddle* right) {
 	}
 }
 
-
-Riddle* mergeSort(Riddle* head) {
+Riddle* mergeSortByPeriod(Riddle* head) {
 	if (!head || !head->next) {
 		return head;
 	}
@@ -292,8 +341,8 @@ Riddle* mergeSort(Riddle* head) {
 	Riddle* right = middle->next;
 	middle->next = nullptr;
 
-	left = mergeSort(left);
-	right = mergeSort(right);
+	left = mergeSortByPeriod(left);
+	right = mergeSortByPeriod(right);
 
 	// Merge the two sorted parts and return the result
 	return merge(left, right);
@@ -380,6 +429,7 @@ void deleteRiddle(Riddle* head, string& filename) {
 		current = current->next;
 	}
 
+	file << riddlesArray.dump(4);
 	file.close();
 	cout << "Riddle was deleted" << endl;
 }
@@ -525,6 +575,10 @@ void editRiddle(Riddle* head, string& filename) {
 
 		current = current->next;
 	}
+	file << j.dump(4);
 	file.close();
 	cout << "Riddle has been updated!" << endl;
 }
+
+
+

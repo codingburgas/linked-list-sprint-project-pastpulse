@@ -92,20 +92,43 @@ void displayRiddles(Riddle* head) {
 		// Move to the next riddle in the list
 		current = current->next;
 		newLine(2);
-		cout << "1.Lead this uprising" << endl;
-		cout << "2.Solve new riddle" << endl;
-		cout << "3.Go back to the main menu" << endl;
-		int choice;
-		cout << "Enter your choice here: ";
-		cin >> choice;
-		switch (choice)
-		{
-		case 1:
-			leading(); break;
-		case 2:
-			displayRiddles(head); break;
-		case 3:
-			menu(); break;
+		const char* options[] = { "Lead this uprising", "Solve new riddle", "Go back to the main menu" };
+		int selected = 0;
+		int totalOptions = 3;
+
+		while (true) {
+			system("cls");
+			printCentered("Use Arrow Keys to Navigate and Enter to Select", 5);
+			for (int i = 0; i < totalOptions; i++) {
+				if (i == selected) {
+					printCentered("> " + string(options[i]), 7 + i);
+				}
+				else {
+					printCentered("  " + string(options[i]), 7 + i);
+				}
+			}
+
+			char key = _getch();
+
+			if (key == 72) { // Up arrow key
+				if (selected > 0) selected--;
+			}
+			else if (key == 80) { // Down arrow key
+				if (selected < totalOptions - 1) selected++;
+			}
+			else if (key == 13) { // Enter key
+				switch (selected) {
+				case 0:
+					leading();
+					return;
+				case 1:
+					displayRiddles(head);
+					return;
+				case 2:
+					menu();
+					return;
+				}
+			}
 		}
 	
 }

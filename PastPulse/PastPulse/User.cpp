@@ -1,12 +1,7 @@
 ﻿#include "User.h"
 #include "Program.h"
 #include "Validation.h"
-#include <iostream>
-#include <conio.h>
-#include <fstream>
-#include "json.hpp"
-using json = nlohmann::json;
-using namespace std;
+#include "Riddle.h"
 
 json users;
 void initUsers() {
@@ -31,7 +26,8 @@ json readUsersFromJson(const string& filename) {
 int  userRegister(json& users) {
 	string username;
 	string password;
-
+	string filename = "riddles.json";
+	Riddle* riddlesHead = loadRiddlesFromFile(filename);
 	cout << "=== Registration ===\n";
 	cout << "Enter username: ";
 	cin >> username;
@@ -59,7 +55,7 @@ int  userRegister(json& users) {
 		outFile << users.dump(4);
 		outFile.close();
 		cout << "Successful registration!\n";
-		return 1;
+		displayRiddles(riddlesHead);
 	}
 	else {
 		cout << "Error saving user data.\n";
@@ -72,7 +68,8 @@ int  userRegister(json& users) {
 bool userLogin(const json& users) {
 	string username;
 	string password;
-
+	string filename = "riddles.json";
+	Riddle* riddlesHead = loadRiddlesFromFile(filename);
 	cout << "=== Login ===\n";
 	cout << "Enter username: ";
 	cin >> username;

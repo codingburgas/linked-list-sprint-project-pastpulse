@@ -1,10 +1,8 @@
 #include "Menu.h"
 #include "User.h"
 #include "Admin.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "json.hpp"
+#include "Riddle.h"
+
 
 using json = nlohmann::json;
 using namespace std;
@@ -91,7 +89,8 @@ void displayRoleMenu(int selected) {
 void menu() {
     int selected = 0; 
     bool running = true;
-
+    string filename = "riddles.json";
+    Riddle* riddlesHead = loadRiddlesFromFile(filename);
     while (running) {
         displayMenu(selected);
 
@@ -178,6 +177,8 @@ void menu() {
                                         if (userLogin(users)) {
                                             cout << "Login successful!\n";
                                             userRunning = false;
+                                      
+                                            displayRiddles(riddlesHead);
                                         }
                                         else {
                                             cout << "Failed to login!\n";
@@ -188,6 +189,7 @@ void menu() {
                                         int result = userRegister(users);
                                         if (result == 1) {
                                             cout << "Registration successful!\n";
+                                            displayRiddles(riddlesHead);
                                         }
                                         else if (result == 0) {
                                             cout << "Username already exists.\n";
@@ -209,8 +211,9 @@ void menu() {
                 system("cls");
                 printCentered("Goodbye! You can close the app by pressing any key button...", 10);
                 running = false;
+                break;
             }
-            break;
+           
         }
     }
 }

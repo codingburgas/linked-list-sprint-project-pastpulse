@@ -2,13 +2,22 @@
 #include "Validation.h"
 #include "Menu.h"
 #include "Simulator.h"
+bool openFile(ifstream& file, const string& filename) {
+	file.open(filename);
+	if (file.fail()) {
+		cout << "Unable to open file " << filename << endl;
+		return false;
+	}
+	return true;
+}
 
 Riddle* loadRiddlesFromFile(string& filename) {
 	Riddle* head = nullptr;
-	ifstream file(filename);
-	if (file.fail()) {
-		cout << "Unable to open file " << filename << endl;
+	ifstream file;
+	if (!openFile(file, filename)) {
+		return nullptr;
 	}
+
 	// JSON object that will contain the data from the file
 	json j;
 	file >> j;
@@ -19,11 +28,9 @@ Riddle* loadRiddlesFromFile(string& filename) {
 
 	// (range-based loop) to iterate over all elements in the JSON object 'riddlesJson'
 	for (const auto& item : j) {
-		// Create a new riddle
 		Riddle* newRiddle = new Riddle;
 		newRiddle->name = item["name"];
 		newRiddle->introduction = item["introduction"];
-
 		for (int i = 0; i < 4 && i < item["hints"].size(); i++) {
 			newRiddle->hints.push_back(item["hints"][i]);
 		}
@@ -32,7 +39,6 @@ Riddle* loadRiddlesFromFile(string& filename) {
 		newRiddle->facts = item["facts"];
 		newRiddle->period = item["period"];
 		newRiddle->complexity = item["complexity"];
-		// Add the new riddle to the beginning of the linked list
 		newRiddle->next = head;
 		head = newRiddle;
 	}

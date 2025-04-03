@@ -18,7 +18,7 @@ struct Riddle {
 
 Riddle* loadRiddlesFromFile(string& filename);
 void displayRiddles(Riddle* head);
-void saveRiddleToFile(Riddle* head, string& filename);
+//void saveRiddleToFile(Riddle* head, string& filename);
 void addRiddle(Riddle* head, string& filename);
 void freeRiddles(Riddle* head);
 bool compareByPeriod(Riddle* a, Riddle* b);

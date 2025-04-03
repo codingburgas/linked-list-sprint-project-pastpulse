@@ -80,6 +80,4 @@ bool userLogin(const json& users) {
 	cin >> password;
 
 	return autehnticate(users, username, password);
-
-	system("pause");
 }

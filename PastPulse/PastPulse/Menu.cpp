@@ -137,7 +137,7 @@ void menu() {
                             if (adminLogin(username, password)) {
                                 cout << "Admin login successful!" << endl;
                                 break;
-                                roleRunning = false;  
+                                //roleRunning = false;  
                             }
                             else {
                                 cout << "Admin login failed.\n";

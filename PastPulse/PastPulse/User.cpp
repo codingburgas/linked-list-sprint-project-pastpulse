@@ -8,6 +8,11 @@
 using json = nlohmann::json;
 using namespace std;
 
+json users;
+void initUsers() {
+	users = readUsersFromJson("users.json");
+}
+
 json readUsersFromJson(const string& filename) {
 	ifstream file(filename);
 	json j;

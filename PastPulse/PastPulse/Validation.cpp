@@ -43,7 +43,7 @@ bool isValidPassword(const string& password) {
 
 bool isAdmin() {
 	string password;
-	string correctPassword = "admin";
+	string correctPassword = "admin-123";
 	cout << "Enter admin password: ";
 	cin >> password;
 	if (password == correctPassword) {

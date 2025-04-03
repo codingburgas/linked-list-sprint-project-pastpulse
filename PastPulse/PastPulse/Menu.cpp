@@ -1,5 +1,13 @@
 #include "Menu.h"
 #include "User.h"
+#include "Admin.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "json.hpp"
+
+using json = nlohmann::json;
+using namespace std;
 
 void hideCursor() {
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -55,7 +63,31 @@ void displayMenu(int selected) {
     }
 }
 
+void displayRoleMenu(int selected) {
+    system("cls");
 
+    printCentered("=== SELECT ROLE ===", 4);
+    newLine(1);
+
+    int adminOptionY = 9;
+    int userOptionY = 12;
+
+    printCentered("===============", adminOptionY);
+    printCentered("=   Admin    =", adminOptionY + 1);
+    printCentered("===============", adminOptionY + 2);
+    newLine(1);
+
+    printCentered("===============", userOptionY);
+    printCentered("=   User     =", userOptionY + 1);
+    printCentered("===============", userOptionY + 2);
+
+    if (selected == 0) {
+        printCentered("> Admin <", adminOptionY + 1);
+    }
+    else if (selected == 1) {
+        printCentered("> User <", userOptionY + 1);
+    }
+}
 void menu() {
     int selected = 0; 
     bool running = true;
@@ -76,7 +108,103 @@ void menu() {
                 system("cls");
                 printCentered("Game Starting...", 10);
                 running = false;
-            }
+
+                system("cls");
+
+                int roleSelected = 0; 
+                bool roleRunning = true;
+
+                while (roleRunning) {
+                    displayRoleMenu(roleSelected);
+
+                    char keyRole = _getch();
+
+                    switch (keyRole) {
+                    case 72:  
+                        roleSelected = (roleSelected == 0) ? 1 : roleSelected - 1;
+                        break;
+                    case 80:  
+                        roleSelected = (roleSelected == 1) ? 0 : roleSelected + 1;
+                        break;
+                    case 13:  
+                        if (roleSelected == 0) {  
+                            string username, password;
+                            cout << "Enter admin username: ";
+                            cin >> username;
+                            cout << "Enter admin password: ";
+                            cin >> password;
+
+                            if (adminLogin(username, password)) {
+                                cout << "Admin login successful!" << endl;
+                                break;
+                                roleRunning = false;  
+                            }
+                            else {
+                                cout << "Admin login failed.\n";
+                                break;
+                                system("pause");
+                            }
+                        }
+                        else if (roleSelected == 1) {  
+                            vector<string> userOptions = { "Login", "Register" };
+                            int userSelected = 0;
+                            bool userRunning = true;
+
+                            while (userRunning) {
+                            system("cls");  
+                            cout << "=== User Options ===\n";
+                            for (int i = 0; i < userOptions.size(); ++i) {
+                                if (i == userSelected)
+                                    cout << "> " << userOptions[i] << " <\n"; // Активиране на избраната опция
+                                else
+                                    cout << userOptions[i] << endl;
+                            }
+
+                                int userKey = _getch();
+                                if (userKey == 0 || userKey == 224) {
+                                    userKey = _getch();
+                                    switch (userKey) {
+                                    case 72:  
+                                        userSelected = (userSelected > 0) ? userSelected - 1 : userOptions.size() - 1;
+                                        break;
+                                    case 80:  
+                                        userSelected = (userSelected < userOptions.size() - 1) ? userSelected + 1 : 0;
+                                        break;
+                                    }
+                                }
+                                else if (userKey == 13) {  
+                                    system("cls");
+                                    if (userSelected == 0) {
+                                        if (userLogin(users)) {
+                                            cout << "Login successful!\n";
+                                            userRunning = false;
+                                        }
+                                        else {
+                                            cout << "Failed to login!\n";
+                                            system("pause");
+                                        }
+                                    }
+                                        else if (userSelected == 1) {  
+                                        int result = userRegister(users);
+                                        if (result == 1) {
+                                            cout << "Registration successful!\n";
+                                        }
+                                        else if (result == 0) {
+                                            cout << "Username already exists.\n";
+                                        }
+                                        else if (result == -1) {
+                                            cout << "Error saving user data.\n";
+                                        }
+                                        userRunning = false;
+                                    }
+                                    }
+                                }
+                            }
+                            roleRunning = false; 
+                            break;
+                        }
+                    }
+                }
             else {
                 system("cls");
                 printCentered("Goodbye! You can close the app by pressing any key button...", 10);
@@ -86,26 +214,4 @@ void menu() {
         }
     }
 }
-void displayOptions(const vector<string>& options, int selected, const vector<string>& fileContent) {
-    system("cls");
 
-    for (const string& line : fileContent) {
-        cout << line << endl;
-    }
-    cout << "===========================" << endl;
-
-    for (int i = 0; i < options.size(); i++)
-    {
-        cout << "| ";
-        if (i == selected) {
-            cout << ">" << options[i];
-            for (int j = options[i].length(); j < 23; j++) cout << " ";
-        }
-        else {
-            cout << " " << options[i];
-            for (int j = options[i].length(); j < 23; j++) cout << " ";
-        }
-        cout << "|" << endl;
-    }
-    cout << "===========================" << endl;
-}

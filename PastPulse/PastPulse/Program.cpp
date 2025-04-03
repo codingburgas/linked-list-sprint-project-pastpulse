@@ -3,9 +3,14 @@
 #include "Menu.h"
 #include "Riddle.h"
 #include "Simulator.h"
-
+#include <iostream>
+#include <conio.h>
+#include <vector>
+#include <fstream>
+#include "json.hpp"
 
 using json = nlohmann::json;
+using namespace std;
 
 void gotoxy(int x, int y) {
 	COORD coord = { static_cast<SHORT>(x),static_cast<SHORT>(y) };
@@ -14,8 +19,11 @@ void gotoxy(int x, int y) {
 
 int main() 
 {
-	menu();
+	initUsers();
+
+	
 	bool userLogged = false;
+	bool adminLogged = false;
 	vector<string> options = { "Login as ADMIN" , "Login as USER" };
 	int selected = 0;
 	bool running = true;
@@ -24,6 +32,7 @@ int main()
 	json users = readUsersFromJson("users.json");
 
 	while (running) {
+		menu();
 		int key = _getch();
 		if (key == 0 || key == 224) {
 			key = _getch();
@@ -41,14 +50,13 @@ int main()
 			system("cls");
 			if (selected == 0) {
 				string username, password;
-				cout << "=== Admin ===\n";
 				cout << "Enter admin username: ";
 				cin >> username;
 				cout << "Enter admin password: ";
 				cin >> password;
 				if (adminLogin(username, password)) {
-					cout << "Admin login successful!" << endl;
-					userLogged = true; //Trqbva da se naravi nova promenliva za admi,koqto da vodi kum modifyinga
+					adminLogged = true; 
+					cout << "Admin login successful!" << endl;//Trqbva da se naravi nova promenliva za admi,koqto da vodi kum modifyinga
 					//admin func
 				}
 				else {
@@ -100,6 +108,11 @@ int main()
 					}
 				}
 			}
+			if (adminLogged) {
+				cout << "You are now logged in as admin. Press any key to continue...\n";
+				_getch();
+			}
+
 			cout << "\nPress enter to continue...";
 			cin.get();
 			if (userLogged)

@@ -1,5 +1,8 @@
 <h1 align="center" style="color:#2ecc71"><b>🕵️‍♀️ PastPulse </b></h1>
-
+<div align="center">
+<a href=" rel="noopener">
+<img width=30% height=10% src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzA3bWc3dDBheWRtdHVtNWhucWFqajA3NmJuMXFwc2ZrZmFsMGlmdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26DNhQrYY5BqsUKnS/giphy.gif" alt="PastPulse-logo">
+</div>
 <div align="center">
     <p>🧩 Imagination | 📜 Engaging learning | 💡 Historical thinking</p>
 </div>
@@ -27,7 +30,7 @@ The goal of the project is to combine fun with education, making history more ac
 
 ## Technologies for development
 <div align="left">
-  <img width="40" height="40" src="https://img.icons8.com/fluency/48/000000/visual-studio.png&format=png&color=000000" alt="VS">
+  <img width="40" height="40" src="https://icons8.com/icon/ezj3zaVtImPg/visual-studio)](https://www.flaticon.com/free-icon/logo_15713436?term=visual+studio&page=1&position=27&origin=tag&related_id=15713436" alt="VS">
  
 </div>
 
@@ -38,10 +41,9 @@ The goal of the project is to combine fun with education, making history more ac
 </div>
 
 # 📁 Documents
-<ul>
-    <li><a href="">Documentation</a></li>
-    <li><a href="">Presentation</a></li>
-   </ul>
++ [Presentation](./Documents/Presentation-PastPulse.pptx)
++ [Documentation](./Documents/Documentation-PastPulse.docx)
++ [QA Documentation](./Documents/QA-documentation.ods)
 
 # 👥 Team Members
 

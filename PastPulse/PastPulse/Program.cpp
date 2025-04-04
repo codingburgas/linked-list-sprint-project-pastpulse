@@ -6,6 +6,7 @@
 
 int main() 
 {	
+	hideCursor();
 	initUsers();
 
 	menu();

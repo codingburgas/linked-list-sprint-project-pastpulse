@@ -1,0 +1,39 @@
+How many rebels will you have?
+Up to 20,000
+Between 20,000 and 60,000
+More than 60,000
+
+What weapons and supplies will you have?
+Personal firearms
+Bombs and firearms
+Modern weapons from allies
+
+What will be your main strategy?
+Small battle groups, decentralized command
+Guerilla squads with central command
+Attacking key locations
+
+How will the rebels communicate?
+Committees
+Couriers
+Centralized command
+
+Will you have external support?
+Limited support
+Secret backing
+Russian support
+
+How will you handle betrayal?
+Suppress information
+Increase security measures
+Disciplinary actions
+
+ Are you willing to take responsibility?
+Avoid responsibility
+Admit guilt but avoid punishment
+Take full responsibility
+
+How will you keep morale high?
+Present the cause as just
+Celebrate small victories
+Conduct educational campaigns

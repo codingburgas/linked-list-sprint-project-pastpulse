@@ -10,7 +10,7 @@ using namespace std;
 void hideCursor() {
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO info;
-    info.dwSize = 100;
+    GetConsoleCursorInfo(consoleHandle, &info);
     info.bVisible = FALSE;
     SetConsoleCursorInfo(consoleHandle, &info);
 

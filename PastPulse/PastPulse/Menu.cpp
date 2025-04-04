@@ -4,6 +4,35 @@
 #include "Riddle.h"
 
 
+enum ConsoleColor {
+    BLACK = 0,
+    BLUE = 1,
+    GREEN = 2,
+    AQUA = 3,
+    RED = 4,
+    PURPLE = 5,
+    YELLOW = 6,
+    WHITE = 7,
+    GRAY = 8,
+    LIGHT_BLUE = 9,
+    LIGHT_GREEN = 10,
+    LIGHT_AQUA = 11,
+    LIGHT_RED = 12,
+    LIGHT_PURPLE = 13,
+    LIGHT_YELLOW = 14,
+    BRIGHT_WHITE = 15
+};
+
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+void setColor(ConsoleColor text, ConsoleColor background = BLACK) {
+    SetConsoleTextAttribute(hConsole, text + (background << 4));
+}
+
+void resetColor() {
+    SetConsoleTextAttribute(hConsole, WHITE); 
+}
+
 using json = nlohmann::json;
 using namespace std;
 
@@ -32,32 +61,52 @@ void newLine(int newLines)
 void displayMenu(int selected) {
     system("cls");
 
+    setColor(LIGHT_BLUE);
     printCentered("  _____          _   _____       _           ", 1);
     printCentered(" |  __ \\        | | |  __ \\     | |          ", 2);
     printCentered(" | |__) __ _ ___| |_| |__) _   _| |___  ___  ", 3);
     printCentered(" |  ___/ _` / __| __|  ___| | | | / __|/ _ \\ ", 4);
-    printCentered(" | |  | (_| \\__ | |_| |   | |_| | \\__ |  __/ ", 5);
+    printCentered(" | |  | (_| \\__ \\ |_| |   | |_| | \\__ \\  __/ ", 5);
     printCentered(" |_|   \\__,_|___/\\__|_|    \\__,_|_|___/\\___| ", 6);
+    resetColor();
+
     newLine(2);
 
     int startY = 9;
     int leaveY = 13;
 
-    printCentered("===============", startY);
-    printCentered("=    START    =", startY + 1);
-    printCentered("===============", startY + 2);
-    newLine(1);
 
-    printCentered("===============", leaveY);
-    printCentered("=    LEAVE    =", leaveY + 1);
-    printCentered("===============", leaveY + 2);
-
-    
     if (selected == 0) {
-        printCentered("> START <", startY + 1);
+        setColor(LIGHT_GREEN);
+        printCentered("===============", startY);
+        printCentered("=   >START<   =", startY + 1);
+        printCentered("===============", startY + 2);
+        resetColor();
     }
     else {
-        printCentered("> LEAVE <", leaveY + 1);
+        setColor(GRAY);
+        printCentered("===============", startY);
+        printCentered("=    START    =", startY + 1);
+        printCentered("===============", startY + 2);
+        resetColor();
+    }
+
+    newLine(1);
+
+
+    if (selected == 1) {
+        setColor(LIGHT_RED);
+        printCentered("===============", leaveY);
+        printCentered("=   >LEAVE<   =", leaveY + 1);
+        printCentered("===============", leaveY + 2);
+        resetColor();
+    }
+    else {
+        setColor(GRAY);
+        printCentered("===============", leaveY);
+        printCentered("=    LEAVE    =", leaveY + 1);
+        printCentered("===============", leaveY + 2);
+        resetColor();
     }
 }
 

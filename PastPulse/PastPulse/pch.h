@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <chrono>
 #include <thread>
+#include <windows.h>
 
 using namespace std;
 using json = nlohmann::json;

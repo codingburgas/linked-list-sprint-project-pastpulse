@@ -61,7 +61,7 @@ void newLine(int newLines)
 void displayMenu(int selected) {
     system("cls");
 
-    setColor(LIGHT_BLUE);
+    setColor(YELLOW);
     printCentered("  _____          _   _____       _           ", 1);
     printCentered(" |  __ \\        | | |  __ \\     | |          ", 2);
     printCentered(" | |__) __ _ ___| |_| |__) _   _| |___  ___  ", 3);
@@ -113,26 +113,51 @@ void displayMenu(int selected) {
 void displayRoleMenu(int selected) {
     system("cls");
 
-    printCentered("=== SELECT ROLE ===", 4);
+    setColor(YELLOW); 
+    printCentered("   _____      _           _     _____       _      ", 1);
+    printCentered("  / ____|    | |         | |   |  __ \\     | |     ", 2);
+    printCentered(" | (___   ___| | ___  ___| |_  | |__) |___ | | ___ ", 3);
+    printCentered("  \\___ \\ / _ \\ |/ _ \\/ __| __| |  _  // _ \\| |/ _ \\", 4);
+    printCentered("  ____) |  __/ |  __/ (__| |_  | | \\ \\ (_) | |  __/", 5);
+    printCentered(" |_____/ \\___|_|\\___|\\___|\\__| |_|  \\_\\___/|_|\\___|", 6);
+    resetColor();
+
     newLine(1);
 
     int adminOptionY = 9;
     int userOptionY = 12;
 
-    printCentered("===============", adminOptionY);
-    printCentered("=   Admin    =", adminOptionY + 1);
-    printCentered("===============", adminOptionY + 2);
+    if (selected == 0) {
+        setColor(LIGHT_GREEN);
+        printCentered("===============", adminOptionY);
+        printCentered("=   >ADMIN<   =", adminOptionY + 1);
+        printCentered("===============", adminOptionY + 2);
+        resetColor();
+    }
+    else {
+        setColor(GRAY);
+        printCentered("===============", adminOptionY);
+        printCentered("=    ADMIN    =", adminOptionY + 1);
+        printCentered("===============", adminOptionY + 2);
+        resetColor();
+    }
+
     newLine(1);
 
-    printCentered("===============", userOptionY);
-    printCentered("=   User     =", userOptionY + 1);
-    printCentered("===============", userOptionY + 2);
 
-    if (selected == 0) {
-        printCentered("> Admin <", adminOptionY + 1);
+    if (selected == 1) {
+        setColor(LIGHT_RED);
+        printCentered("===============", userOptionY);
+        printCentered("=   >USER<   =", userOptionY + 1);
+        printCentered("===============", userOptionY + 2);
+        resetColor();
     }
-    else if (selected == 1) {
-        printCentered("> User <", userOptionY + 1);
+    else {
+        setColor(GRAY);
+        printCentered("===============", userOptionY);
+        printCentered("=    USER    =", userOptionY + 1);
+        printCentered("===============", userOptionY + 2);
+        resetColor();
     }
 }
 

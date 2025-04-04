@@ -55,7 +55,7 @@ int  userRegister(json& users) {
 		outFile << users.dump(4);
 		outFile.close();
 		cout << "Successful registration!\n";
-		displayRiddles(riddlesHead);
+		startFilteredRiddle(riddlesHead);
 	}
 	else {
 		cout << "Error saving user data.\n";

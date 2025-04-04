@@ -1,4 +1,4 @@
-#include "Menu.h"
+﻿#include "Menu.h"
 #include "User.h"
 #include "Admin.h"
 #include "Riddle.h"
@@ -208,14 +208,6 @@ void adminMenu(Riddle* riddlesHead, string& filename) {
     }
 }
 
-void displaySortMenu(int selected) {
-    system("cls");
-    cout << "=== Sort Riddles ===\n";
-    cout << "Select sort criteria:\n";
-    cout << (selected == 0 ? "> " : "  ") << "1. Sort by Period (Before/After)\n";
-    cout << (selected == 1 ? "> " : "  ") << "2. Sort by Complexity (1 to 10)\n";
-}
-
 void menu() {
     int selected = 0; 
     bool running = true;
@@ -307,33 +299,8 @@ void menu() {
                                         if (userLogin(users)) {
                                             cout << "Login successful!\n";
                                             userRunning = false;
-
-                                            bool sortRunning = true;
-                                            while (sortRunning) {
-                                                displaySortMenu(selected);
-
-                                                char keySort = _getch();
-                                                switch (keySort) {
-                                                case 72:  // Arrow Up
-                                                    selected = (selected == 0) ? 1 : 0;
-                                                    break;
-                                                case 80:  // Arrow Down
-                                                    selected = (selected == 1) ? 0 : 1;
-                                                    break;
-                                                case 13:  // Enter
-                                                    if (selected == 0) {  
-                                                        riddlesHead = mergeSortByPeriod(riddlesHead);
-                                                        displayRiddles(riddlesHead);
-                                                        system("pause");
-                                                    }
-                                                    else if (selected == 1) {  
-                                                        riddlesHead = mergeSortByComplexity(riddlesHead);
-                                                        displayRiddles(riddlesHead);
-                                                        system("pause");
-                                                    }
-                                                    break;
-                                                }
-                                            }
+                                            startFilteredRiddle(riddlesHead);
+                                          
                                         }
                                         else {
                                             cout << "Failed to login!\n";
@@ -344,7 +311,6 @@ void menu() {
                                         int result = userRegister(users);
                                         if (result == 1) {
                                             cout << "Registration successful!\n";
-                                            displayRiddles(riddlesHead);
                                         }
                                         else if (result == 0) {
                                             cout << "Username already exists.\n";

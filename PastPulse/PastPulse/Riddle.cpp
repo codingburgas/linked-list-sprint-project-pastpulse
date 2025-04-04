@@ -45,14 +45,12 @@ Riddle* loadRiddlesFromFile(string& filename) {
 	return head;
 }
 bool askHint(Riddle* riddle) {
-
-
 	bool allHintsCorrect = true;
 	for (size_t i = 0; i < riddle->hints.size(); i++)
 	{
 		string userAnswer;
 		cout << "Hint " << i + 1 << ": " << riddle->hints[i] << endl;
-		cout << "Your asnwer: ";
+		cout << "Your asnwer for this(HINT): ";
 		cin.ignore();
 		getline(cin, userAnswer);
 		if (userAnswer != riddle->answerHints[i]) {
@@ -88,14 +86,26 @@ void displayRiddles(Riddle* head) {
 			// The function for checking the answers to the clues is called
 			bool allHintsCorrect = askHint(current);
 		}
-		cout << "Correct Answer: " << current->answer << endl;
-		cout << "Answer" << current->answer << endl;
+		string finalAnswer;
+		cout << "Correct Answer(RIDDLE): ";
+		cin >> finalAnswer;
+		cin.ignore();
+		if (finalAnswer == current->answer) {
+			cout << "Congratulations, your final answer is correct!";
+		}
+		else {
+			cout << "Your final answer is wrong. The correct answer is: " << current->answer << endl;
+		}
+		cout << "Fun facts for " << current->name;
+		cin.ignore();
 		for (size_t i = 0; i < current->facts.size(); i++)
 		{
 			cout << " - " << current->facts[i] << endl;
 		}
+		cin.ignore();
 		cout << "Period " << current->period << endl;
 		cout << "Complexity " << current->complexity << endl;
+		cin.ignore();
 		// Move to the next riddle in the list
 		current = current->next;
 		newLine(2);
@@ -140,6 +150,64 @@ void displayRiddles(Riddle* head) {
 
 }
 
+vector<Riddle*> filterByPeriodAndComplexity(Riddle* head, const string& period, int complexity) {
+	vector<Riddle*> result;
+	Riddle* current = head;
+	while (current) {
+		if (current->period == period && current->complexity == complexity) {
+			result.push_back(current);
+		}
+		current = current->next;
+	}
+	return result;
+}
+
+void startFilteredRiddle(Riddle* riddlesHead) {
+	string chosenPeriod;
+	int chosenComplexity;
+
+	cout << "Enter period (Before/After): ";
+	cin >> chosenPeriod;
+
+	while (chosenPeriod != "Before" && chosenPeriod != "After") {
+		cout << "Invalid period. Enter 'Before' or 'After': ";
+		cin >> chosenPeriod;
+	}
+
+	cout << "Enter desired complexity (1-10): ";
+	cin >> chosenComplexity;
+	while (chosenComplexity < 1 || chosenComplexity > 10) {
+		cout << "Please enter a valid complexity (1-10): ";
+		cin >> chosenComplexity;
+	}
+
+	vector<Riddle*> filtered = filterByPeriodAndComplexity(riddlesHead, chosenPeriod, chosenComplexity);
+
+	if (filtered.empty()) {
+		cout << "No riddles match that period and complexity";
+		system("pause");
+		return;
+	}
+	if (filtered.size() == 1) {
+		displayRiddles(filtered[0]);
+	}
+	else {
+		cout << "Multiple riddles found:";
+		for (int i = 0; i < filtered.size(); ++i) {
+			cout << i + 1 << ". " << filtered[i]->name << endl;
+		}
+		int choice;
+		cout << "Choose a riddle to play (1-" << filtered.size() << "): ";
+		cin >> choice;
+
+		if (choice >= 1 && choice <= filtered.size()) {
+			displayRiddles(filtered[choice - 1]);
+		}
+		else {
+			cout << "Invalid choice";
+		}
+	}
+}
 
 void saveRiddlesToFile(Riddle* head, string& filename) {
 	ofstream file(filename);

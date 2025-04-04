@@ -21,6 +21,7 @@ void leading() {
             cin >> choice;
             if (choice < 1 || choice > 3) {
                 cout << "Invalid choice!" << endl;
+                break;
             }
             else {
                 score += choice;
@@ -50,16 +51,17 @@ void leading() {
     cout << "2. Return to Menu" << endl;
     cin >> choice;
 
-    switch (choice) {
-    case 1:
+    if (choice == 1)
+    {
         displayRiddles(riddlesHead);
-        break;
-    case 2:
+    }
+    else if (choice == 2)
+    {
         menu();
-        break;
-    default:
-        cout << "Invalid choice! Try again: ." << endl;
+    }
+    else
+    {
+        cout << "Invalid choice! Try again: " << endl;
         cin >> choice;
-        break;
     }
 }

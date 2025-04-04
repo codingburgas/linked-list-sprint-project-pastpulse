@@ -127,16 +127,13 @@ void displayRiddles(Riddle* head) {
 				switch (selected) {
 				case 0:
 					leading();
-					return;
+					break;
 				case 1:
-					current = current->next;
-					if (!current) {
-						menu(); 
-						return;
-					}
+					displayRiddles(current);
+					break;
 				case 2:
 					menu();
-					return;
+					break;
 				}
 			}
 		}

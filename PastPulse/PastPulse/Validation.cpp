@@ -1,4 +1,6 @@
 #include "Validation.h"
+#include "Admin.h"
+#include "Menu.h"
 
 bool autehnticate(const json& users, const string& username, const string& password) {
 	for (const auto& user : users["users"]) {
@@ -42,15 +44,21 @@ bool isValidPassword(const string& password) {
 }
 
 bool isAdmin() {
-	string password;
-	string correctPassword = "admin-123";
-	cout << "Enter admin password: ";
-	cin >> password;
-	if (password == correctPassword) {
-		return true;
+	string username;
+	string password = "admin-123";
+	int attempts = 0;
+	while (attempts < 3) {
+		cout << "Enter admin username: ";
+		cin >> username;
+		cout << "Enter admin password: ";
+		cin >> password;
+		if (adminLogin(username, password)) {
+			return true;
+		}
+		else {
+			attempts++;
+			cout << "Incorrect password!"<<endl;
+		}
 	}
-	else {
-		cout << "Incorrect password!";
-		return false;
-	}
+	return false;
 }

@@ -2,6 +2,7 @@
 #include "User.h"
 #include "Admin.h"
 #include "Riddle.h"
+#include "Validation.h"
 
 
 enum ConsoleColor {
@@ -250,20 +251,12 @@ void menu() {
                     case 13:  
                         if (roleSelected == 0) {  
                             system("cls");
-                            string username, password;
-                            cout << "Enter admin username: ";
-                            cin >> username;
-                            cout << "Enter admin password: ";
-                            cin >> password;
-
-                            if (adminLogin(username, password)) {
+                            if (isAdmin()) {
                                 cout << "Admin login successful!" << endl;
-                                //roleRunning = false;  
-                               adminMenu(riddlesHead, filename);
+                                adminMenu(riddlesHead, filename);
                             }
                             else {
-                                cout << "Admin login failed.\n";
-                                system("pause");
+                                cout << "Log in filed" << endl;
                             }
                         }
                         else if (roleSelected == 1) {  

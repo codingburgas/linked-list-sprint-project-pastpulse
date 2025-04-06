@@ -44,47 +44,23 @@ Riddle* loadRiddlesFromFile(string& filename) {
 	}
 	return head;
 }
-bool askHint(Riddle* current) {
-	int attempts = 3;
-	bool allHintsCorrect = true;
+bool askHint(Riddle* riddle) {
 
-	for (size_t i = 0; i < current->hints.size(); i++)
+	for (size_t i = 0; i < riddle->hints.size(); i++)
 	{
-		bool hintCorrect = false;
-		cout << "Hint " << i + 1 << ": " << current->hints[i] << endl;
-
-		while (attempts > 0) {
-			string userAnswer;
-			cout << "Your answer: ";
-			getline(cin, userAnswer);
-			cin.ignore(); //discard the newline character
-
-			if (userAnswer == current->answerHints[i]) {
-				hintCorrect = true;
-				cout << "Correct answer!" << endl;
-				break;
-				//allHintsCorrect = false;
-				//cout << "Wrong asnwer. The correct answer is: "<< riddle->answerHints[i] << endl;
-			}
-			else {
-				attempts--;
-				if (attempts > 0) {
-					cout << "Wrong answer. You have " << attempts << " more attempt(s)." << endl;
-				}
-				else {
-					cout << "Incorrect answer. You have no more chances left." << endl;
-					cout << "The correct answer is: " << current->answerHints[i] << endl;
-					break;
-				}
-			}
+		string userAnswer;
+		cout << "Hint " << i + 1 << ": " << riddle->hints[i] << endl;
+		cout << "Your asnwer for this(HINT): ";
+		if (i == 0) cin.ignore();
+		getline(cin, userAnswer);
+		if (userAnswer != riddle->answerHints[i]) {
+			cout << "Wrong asnwer. The correct answer is: " << riddle->answerHints[i] << endl;
 		}
-		if (!hintCorrect) {
-			allHintsCorrect = false;
-			break;
+		else {
+			cout << "Correct answer" << endl;
 		}
-		attempts = 3;
 	}
-	return allHintsCorrect;
+	return true;
 }
 
 void displayRiddles(Riddle* head) {
@@ -105,30 +81,18 @@ void displayRiddles(Riddle* head) {
 		cout << "Riddle Name: " << current->name << endl;
 		cout << "Introduction: " << current->introduction << endl;
 		
-		bool allHintsCorrect = askHint(current);
-
-		if (allHintsCorrect) {
-			string finalAnswer;
+		askHint(current);
+		string finalAnswer;
 			cout << "Correct Answer (RIDDLE): ";
-			getline(cin,finalAnswer);
-			cin.ignore();
+			getline(cin, finalAnswer);
 
 			if (finalAnswer == current->answer) {
-				cout << "Congratulations, your final answer is correct!";
+				cout << "Congratulations, your final answer is correct!" << endl;
 			}
 			else {
 				cout << "Your final answer is wrong. The correct answer is: " << current->answer << endl;
 			}
-
-		}
-		else {
-			cout << "The correct answer to the riddle is: " << current->answer << endl;
-		}
-
-		cin.ignore();
-		system("clr");
 		cout << "Fun facts for " << current->name;
-		cin.ignore();
 		for (size_t i = 0; i < current->facts.size(); i++)
 		{
 			cout << " - " << current->facts[i] << endl;

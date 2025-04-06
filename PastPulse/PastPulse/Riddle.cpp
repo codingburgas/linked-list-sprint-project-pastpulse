@@ -139,7 +139,8 @@ void displayRiddles(Riddle* head) {
 					leading();
 					break;
 				case 1:
-					displayRiddles(current);
+					system("cls");
+					startFilteredRiddle(head);
 					break;
 				case 2:
 					menu();
@@ -174,10 +175,10 @@ void startFilteredRiddle(Riddle* riddlesHead) {
 		cin >> chosenPeriod;
 	}
 
-	cout << "Enter desired complexity (1-10): ";
+	cout << "Enter desired complexity (1-3): ";
 	cin >> chosenComplexity;
-	while (chosenComplexity < 1 || chosenComplexity > 10) {
-		cout << "Please enter a valid complexity (1-10): ";
+	while (chosenComplexity < 1 || chosenComplexity > 3) {
+		cout << "Please enter a valid complexity (1-3): ";
 		cin >> chosenComplexity;
 	}
 

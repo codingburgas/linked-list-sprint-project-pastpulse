@@ -17,11 +17,10 @@ void leading() {
             cout << i + 1 << ". " << q.answers[i] << endl;
         }
         while (true) {
-
+            cout << "Enter your choice (1-3): ";
             cin >> choice;
             if (choice < 1 || choice > 3) {
-                cout << "Invalid choice!" << endl;
-                break;
+                cout << "Invalid choice! Please choose a valid option (1-3).";
             }
             else {
                 score += choice;
@@ -53,7 +52,7 @@ void leading() {
 
     if (choice == 1)
     {
-        displayRiddles(riddlesHead);
+        startFilteredRiddle(riddlesHead);
     }
     else if (choice == 2)
     {

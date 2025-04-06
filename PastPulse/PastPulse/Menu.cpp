@@ -254,6 +254,7 @@ void menu() {
                             if (isAdmin()) {
                                 cout << "Admin login successful!" << endl;
                                 adminMenu(riddlesHead, filename);
+                                running = true;
                             }
                             else {
                                 cout << "Log in filed" << endl;

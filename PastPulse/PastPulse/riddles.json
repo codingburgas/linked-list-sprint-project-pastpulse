@@ -2,7 +2,7 @@
     {
       "name": "Echo of Freedom",
       "period": "Before",
-      "complexity": 2,
+      "complexity": 1,
       "introduction": "At the end of the 19th century, in the heart of the Balkans, an uprising is planned, which shakes the veins of an empire. Despite the bloody suppression, this rebellion forever changed the destiny of a people.",
       "hints": [
         "The year in which the uprising breaks out is 3 years after the death of Vasil Levski.",
@@ -26,7 +26,7 @@
     {
       "name": "A Call for Unification",
       "period": "Before",
-      "complexity": 5,
+      "complexity": 2,
       "introduction": "After the Liberation of Bulgaria, remaining territories yearn for unification. At this moment, a wave of discontent arises, whose goal is the unification of all Bulgarians.",
       "hints": [
         "The uprising breaks out immediately after the Congress of Berlin.",
@@ -50,7 +50,7 @@
     {
       "name": "Fire from Two Sides",
       "period": "Before",
-      "complexity": 7,
+      "complexity": 3,
       "introduction": "At the beginning of the 20th century, in lands torn by contradictions, an uprising flares up. Despite the difficulties, the fighters for freedom do not give up their goal.",
       "hints": [
         "The uprising breaks out a year before the Russo-Japanese War",
@@ -74,7 +74,7 @@
     {
       "name": "The Whisper of the Forgotten",
       "period": "After",
-      "complexity": 6,
+      "complexity": 1,
       "introduction": "In the days of ash and bloody sunset, when the crown fell without a sound, from the shadows of the trenches, shadows rose, armed not only with rifles, but with anger. In a city whose name is an echo of the past, they proclaimed a fate that did not survive.",
       "hints": [
         "The uprising begins in September at the end of World War I.",
@@ -98,7 +98,7 @@
     {
       "name": "The dome of death.",
       "period": "After",
-      "complexity": 1,
+      "complexity": 2,
       "introduction": "In the heart of an ancient city, a temple rises, where shadows and secrets intertwine through the ages. On a day of sorrow and tribute, malice sneaks in, and an explosion tears the silence, death sows its seed everywhere.",
       "hints": [
         "The assassination takes place 2 years after the September Uprising.",
@@ -122,7 +122,7 @@
     {
       "name": "The Scarlet Whisper of Autumn",
       "period": "After",
-      "complexity": 8,
+      "complexity": 3,
       "introduction": "In the autumn of a forgotten year, when the shadows grew long and the wind whispered rebellious songs, red flags fluttered over the hills. The hearts of the people beat in one rhythm, and the hope for a new world blazed like fire. But that fire was quickly extinguished, leaving behind only ashes and memories.",
       "hints": [
         "The uprising begins 20 years after the Ilinden-Preobrazhenie Uprising.",

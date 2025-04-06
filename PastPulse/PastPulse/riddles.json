@@ -1,146 +1,212 @@
 [
     {
-      "name": "Echo of Freedom",
-      "period": "Before",
-      "complexity": 1,
-      "introduction": "At the end of the 19th century, in the heart of the Balkans, an uprising is planned, which shakes the veins of an empire. Despite the bloody suppression, this rebellion forever changed the destiny of a people.",
-      "hints": [
-        "The year in which the uprising breaks out is 3 years after the death of Vasil Levski.",
-        "The uprising breaks out in a region known for its rebellious spirit and numerous revolutionary committees.",
-        "Immediately after the START OF THE UPRISING, Todor Kableshkov writes a letter informing the apostles in Panagyurishte about the events in Koprivshtitsa.",
-        "One of the famous organizers of the uprising is a revolutionary who led the 'flying squad'."
-      ],
-      "answerHints": [
-        "1876",
-        "Rhodope",
-        "Bloody letter",
-        "Georgi Benkovski"
-      ],
-      "answer": "April uprising",
-      "facts": [
-        "In 1876, upon learning about the preparations for the uprising, the Ottoman authorities ban the import of lead into Bulgaria. As a result, nails are used as ammunition.",
-        "The 'Bloody Letter' is carried by 19-year-old Georgi Salchev, who, according to legend, travels the 5-hour journey from Koprivshtitsa to Panagyurishte in only 2 hours.",
-        "Among the four districts, the preparation is at the highest level in the Plovdiv region. Shortly after arriving in the city, however, the activists decide to move the center to Panagyurishte."
-      ]
+        "answer": "April uprising",
+        "answerHints": [
+            "1876",
+            "Rhodope",
+            "Bloody letter",
+            "Georgi Benkovski"
+        ],
+        "complexity": 1,
+        "facts": [
+            "In 1876, upon learning about the preparations for the uprising, the Ottoman authorities ban the import of lead into Bulgaria. As a result, nails are used as ammunition.",
+            "The 'Bloody Letter' is carried by 19-year-old Georgi Salchev, who, according to legend, travels the 5-hour journey from Koprivshtitsa to Panagyurishte in only 2 hours.",
+            "Among the four districts, the preparation is at the highest level in the Plovdiv region. Shortly after arriving in the city, however, the activists decide to move the center to Panagyurishte."
+        ],
+        "hints": [
+            "The year in which the uprising breaks out is 3 years after the death of Vasil Levski.",
+            "The uprising breaks out in a region known for its rebellious spirit and numerous revolutionary committees.",
+            "Immediately after the START OF THE UPRISING, Todor Kableshkov writes a letter informing the apostles in Panagyurishte about the events in Koprivshtitsa.",
+            "One of the famous organizers of the uprising is a revolutionary who led the 'flying squad'."
+        ],
+        "introduction": "At the end of the 19th century, in the heart of the Balkans, an uprising is planned, which shakes the veins of an empire. Despite the bloody suppression, this rebellion forever changed the destiny of a people.",
+        "name": "Echo of Freedom",
+        "period": "Before"
     },
     {
-      "name": "A Call for Unification",
-      "period": "Before",
-      "complexity": 2,
-      "introduction": "After the Liberation of Bulgaria, remaining territories yearn for unification. At this moment, a wave of discontent arises, whose goal is the unification of all Bulgarians.",
-      "hints": [
-        "The uprising breaks out immediately after the Congress of Berlin.",
-        "The general command of 400 rebels, divided into detachments, who attack the Ottoman garrisons, is under which Voyvoda?",
-        "What is the goal of the 'Appeal by the Temporary Bulgarian Administration in Macedonia? (one word) ",
-        "From where do Bulgarians send a memorandum to the Great Powers, seeking the creation of a unified vilayet?"
-      ],
-      "answerHints": [
-        "1878",
-        "Stoyan",
-        "Help",
-        "Macedonia"
-      ],
-      "answer": "Kresna-Razlog Uprising",
-      "facts": [
-        "The uprising is organized by the Bulgarian committee 'Unity'.",
-        "One of the leaders of the uprising is Adam Kalmykov, a Russian revolutionary who fights alongside the Bulgarians.",
-        "During the uprising, the 'Provisional Government of Macedonia' is established, with the aim of organizing and leading the rebels."
-      ]
+        "answer": "Kresna-Razlog Uprising",
+        "answerHints": [
+            "1878",
+            "Stoyan",
+            "Help",
+            "Macedonia"
+        ],
+        "complexity": 2,
+        "facts": [
+            "The uprising is organized by the Bulgarian committee 'Unity'.",
+            "One of the leaders of the uprising is Adam Kalmykov, a Russian revolutionary who fights alongside the Bulgarians.",
+            "During the uprising, the 'Provisional Government of Macedonia' is established, with the aim of organizing and leading the rebels."
+        ],
+        "hints": [
+            "The uprising breaks out immediately after the Congress of Berlin.",
+            "The general command of 400 rebels, divided into detachments, who attack the Ottoman garrisons, is under which Voyvoda?",
+            "What is the goal of the 'Appeal by the Temporary Bulgarian Administration in Macedonia? (one word) ",
+            "From where do Bulgarians send a memorandum to the Great Powers, seeking the creation of a unified vilayet?"
+        ],
+        "introduction": "After the Liberation of Bulgaria, remaining territories yearn for unification. At this moment, a wave of discontent arises, whose goal is the unification of all Bulgarians.",
+        "name": "A Call for Unification",
+        "period": "Before"
     },
     {
-      "name": "Fire from Two Sides",
-      "period": "Before",
-      "complexity": 3,
-      "introduction": "At the beginning of the 20th century, in lands torn by contradictions, an uprising flares up. Despite the difficulties, the fighters for freedom do not give up their goal.",
-      "hints": [
-        "The uprising breaks out a year before the Russo-Japanese War",
-        "In three districts the uprising begins approximately during three major holidays - 02.08, 10.08, 27.09.",
-        "The uprising develops in two geographical regions, known for their strategic position and desire for unification with Bulgaria",
-        "Which revolutionary organization leads the uprising, whose goal is the liberation of Bulgarians remaining under foreign rule? (in capital letters)"
-      ],
-      "answerHints": [
-        "1903",
-        "Ilinden, Preobrazhenie, Krustovden",
-        "Macedonia and Odrinska Trakia",
-        "VMORO"
-      ],
-      "answer": "Ilinden-Preobrazhenie Uprising",
-      "facts": [
-        "The uprising attracts the attention of the European powers to the situation of the Bulgarians in Macedonia and the Adrianople region.",
-        "During the uprising, the Krushovo Republic is declared, which exists for 10 days.",
-        "In the Adrianople region, the Strandzha Republic is also declared, which exists for 26 days."
-      ]
+        "answer": "Ilinden-Preobrazhenie Uprising",
+        "answerHints": [
+            "1903",
+            "Ilinden, Preobrazhenie, Krustovden",
+            "Macedonia and Odrinska Trakia",
+            "VMORO"
+        ],
+        "complexity": 3,
+        "facts": [
+            "The uprising attracts the attention of the European powers to the situation of the Bulgarians in Macedonia and the Adrianople region.",
+            "During the uprising, the Krushovo Republic is declared, which exists for 10 days.",
+            "In the Adrianople region, the Strandzha Republic is also declared, which exists for 26 days."
+        ],
+        "hints": [
+            "The uprising breaks out a year before the Russo-Japanese War",
+            "In three districts the uprising begins approximately during three major holidays - 02.08, 10.08, 27.09.",
+            "The uprising develops in two geographical regions, known for their strategic position and desire for unification with Bulgaria",
+            "Which revolutionary organization leads the uprising, whose goal is the liberation of Bulgarians remaining under foreign rule? (in capital letters)"
+        ],
+        "introduction": "At the beginning of the 20th century, in lands torn by contradictions, an uprising flares up. Despite the difficulties, the fighters for freedom do not give up their goal.",
+        "name": "Fire from Two Sides",
+        "period": "Before"
     },
     {
-      "name": "The Whisper of the Forgotten",
-      "period": "After",
-      "complexity": 1,
-      "introduction": "In the days of ash and bloody sunset, when the crown fell without a sound, from the shadows of the trenches, shadows rose, armed not only with rifles, but with anger. In a city whose name is an echo of the past, they proclaimed a fate that did not survive.",
-      "hints": [
-        "The uprising begins in September at the end of World War I.",
-        "The uprising leads to the abdication of which king?",
-        "Where do the insurgents head to establish a republic?",
-        "What had to be overthrown in order to establish a republic?"
-      ],
-      "answerHints": [
-        "1918",
-        "Ferdinand 1",
-        "Sofia",
-        "Government"
-      ],
-      "answer": "Soldiers' Uprising",
-      "facts": [
-        "The main reason for the uprising is the soldiers' dissatisfaction with the heavy losses on the front, especially after the breakthrough at Dobro Pole.",
-        "Many of the participants in the uprising are arrested and sentenced.",
-        "The uprising begins spontaneously, without clear organization or leadership."
-      ]
+        "answer": "Soldiers' Uprising",
+        "answerHints": [
+            "1918",
+            "Ferdinand 1",
+            "Sofia",
+            "Government"
+        ],
+        "complexity": 1,
+        "facts": [
+            "The main reason for the uprising is the soldiers' dissatisfaction with the heavy losses on the front, especially after the breakthrough at Dobro Pole.",
+            "Many of the participants in the uprising are arrested and sentenced.",
+            "The uprising begins spontaneously, without clear organization or leadership."
+        ],
+        "hints": [
+            "The uprising begins in September at the end of World War I.",
+            "The uprising leads to the abdication of which king?",
+            "Where do the insurgents head to establish a republic?",
+            "What had to be overthrown in order to establish a republic?"
+        ],
+        "introduction": "In the days of ash and bloody sunset, when the crown fell without a sound, from the shadows of the trenches, shadows rose, armed not only with rifles, but with anger. In a city whose name is an echo of the past, they proclaimed a fate that did not survive.",
+        "name": "The Whisper of the Forgotten",
+        "period": "After"
     },
     {
-      "name": "The dome of death.",
-      "period": "After",
-      "complexity": 2,
-      "introduction": "In the heart of an ancient city, a temple rises, where shadows and secrets intertwine through the ages. On a day of sorrow and tribute, malice sneaks in, and an explosion tears the silence, death sows its seed everywhere.",
-      "hints": [
-        "The assassination takes place 2 years after the September Uprising.",
-        "The location where it happens is in the center of Sofia.",
-        "After the attack, the government takes repressive measures against the left wing. What are they called?",
-        "Petar Zadgorski signals to his assistant to trigger the explosion. Who is his assistant?"
-      ],
-      "answerHints": [
-        "1925",
-        "Church of St. Nedelya",
-        "April events",
-        "Nikola Petrov"
-      ],
-      "answer": "St. Nedelya Assault",
-      "facts": [
-        "The very location of the temple is designed to accommodate a large number of people, and thus it becomes the perfect place for a large-scale terrorist attack.",
-        "The attack is organized by the Military Organization of the Bulgarian Communist Party, with the goal of eliminating the country's military and political elite.",
-        "The explosive device is placed in the church's dome, using TNT."
-      ]
+        "answer": "St. Nedelya Assault",
+        "answerHints": [
+            "1925",
+            "Church of St. Nedelya",
+            "April events",
+            "Nikola Petrov"
+        ],
+        "complexity": 2,
+        "facts": [
+            "The very location of the temple is designed to accommodate a large number of people, and thus it becomes the perfect place for a large-scale terrorist attack.",
+            "The attack is organized by the Military Organization of the Bulgarian Communist Party, with the goal of eliminating the country's military and political elite.",
+            "The explosive device is placed in the church's dome, using TNT."
+        ],
+        "hints": [
+            "The assassination takes place 2 years after the September Uprising.",
+            "The location where it happens is in the center of Sofia.",
+            "After the attack, the government takes repressive measures against the left wing. What are they called?",
+            "Petar Zadgorski signals to his assistant to trigger the explosion. Who is his assistant?"
+        ],
+        "introduction": "In the heart of an ancient city, a temple rises, where shadows and secrets intertwine through the ages. On a day of sorrow and tribute, malice sneaks in, and an explosion tears the silence, death sows its seed everywhere.",
+        "name": "The dome of death.",
+        "period": "After"
     },
     {
-      "name": "The Scarlet Whisper of Autumn",
-      "period": "After",
-      "complexity": 3,
-      "introduction": "In the autumn of a forgotten year, when the shadows grew long and the wind whispered rebellious songs, red flags fluttered over the hills. The hearts of the people beat in one rhythm, and the hope for a new world blazed like fire. But that fire was quickly extinguished, leaving behind only ashes and memories.",
-      "hints": [
-        "The uprising begins 20 years after the Ilinden-Preobrazhenie Uprising.",
-        "What is the main goal of the Bulgarian Communist Party after the coup? Establishment of which power?",
-        "The center of the uprising was today's Montana. What was the name of the town at that time?",
-        "The uprising erupts at the beginning of autumn. Which month is that?"
-      ],
-      "answerHints": [
-        "1923",
-        "Workers power",
-        "Ferdinand",
-        "September"
-      ],
-      "answer": "September Uprising",
-      "facts": [
-        "Fierce battles are fought near the Boychinovtsi station, where the insurgents defeat the government forces.",
-        "The uprising leads to mass repressions and killings, with the number of victims being disputed and varying according to different sources.",
-        "The leaders of the uprising, Georgi Dimitrov and Vasil Kolarov, emigrate to the Soviet Union."
-      ]
+        "answer": "September Uprising",
+        "answerHints": [
+            "1923",
+            "Workers power",
+            "Ferdinand",
+            "September"
+        ],
+        "complexity": 3,
+        "facts": [
+            "Fierce battles are fought near the Boychinovtsi station, where the insurgents defeat the government forces.",
+            "The uprising leads to mass repressions and killings, with the number of victims being disputed and varying according to different sources.",
+            "The leaders of the uprising, Georgi Dimitrov and Vasil Kolarov, emigrate to the Soviet Union."
+        ],
+        "hints": [
+            "The uprising begins 20 years after the Ilinden-Preobrazhenie Uprising.",
+            "What is the main goal of the Bulgarian Communist Party after the coup? Establishment of which power?",
+            "The center of the uprising was today's Montana. What was the name of the town at that time?",
+            "The uprising erupts at the beginning of autumn. Which month is that?"
+        ],
+        "introduction": "In the autumn of a forgotten year, when the shadows grew long and the wind whispered rebellious songs, red flags fluttered over the hills. The hearts of the people beat in one rhythm, and the hope for a new world blazed like fire. But that fire was quickly extinguished, leaving behind only ashes and memories.",
+        "name": "The Scarlet Whisper of Autumn",
+        "period": "After"
+    },
+    {
+        "answer": "",
+        "answerHints": [
+            "p",
+            "p",
+            "p",
+            "pp"
+        ],
+        "complexity": 1,
+        "facts": [
+            "p"
+        ],
+        "hints": [
+            "p",
+            "",
+            "",
+            ""
+        ],
+        "introduction": "",
+        "name": "",
+        "period": "efore"
+    },
+    {
+        "answer": "",
+        "answerHints": [
+            "p",
+            "p",
+            "p",
+            "p"
+        ],
+        "complexity": 11,
+        "facts": [
+            "p"
+        ],
+        "hints": [
+            "p",
+            "",
+            "",
+            ""
+        ],
+        "introduction": "",
+        "name": "",
+        "period": "Before WWI"
+    },
+    {
+        "answer": "",
+        "answerHints": [
+            "pp",
+            "p",
+            "p",
+            "p"
+        ],
+        "complexity": 1,
+        "facts": [
+            ""
+        ],
+        "hints": [
+            "p",
+            "",
+            "",
+            ""
+        ],
+        "introduction": "",
+        "name": "",
+        "period": "Before WWI"
     }
-  ]
+]

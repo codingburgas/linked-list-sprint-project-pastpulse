@@ -233,70 +233,127 @@ void saveRiddlesToFile(Riddle* head, string& filename) {
 }
 
 void addRiddle(Riddle* head, string& filename) {
-	if (!isAdmin()) {
-		return;
-	}
 	Riddle* newRiddle = new Riddle;
+	cin.ignore();
 	cout << "Enter the riddle name: ";
-	getline(cin, newRiddle->name);
-	cin.ignore();
-	cout << "Enter the introduction to the riddle: ";
-	getline(cin, newRiddle->introduction);
-	cin.ignore();
+	while (true) {
+		getline(cin, newRiddle->name);
+		if (!newRiddle->name.empty()) {
+			break;
+		}
+		else {
+			cout << "Empty";
+		}
+	}
+
+	cout << "Enter the riddle introduction: ";
+	while (true) {
+		getline(cin, newRiddle->introduction);
+		if (!newRiddle->introduction.empty()) {
+			break;
+		}
+		else {
+			cout << "Riddle introduction cannot be empty ";
+		}
+	}
+
 	int hintNumber = 4;
 	cout << "Enter 4 hints" << endl;
-
 	for (int i = 0; i < hintNumber; i++) {
 		string hint;
 		string answerHint;
 		cout << "Hint " << i + 1 << ": " << endl;
-		cin.ignore();
-		getline(cin, hint);
+		while (true) {
+			getline(cin, hint);
+			if (!hint.empty()) {
+				break;
+			}
+			else {
+				cout << "Hint cannot be empty" << endl;
+			}
+		}
 		// Add the hint to the hint vector
 		newRiddle->hints.push_back(hint);
+
 		cout << "Enter the correct answer";
-		getline(cin, answerHint);
+		while (true) {
+			getline(cin, answerHint);
+			if (!answerHint.empty()) {
+				break;
+			}
+			else {
+				cout << "Answer hint cannot be empty" << endl;
+			}
+		}
 		newRiddle->answerHints.push_back(answerHint);
 	}
-	cout << "Write the valid final answer";
-	cin.ignore();
-	int factsNumber;
-	cout << "How many fun facts they are?";
-	cin >> factsNumber;
-	if (cin.fail()) {
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << "Invalid try again ";
-		cin >> factsNumber;
+
+	cout << "Write the falid final answer: ";
+	while (true) {
+		getline(cin, newRiddle->answer);
+		if (!newRiddle->answer.empty()) {
+			break;
+		}
+		else {
+			cout << "Final answer cannot be ampty" << endl;
+		}
 	}
 
+	cout << "How many fun facts they are?";
+	int factsNumber;
+	while (true) {
+		cin >> factsNumber;
+		if (cin.fail() || factsNumber<1) {
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Invalid try again ";
+			cin >> factsNumber;
+		}
+		else {
+			break;
+		}
+	}
 	cin.ignore();
 	for (int i = 0; i < factsNumber; i++) {
 		string funFact;
 		cout << "Fact " << i + 1 << ": " << endl;
-		getline(cin, funFact);
-
+		while (true) {
+			getline(cin, funFact);
+			if (!funFact.empty()) {
+				break;
+			}
+			else {
+				cout << "Fact cannot be empty" << endl;
+			}
+		}
 		newRiddle->facts.push_back(funFact);
 	}
 
-	cin.ignore();
+	string period;
 	cout << "Enter period(Before WWI or After WWI): ";
 	while (true) {
-		getline(cin, newRiddle->period);
-		if (newRiddle->period == "Before WWI" || newRiddle->period == "After WWI") {
-			break;
+		getline(cin, period);
+		if (period == "Before WWI" || period == "After WWI") {
+			newRiddle->period = period;
+			break;  
 		}
-		cout << "Invalid input!";
+		else {
+			cout << "Try again: "; 
+		}
 	}
 
-	cin.ignore();
 	cout << "Enter complexity from 1 to 10: " << endl;
-	cin >> newRiddle->complexity;
-	if (cin.fail()) {
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << "Invalid input!";
+	while (true) {
 		cin >> newRiddle->complexity;
+		if (cin.fail() || newRiddle->complexity > 10||newRiddle->complexity<1) {
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Invalid input!";
+			cin >> newRiddle->complexity;
+		}
+		else {
+			break;
+		}
 	}
 
 	cout << "Successful added!" << endl;

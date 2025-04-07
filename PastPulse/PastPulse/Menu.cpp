@@ -61,7 +61,6 @@ void newLine(int newLines)
 }
 void displayMenu(int selected) {
     system("cls");
-
     setColor(YELLOW);
     printCentered("  _____          _   _____       _           ", 1);
     printCentered(" |  __ \\        | | |  __ \\     | |          ", 2);
@@ -78,14 +77,14 @@ void displayMenu(int selected) {
 
 
     if (selected == 0) {
-        setColor(LIGHT_GREEN);
+        setColor(RED);
         printCentered("===============", startY);
         printCentered("=   >START<   =", startY + 1);
         printCentered("===============", startY + 2);
         resetColor();
     }
     else {
-        setColor(GRAY);
+        setColor(LIGHT_RED);
         printCentered("===============", startY);
         printCentered("=    START    =", startY + 1);
         printCentered("===============", startY + 2);
@@ -96,14 +95,14 @@ void displayMenu(int selected) {
 
 
     if (selected == 1) {
-        setColor(LIGHT_RED);
+        setColor(RED);
         printCentered("===============", leaveY);
         printCentered("=   >LEAVE<   =", leaveY + 1);
         printCentered("===============", leaveY + 2);
         resetColor();
     }
     else {
-        setColor(GRAY);
+        setColor(LIGHT_RED);
         printCentered("===============", leaveY);
         printCentered("=    LEAVE    =", leaveY + 1);
         printCentered("===============", leaveY + 2);
@@ -129,14 +128,14 @@ void displayRoleMenu(int selected) {
     int userOptionY = 12;
 
     if (selected == 0) {
-        setColor(LIGHT_GREEN);
+        setColor(LIGHT_YELLOW);
         printCentered("===============", adminOptionY);
         printCentered("=   >ADMIN<   =", adminOptionY + 1);
         printCentered("===============", adminOptionY + 2);
         resetColor();
     }
     else {
-        setColor(GRAY);
+        setColor(BRIGHT_WHITE);
         printCentered("===============", adminOptionY);
         printCentered("=    ADMIN    =", adminOptionY + 1);
         printCentered("===============", adminOptionY + 2);
@@ -147,17 +146,68 @@ void displayRoleMenu(int selected) {
 
 
     if (selected == 1) {
-        setColor(LIGHT_RED);
+        setColor(LIGHT_YELLOW);
         printCentered("===============", userOptionY);
         printCentered("=   >USER<   =", userOptionY + 1);
         printCentered("===============", userOptionY + 2);
         resetColor();
     }
     else {
-        setColor(GRAY);
+        setColor(BRIGHT_WHITE);
         printCentered("===============", userOptionY);
         printCentered("=    USER    =", userOptionY + 1);
         printCentered("===============", userOptionY + 2);
+        resetColor();
+    }
+}
+void displayUserOptions(int selected) {
+    system("cls");
+
+    setColor(YELLOW);
+    printCentered("  _    _                     ____        _   _             ", 1);
+    printCentered(" | |  | |                   |  _ \\      | | (_)            ", 2);
+    printCentered(" | |  | |_ __   ___ _ __    | |_) | ___ | |_ _ _ __   __ _ ", 3);
+    printCentered(" | |  | | '_ \\ / _ \\ '__|   |  _ < / _ \\| __| | '_ \\ / _` |", 4);
+    printCentered(" | |__| | | | |  __/ |      | |_) | (_) | |_| | | | | (_| |", 5);
+    printCentered("  \\____/|_| |_|\\___|_|      |____/ \\___/ \\__|_|_| |_|\\__, |", 6);
+    printCentered("                                                      __/ |", 7);
+    printCentered("                                                     |___/ ", 8);
+    resetColor();
+
+    newLine(1);
+
+    int loginOptionY = 11;
+    int registerOptionY = 14;
+
+    if (selected == 0) {
+        setColor(LIGHT_YELLOW);
+        printCentered("===============", loginOptionY);
+        printCentered("=   >LOGIN<   =", loginOptionY + 1);
+        printCentered("===============", loginOptionY + 2);
+        resetColor();
+    }
+    else {
+        setColor(BRIGHT_WHITE);
+        printCentered("===============", loginOptionY);
+        printCentered("=    LOGIN    =", loginOptionY + 1);
+        printCentered("===============", loginOptionY + 2);
+        resetColor();
+    }
+
+    newLine(1);
+
+    if (selected == 1) {
+        setColor(LIGHT_YELLOW);
+        printCentered("===============", registerOptionY);
+        printCentered("=   >SIGNUP<  =", registerOptionY + 1);
+        printCentered("===============", registerOptionY + 2);
+        resetColor();
+    }
+    else {
+        setColor(BRIGHT_WHITE);
+        printCentered("===============", registerOptionY);
+        printCentered("=   SIGNUP    =", registerOptionY + 1);
+        printCentered("===============", registerOptionY + 2);
         resetColor();
     }
 }
@@ -257,33 +307,26 @@ void menu() {
                                 running = true;
                             }
                             else {
-                                cout << "Log in filed" << endl;
+                                cout << "Log in failed" << endl;
                             }
                         }
                         else if (roleSelected == 1) {  
-                            vector<string> userOptions = { "Login", "Register" };
+
                             int userSelected = 0;
                             bool userRunning = true;
 
                             while (userRunning) {
                             system("cls");  
-                            cout << "=== User Options ===\n";
-                            for (int i = 0; i < userOptions.size(); ++i) {
-                                if (i == userSelected)
-                                    cout << "> " << userOptions[i] << " <\n";
-                                else
-                                    cout << userOptions[i] << endl;
-                            }
-
+                            displayUserOptions(userSelected);
                                 int userKey = _getch();
                                 if (userKey == 0 || userKey == 224) {
                                     userKey = _getch();
                                     switch (userKey) {
                                     case 72:  
-                                        userSelected = (userSelected > 0) ? userSelected - 1 : userOptions.size() - 1;
+                                        userSelected = (userSelected > 0) ? userSelected - 1 :2 - 1;
                                         break;
                                     case 80:  
-                                        userSelected = (userSelected < userOptions.size() - 1) ? userSelected + 1 : 0;
+                                        userSelected = (userSelected < 2 - 1) ? userSelected + 1 : 0;
                                         break;
                                     }
                                 }

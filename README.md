@@ -30,7 +30,7 @@ The goal of the project is to combine fun with education, making history more ac
 
 ## Technologies for development
 <div align="left">
-  <img width="40" height="40" src="https://icons8.com/icon/ezj3zaVtImPg/visual-studio)](https://www.flaticon.com/free-icon/logo_15713436?term=visual+studio&page=1&position=27&origin=tag&related_id=15713436" alt="VS">
+  <img width="40" height="40" src="https://camo.githubusercontent.com/148592460b80bb89b92f67be61d19e9156b19128aed5f6943047eaa63d215f2c/68747470733a2f2f7777772e7465636873706f742e636f6d2f696d61676573322f646f776e6c6f6164732f746f70646f776e6c6f61642f323032312f30382f323032312d30382d32352d7473335f7468756d62732d3632382e706e67" alt="VS">
  
 </div>
 
@@ -41,9 +41,9 @@ The goal of the project is to combine fun with education, making history more ac
 </div>
 
 # 📁 Documents
-+ [Presentation](./PastPulse/PastPulse/Documents/Documentation-PasPulse.docx)
++ [Presentation](./PastPulse/PastPulse/Documents/Presentation-PasPulse.docx)
 + [Documentation](./PastPulse/PastPulse/Documents/Documentation-PasPulse.docx)
-+ [QA Documentation](./PastPulse/PastPulse/Documents/Documentation-PasPulse.docx)
++ [QA Documentation](./PastPulse/PastPulse/Documents/)
 
 # 👥 Team Members
 

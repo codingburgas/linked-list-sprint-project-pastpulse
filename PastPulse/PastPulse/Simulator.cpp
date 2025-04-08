@@ -11,12 +11,12 @@ void leading() {
     Riddle* riddlesHead = loadRiddlesFromFile(filename);
     
     vector<Question> questions = loadQuestions("questions.txt");
-    for (const auto& q : questions) {
+    for (const auto& q : questions) {  //Iterate through each question in the vector
         cout << "\n" << q.text << endl;
         for (int i = 0; i < q.answers.size(); i++) {
-            cout << i + 1 << ". " << q.answers[i] << endl;
+            cout << i + 1 << ". " << q.answers[i] << endl;  //Display the possible answers
         }
-        while (true) {
+        while (true) {  // Loop until the user enters a valid choice
             cout << "Enter your choice (1-3): ";
             cin >> choice;
             if (choice < 1 || choice > 3) {
@@ -31,7 +31,7 @@ void leading() {
     }
 
     cout << "\nCalculating your leadership success...\n";
-    this_thread::sleep_for(chrono::seconds(2));
+    this_thread::sleep_for(chrono::seconds(2));  //Pause the execution for 2 seconds to simulate calculation
 
     if (score >= 21) {
         cout << "99% chance of winning the war! You are a great strategist!" << endl;

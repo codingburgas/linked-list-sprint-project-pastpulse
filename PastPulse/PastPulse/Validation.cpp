@@ -2,7 +2,7 @@
 #include "Admin.h"
 #include "Menu.h"
 
-bool autehnticate(const json& users, const string& username, const string& password) {
+bool autehnticate(const json& users, const string& username, const string& password) {  //Authenticate a user based on the provided username and password
 	for (const auto& user : users["users"]) {
 		if (user["username"] == username && user["password"] == password) {
 			return true;
@@ -21,7 +21,7 @@ bool isValidPassword(const string& password) {
 	bool hasDigit = false;
 	bool hasSpecial = false;
 
-	for (char c : password) {
+	for (char c : password) {  //Iterate through each character in the password string
 		if (isupper(c)) {
 			hasUpper = true;
 		}
@@ -47,7 +47,7 @@ bool isAdmin() {
 	string username;
 	string password = "admin-123";
 	int attempts = 0;
-	while (attempts < 3) {
+	while (attempts < 3) {  //Allow up to 3 login attempts
 		cout << "Enter admin username: ";
 		cin >> username;
 		cout << "Enter admin password: ";

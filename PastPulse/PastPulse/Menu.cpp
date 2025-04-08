@@ -24,31 +24,31 @@ enum ConsoleColor {
     BRIGHT_WHITE = 15
 };
 
-HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); //Get the standard output handle
 
 void setColor(ConsoleColor text, ConsoleColor background = BLACK) {
     SetConsoleTextAttribute(hConsole, text + (background << 4));
 }
 
 void resetColor() {
-    SetConsoleTextAttribute(hConsole, WHITE); 
+    SetConsoleTextAttribute(hConsole, WHITE); //Reset the console text color to white
 }
 
-using json = nlohmann::json;
+using json = nlohmann::json;  //Use the nlohmann json namespace
 using namespace std;
 
 void hideCursor() {
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO info;
     GetConsoleCursorInfo(consoleHandle, &info);
-    info.bVisible = FALSE;
+    info.bVisible = FALSE;  //Cursor visibility to false
     SetConsoleCursorInfo(consoleHandle, &info);
 
 }
 
 void printCentered(const string& text, int y) {
-    int padding = (80 - text.length() + 35) / 2;
-    COORD pos = { (SHORT)padding, (SHORT)y };
+    int padding = (80 - text.length() + 35) / 2;  //Calculate the padding needed
+    COORD pos = { (SHORT)padding, (SHORT)y };  //Structure to specify the position
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
     cout << text;
 }
@@ -231,7 +231,7 @@ void adminMenu(Riddle* riddlesHead, string& filename) {
             if (i == 3) cout << "Exit Admin Menu\n";
         }
 
-        char key = _getch(); 
+        char key = _getch(); //Read a single character
 
         if (key == 72) {  
             selected = (selected > 0) ? selected - 1 : 3;
@@ -239,7 +239,7 @@ void adminMenu(Riddle* riddlesHead, string& filename) {
         else if (key == 80) {  
             selected = (selected < 3) ? selected + 1 : 0;
         }
-        else if (key == 13) { 
+        else if (key == 13) { //Enter
             switch (selected) {
             case 0:
                 addRiddle(riddlesHead, filename);
@@ -279,7 +279,7 @@ void menu() {
             if (selected == 0) {
                 system("cls");
                 printCentered("Game Starting...", 10);
-                running = false;
+                running = false;  //Exit the main menu
 
                 system("cls");
 
@@ -289,7 +289,7 @@ void menu() {
                 while (roleRunning) {
                     displayRoleMenu(roleSelected);
 
-                    char keyRole = _getch();
+                    char keyRole = _getch();  //Get user input for role selection
 
                     switch (keyRole) {
                     case 72:  
@@ -304,13 +304,13 @@ void menu() {
                             if (isAdmin()) {
                                 cout << "Admin login successful!" << endl;
                                 adminMenu(riddlesHead, filename);
-                                running = true;
+                                running = true;  //Go back to the main menu
                             }
                             else {
                                 cout << "Log in failed" << endl;
                             }
                         }
-                        else if (roleSelected == 1) {  
+                        else if (roleSelected == 1) {  //"USER" is selected
 
                             int userSelected = 0;
                             bool userRunning = true;
@@ -320,7 +320,7 @@ void menu() {
                             displayUserOptions(userSelected);
                                 int userKey = _getch();
                                 if (userKey == 0 || userKey == 224) {
-                                    userKey = _getch();
+                                    userKey = _getch();  //Get user input for user options
                                     switch (userKey) {
                                     case 72:  
                                         userSelected = (userSelected > 0) ? userSelected - 1 :2 - 1;
@@ -332,7 +332,7 @@ void menu() {
                                 }
                                 else if (userKey == 13) {  
                                     system("cls");
-                                    if (userSelected == 0) {
+                                    if (userSelected == 0) {  //"LOGIN" is selected
                                         if (userLogin(users)) {
                                             cout << "Login successful!\n";
                                             userRunning = false;
@@ -344,7 +344,7 @@ void menu() {
                                             system("pause");
                                         }
                                     }
-                                        else if (userSelected == 1) {  
+                                        else if (userSelected == 1) {  //"SIGNUP" is selected
                                         int result = userRegister(users);
                                         if (result == 1) {
                                             cout << "Registration successful!\n";

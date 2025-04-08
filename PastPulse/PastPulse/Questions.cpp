@@ -4,11 +4,11 @@
 
 
 vector<Question> loadQuestions(const string& filename) {
-	vector <Question> questions;
-	ifstream file(filename);
+	vector <Question> questions;  //Create an empty vector to store the loaded questions
+	ifstream file(filename);  //Open the file for reading
 	string line;
 
-	while (getline(file, line)) {
+	while (getline(file, line)) {  //Read the file line by line
 		if (line.empty()) continue;
 		Question q;
 		q.text = line;
@@ -19,7 +19,8 @@ vector<Question> loadQuestions(const string& filename) {
 			}
 		}
 
-		questions.push_back(q);
+		questions.push_back(q);  //Add the fully populated Question object
+
 
 	}
 

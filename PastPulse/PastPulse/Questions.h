@@ -1,7 +1,5 @@
-#ifndef QUESTIONS_H
-#define QUESTIONS_H
+#pragma once
 #include "pch.h"
-
 
 struct Question
 {
@@ -13,6 +11,5 @@ struct Question
 vector<Question> loadQuestions(const string& filename);
 
 
-#endif // QUESTIONS_H
 
 

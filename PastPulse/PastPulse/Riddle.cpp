@@ -433,7 +433,9 @@ bool askHint(Riddle* riddle) {
 	for (size_t i = 0; i < riddle->hints.size(); i++)
 	{
 		string userAnswer;
+		setColor(YELLOW, BLACK);
 		cout << "Hint " << i + 1 << ": " << riddle->hints[i] << endl;
+		resetColor();
 		cout << "Your asnwer for this(HINT): ";
 		// Clear the remaining newline character in the buffer at the first hint
 		if (i == 0) {
@@ -465,11 +467,13 @@ void displayRiddles(Riddle* head) {
 	printCentered("   _____       _             _______ _            _____  _     _     _ _      ", 5);
 	printCentered("  / ____|     | |           |__   __| |          |  __ \\(_)   | |   | | |     ", 6);
 	printCentered(" | (___   ___ | |_   _____     | |  | |__   ___  | |__) |_  __| | __| | | ___ ", 7);
-	printCentered("  \\___ \\ / _ \\| \\ \\ / / _ \\    | |  | '_ \\ / _ \\ |  _  /| |/ _ |/ _ | |/ _ \\", 8);
+	printCentered(" \\___ \\ / _ \\| \\ \\ / / _ \\    | |  | '_ \\ / _ \\ |  _  /| |/ _ |/ _ | |/ _ \\", 8);
 	printCentered("  ____) | (_) | |\ V /  __/    | |  | | | |  __/ | | \\ \\| | (_| | (_| | |  __/", 9);
 	printCentered(" |_____/ \\___/|_| \\_/ \___|    |_|  |_| |_|\\___| |_|  \\_\\_|\\__,_|\\__,_|_|\\___|", 10);
 	newLine(2);
+	setColor(YELLOW, BLACK);
 	cout << "Riddle Name: " << current->name << endl;
+	resetColor();
 	cout << "Introduction: " << current->introduction << endl;
 
 	askHint(current);

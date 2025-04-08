@@ -29,19 +29,19 @@ int  userRegister(json& users) {
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);
 	displaySignUpTitle();
-	cout << "Enter username: ";
+	printCentered("Enter username: ", 9);
 	cin >> username;
 
 	for (const auto& user : users["users"]) {  //Iterate through the existing users
 		if (user["username"] == username) {
-			cout << "Error: username already exists!\n";
+			printCentered("Error: username already exists!", 11);
 			return 0;
 		}
 	}
 
 	bool validPassword = false;
 	while (!validPassword) {
-		cout << "Enter password: ";
+		printCentered("Enter password: ", 12);
 		cin >> password;
 
 		validPassword = isValidPassword(password);
@@ -54,11 +54,12 @@ int  userRegister(json& users) {
 	if (outFile.is_open()) {
 		outFile << users.dump(4);  //Write the updated object to the file with an indentation of 4 for readability
 		outFile.close();
-		cout << "Successful registration!\n";
+		printCentered("Successful registration! \n", 20);
+		
 		startFilteredRiddle(riddlesHead);
 	}
 	else {
-		cout << "Error saving user data.\n";
+		printCentered("Error saving user data.", 14);
 		return -1;
 	}
 
@@ -71,9 +72,9 @@ bool userLogin(const json& users) {
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);
 	displayLoginTitle();
-	cout << "Enter username: ";
+	printCentered("Enter username: ",9);
 	cin >> username;
-	cout << "Enter password: ";
+	printCentered("Enter password: ", 11);
 	cin >> password;
 
 	return autehnticate(users, username, password);

@@ -306,12 +306,12 @@ void menu() {
                         if (roleSelected == 0) {  
                             system("cls");
                             if (isAdmin()) {
-                                cout << "Admin login successful!" << endl;
+                                printCentered("Admin login successful!", 15);
                                 adminMenu(riddlesHead, filename);
                                 running = true;  //Go back to the main menu
                             }
                             else {
-                                cout << "Log in failed" << endl;
+                                printCentered("Log in failed", 15);
                             }
                         }
                         else if (roleSelected == 1) {  //"USER" is selected
@@ -338,26 +338,23 @@ void menu() {
                                     system("cls");
                                     if (userSelected == 0) {  //"LOGIN" is selected
                                         if (userLogin(users)) {
-                                            cout << "Login successful!\n";
+                                            printCentered("Login successful!\n", 14);
                                             userRunning = false;
                                             startFilteredRiddle(riddlesHead);
                                           
                                         }
                                         else {
-                                            cout << "Failed to login!\n";
+                                            printCentered("Failed to login!\n", 14);
                                             system("pause");
                                         }
                                     }
                                         else if (userSelected == 1) {  //"SIGNUP" is selected
                                         int result = userRegister(users);
                                         if (result == 1) {
-                                            cout << "Registration successful!\n";
-                                        }
-                                        else if (result == 0) {
-                                            cout << "Username already exists.\n";
+                                            printCentered("Registration successful! \n", 16);
                                         }
                                         else if (result == -1) {
-                                            cout << "Error saving user data.\n";
+                                            printCentered("Error saving user data.\n", 16);
                                         }
                                         userRunning = false;
                                     }

@@ -29,20 +29,20 @@ int  userRegister(json& users) {
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);
 	displaySignUpTitle();
-	printCentered("Enter username: ", 9);
+	cout << "Enter username: ";
 	cin >> username;
 
 	for (const auto& user : users["users"]) {  //Iterate through the existing users
 		if (user["username"] == username) {
-			printCentered("Error: username already exists!", 11);
+			cout << "Error: username already exists!" << endl;
 			return 0;
 		}
 	}
 
 	bool validPassword = false;
 	while (!validPassword) {
-		printCentered("Enter password: ", 12);
-		cin >> password;
+		cout << "Enter password: ";
+		password = getHiddenPassword();
 
 		validPassword = isValidPassword(password);
 	}
@@ -54,12 +54,12 @@ int  userRegister(json& users) {
 	if (outFile.is_open()) {
 		outFile << users.dump(4);  //Write the updated object to the file with an indentation of 4 for readability
 		outFile.close();
-		printCentered("Successful registration! \n", 20);
+		cout << "Successful registration!" << endl;
 		
 		startFilteredRiddle(riddlesHead);
 	}
 	else {
-		printCentered("Error saving user data.", 14);
+		cout << "Error saving user data." << endl;
 		return -1;
 	}
 
@@ -72,10 +72,10 @@ bool userLogin(const json& users) {
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);
 	displayLoginTitle();
-	printCentered("Enter username: ",9);
+	cout << "Enter username: ";
 	cin >> username;
-	printCentered("Enter password: ", 11);
-	cin >> password;
+	cout << "Enter password: ";
+	password = getHiddenPassword();
 
 	return autehnticate(users, username, password);
 }

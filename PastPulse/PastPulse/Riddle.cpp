@@ -75,6 +75,7 @@ void saveRiddlesToFile(Riddle* head, string& filename) {
 }
 
 void addRiddle(Riddle* head, string& filename) {
+	displayRiddleTitle();
 	Riddle* newRiddle = new Riddle;
 	cin.ignore();
 	// Add riddle name
@@ -208,6 +209,7 @@ void addRiddle(Riddle* head, string& filename) {
 }
 
 void editRiddle(Riddle* head, string& filename) {
+	displayRiddleTitle();
 	if (head == nullptr) {
 		cout << "Empty list!" << endl;
 	}
@@ -354,6 +356,7 @@ void editRiddle(Riddle* head, string& filename) {
 }
 
 void deleteRiddle(Riddle* head, string& filename) {
+	displayRiddleTitle();
 	if (head == nullptr) {
 		cout << "Empty list" << endl;
 		return;
@@ -444,11 +447,15 @@ bool askHint(Riddle* riddle) {
 		if (userAnswer != riddle->answerHints[i]) {
 			setColor(RED,BLACK);
 			cout << "Wrong asnwer. The correct answer is: " << riddle->answerHints[i] << endl;
+			this_thread::sleep_for(chrono::seconds(2));
+			newLine(1);
 			resetColor();
 		}
 		else {
 			setColor(GREEN, BLACK);
-			cout << "Correct answer" << endl;
+			cout << "Correct answer: " << endl;
+			this_thread::sleep_for(chrono::seconds(2));
+			newLine(1);
 			resetColor();
 		}
 	}
@@ -458,7 +465,7 @@ bool askHint(Riddle* riddle) {
 void displayRiddles(Riddle* head) {
 	system("cls");
 	if (!head) {
-		cout << "There aren't any riddles";
+		cout << "There aren't any riddles!";
 		return;
 	}
 	// Pointer to the current list item
@@ -469,11 +476,15 @@ void displayRiddles(Riddle* head) {
 	printCentered(" \\___ \\ / _ \\| \\ \\ / / _ \\    | |  | '_ \\ / _ \\ |  _  /| |/ _ |/ _ | |/ _ \\", 8);
 	printCentered("  ____) | (_) | |\ V /  __/    | |  | | | |  __/ | | \\ \\| | (_| | (_| | |  __/", 9);
 	printCentered(" |_____/ \\___/|_| \\_/ \___|    |_|  |_| |_|\\___| |_|  \\_\\_|\\__,_|\\__,_|_|\\___|", 10);
-	newLine(2);
+	newLine(3);
 	setColor(YELLOW, BLACK);
 	cout << "Riddle Name: " << current->name << endl;
 	resetColor();
+	newLine(1);
 	cout << "Introduction: " << current->introduction << endl;
+	newLine(1);
+
+	this_thread::sleep_for(chrono::seconds(2));
 
 	askHint(current);
 	string finalAnswer;
@@ -490,14 +501,15 @@ void displayRiddles(Riddle* head) {
 		cout << "Your final answer is wrong. The correct answer is: " << current->answer << endl;
 		resetColor();
 	}
-	cout << "Fun facts for " << current->name;
+	system("clr");
+	displayFactsTitle();
+	//cout << "Fun facts for " << current->name;
 	for (size_t i = 0; i < current->facts.size(); i++)
 	{
 		cout << " - " << current->facts[i] << endl;
+		this_thread::sleep_for(chrono::seconds(1));
+
 	}
-	cin.ignore();
-	cout << "Period " << current->period << endl;
-	cout << "Complexity " << current->complexity << endl;
 	cin.ignore();
 	// Move to the next riddle in the list
 	current = current->next;

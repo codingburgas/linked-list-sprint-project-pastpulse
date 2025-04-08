@@ -215,12 +215,78 @@ void displaySignUpTitle() {
     newLine(1);
 }
 
+void displayRiddleTitle() {
+    system("cls");
+
+    setColor(YELLOW, BLACK);
+    printCentered("  _____  _____ _____  _____  _      ______ ", 1);
+    printCentered(" |  __ \\|_   _|  __ \\|  __ \\| |    |  ____|", 2);
+    printCentered(" | |__) | | | | |  | | |  | | |    | |__   ", 3);
+    printCentered(" |  _  /  | | | |  | | |  | | |    |  __|  ", 4);
+    printCentered(" | | \\ \\ _| |_| |__| | |__| | |____| |____ ", 5);
+    printCentered(" |_|  \\_\\_____|_____/|_____/|______|______|", 6);
+    printCentered("                                              ", 8);
+    resetColor();
+
+    newLine(1);
+}
+
+void displayAdminTitle() {
+    system("cls");
+
+    setColor(YELLOW, BLACK);
+    printCentered("           _____  __  __ _____ _   _ ", 1);
+    printCentered("     /\\   |  __ \\|  \\/  |_   _| \\ | |", 2);
+    printCentered("    /  \\  | |  | | \\  / | | | |  \\| |", 3);
+    printCentered("   / /\\ \\ | |  | | |\\/| | | | | . ` |", 4);
+    printCentered("  / ____ \\| |__| | |  | |_| |_| |\\  |", 5);
+    printCentered(" /_/    \\_\\_____/|_|  |_|_____|_| \\_|", 6);
+    printCentered("                                              ", 8);
+    resetColor();
+
+    newLine(1);
+}
+
+void displaySelectTitle() {
+    system("cls");
+
+    setColor(YELLOW, BLACK);
+    printCentered("    _____ ______ _      ______ _____ _______", 1);
+    printCentered("  / ____|  ____| |    |  ____/ ____|__   __|", 2);
+    printCentered("  | (___ | |__  | |    | |__ | |       | |  ", 3);
+    printCentered("  \\___ \\|  __| | |    |  __|| |       | |   ", 4);
+    printCentered("  ____) | |____| |____| |___| |____   | |   ", 5);
+    printCentered(" |_____/|______|______|______\\_____|  |_|   ", 6);
+    printCentered("                                              ", 8);
+    resetColor();
+
+    newLine(1);
+}
+
+void displayFactsTitle() {
+    system("cls");
+
+    setColor(YELLOW, BLACK);
+    printCentered(" ______      _____ _______ _____ ", 1);
+    printCentered("|  ____/\\   / ____|__   __/ ____|", 2);
+    printCentered("| |__ /  \\ | |       | | | (___  ", 3);
+    printCentered("|  __/ /\\ \\| |       | |  \\___ \\ ", 4);
+    printCentered(" | | / ____ \\ |____   | |  ____) |", 5);
+    printCentered(" |_|/_/    \\_\\_____|  |_| |_____/ ", 6);
+    printCentered("                                              ", 8);
+    resetColor();
+
+    newLine(1);
+}
+
+
 void adminMenu(Riddle* riddlesHead, string& filename) {
     int selected = 0;
     bool adminRunning = true;
 
     while (adminRunning) {
         system("cls");
+        displayAdminTitle();
 
         for (int i = 0; i < 4; i++) {
             if (i == selected)
@@ -308,12 +374,12 @@ void menu() {
                         if (roleSelected == 0) {  
                             system("cls");
                             if (isAdmin()) {
-                                printCentered("Admin login successful!", 15);
+                                cout << "Admin login successful!" << endl;
                                 adminMenu(riddlesHead, filename);
                                 running = true;  //Go back to the main menu
                             }
                             else {
-                                printCentered("Log in failed", 15);
+                                cout << "Log in failed" << endl;
                                 running = true;
                             }
                         }
@@ -341,23 +407,25 @@ void menu() {
                                     system("cls");
                                     if (userSelected == 0) {  //"LOGIN" is selected
                                         if (userLogin(users)) {
-                                            printCentered("Login successful!\n", 14);
+                                            cout << "Login successful!" << endl;
                                             userRunning = false;
+                                            system("clr");
+                                            displaySelectTitle();
                                             startFilteredRiddle(riddlesHead);
                                           
                                         }
                                         else {
-                                            printCentered("Failed to login!\n", 14);
+                                            cout << "Failed to login!" << endl;
                                             system("pause");
                                         }
                                     }
                                         else if (userSelected == 1) {  //"SIGNUP" is selected
                                         int result = userRegister(users);
                                         if (result == 1) {
-                                            printCentered("Registration successful! \n", 16);
+                                            cout << "Registration successful!" << endl;
                                         }
                                         else if (result == -1) {
-                                            printCentered("Error saving user data.\n", 16);
+                                            cout << "Error saving user data." << endl;
                                         }
                                         userRunning = false;
                                     }

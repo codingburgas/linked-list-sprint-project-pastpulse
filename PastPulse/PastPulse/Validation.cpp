@@ -13,7 +13,7 @@ bool autehnticate(const json& users, const string& username, const string& passw
 
 bool isValidPassword(const string& password) {
 	if (password.length() < 6) {
-		printCentered("Password must be at least 6 characters long.", 14);
+		cout << "Password must be at least 6 characters long." << endl;
 		return false;
 	}
 
@@ -34,10 +34,10 @@ bool isValidPassword(const string& password) {
 	}
 
 	if (!hasUpper || !hasDigit || !hasSpecial) {
-		printCentered("Password must contain at least: \n", 15);
-		printCentered("* one uppercase letter \n", 16);
-		printCentered("* one digit \n", 17);
-		printCentered("one special character(!, @, #, $, %) \n", 18);
+		cout << "Password must contain at least: \n";
+		cout << "* one uppercase letter \n";
+		cout << "* one digit \n";
+		cout << "one special character(!, @, #, $, %) \n";
 		return false;
 	}
 	return true;
@@ -80,7 +80,7 @@ bool isAdmin() {
 		}
 		else {
 			attempts++;
-			cout << "Incorrect username or password!";
+			cout << "Incorrect username or password!" << endl;
 		}
 	}
 	return false;

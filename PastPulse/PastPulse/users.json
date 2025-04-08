@@ -39,6 +39,10 @@
         {
             "password": "Proba-112",
             "username": "Novo123"
+        },
+        {
+            "password": "Pre-12345",
+            "username": "prob"
         }
     ]
 }

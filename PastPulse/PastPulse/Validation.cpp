@@ -44,6 +44,7 @@ bool isValidPassword(const string& password) {
 }
 
 bool isAdmin() {
+	displayLoginTitle();
 	string username;
 	string password = "admin-123";
 	int attempts = 0;

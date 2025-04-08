@@ -2,7 +2,7 @@
 #include "Program.h"
 #include "Validation.h"
 #include "Riddle.h"
-
+#include "Menu.h"
 json users;  //Global json object to store user data
 void initUsers() {
 	users = readUsersFromJson("users.json");
@@ -28,7 +28,7 @@ int  userRegister(json& users) {
 	string password;
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);
-	cout << "=== Registration ===\n";
+	displaySignUpTitle();
 	cout << "Enter username: ";
 	cin >> username;
 
@@ -70,7 +70,7 @@ bool userLogin(const json& users) {
 	string password;
 	string filename = "riddles.json";
 	Riddle* riddlesHead = loadRiddlesFromFile(filename);
-	cout << "=== Login ===\n";
+	displayLoginTitle();
 	cout << "Enter username: ";
 	cin >> username;
 	cout << "Enter password: ";

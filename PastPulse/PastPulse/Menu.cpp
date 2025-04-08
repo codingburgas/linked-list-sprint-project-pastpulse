@@ -48,17 +48,17 @@ void displayMenu(int selected) {
 
 
     if (selected == 0) {
-        setColor(RED, BLACK);
-        printCentered("===============", startY);
-        printCentered("=   >START<   =", startY + 1);
-        printCentered("===============", startY + 2);
+        setColor(LIGHT_PURPLE, BLACK);
+        printCentered("...............", startY);
+        printCentered(":  > START <  :", startY + 1);
+        printCentered("...............", startY + 2);
         resetColor();
     }
     else {
-        setColor(LIGHT_RED, BLACK);
-        printCentered("===============", startY);
-        printCentered("=    START    =", startY + 1);
-        printCentered("===============", startY + 2);
+        setColor(GRAY, BLACK);
+        printCentered("...............", startY);
+        printCentered(":    START    :", startY + 1);
+        printCentered("...............", startY + 2);
         resetColor();
     }
 
@@ -66,17 +66,17 @@ void displayMenu(int selected) {
 
 
     if (selected == 1) {
-        setColor(RED, BLACK);
-        printCentered("===============", leaveY);
-        printCentered("=   >LEAVE<   =", leaveY + 1);
-        printCentered("===============", leaveY + 2);
+        setColor(LIGHT_PURPLE, BLACK);
+        printCentered("...............", leaveY);
+        printCentered(":  > LEAVE <  :", leaveY + 1);
+        printCentered("...............", leaveY + 2);
         resetColor();
     }
     else {
-        setColor(LIGHT_RED, BLACK);
-        printCentered("===============", leaveY);
-        printCentered("=    LEAVE    =", leaveY + 1);
-        printCentered("===============", leaveY + 2);
+        setColor(GRAY, BLACK);
+        printCentered("...............", leaveY);
+        printCentered(":    LEAVE    :", leaveY + 1);
+        printCentered("...............", leaveY + 2);
         resetColor();
     }
 }
@@ -99,17 +99,17 @@ void displayRoleMenu(int selected) {
     int userOptionY = 12;
 
     if (selected == 0) {
-        setColor(LIGHT_YELLOW, BLACK);
-        printCentered("===============", adminOptionY);
-        printCentered("=   >ADMIN<   =", adminOptionY + 1);
-        printCentered("===============", adminOptionY + 2);
+        setColor(LIGHT_BLUE, BLACK);
+        printCentered("...............", adminOptionY);
+        printCentered(":  > ADMIN <  :", adminOptionY + 1);
+        printCentered("...............", adminOptionY + 2);
         resetColor();
     }
     else {
-        setColor(BRIGHT_WHITE, BLACK);
-        printCentered("===============", adminOptionY);
-        printCentered("=    ADMIN    =", adminOptionY + 1);
-        printCentered("===============", adminOptionY + 2);
+        setColor(GRAY, BLACK);
+        printCentered("...............", adminOptionY);
+        printCentered(":    ADMIN    :", adminOptionY + 1);
+        printCentered("...............", adminOptionY + 2);
         resetColor();
     }
 
@@ -117,17 +117,17 @@ void displayRoleMenu(int selected) {
 
 
     if (selected == 1) {
-        setColor(LIGHT_YELLOW, BLACK);
-        printCentered("===============", userOptionY);
-        printCentered("=   >USER<   =", userOptionY + 1);
-        printCentered("===============", userOptionY + 2);
+        setColor(LIGHT_BLUE, BLACK);
+        printCentered("...............", userOptionY);
+        printCentered(":  > USER <   :", userOptionY + 1);
+        printCentered("...............", userOptionY + 2);
         resetColor();
     }
     else {
-        setColor(BRIGHT_WHITE, BLACK);
-        printCentered("===============", userOptionY);
-        printCentered("=    USER    =", userOptionY + 1);
-        printCentered("===============", userOptionY + 2);
+        setColor(GRAY, BLACK);
+        printCentered("...............", userOptionY);
+        printCentered(":    USER    :", userOptionY + 1);
+        printCentered("...............", userOptionY + 2);
         resetColor();
     }
 }
@@ -152,16 +152,16 @@ void displayUserOptions(int selected) {
 
     if (selected == 0) {
         setColor(LIGHT_YELLOW, BLACK);
-        printCentered("===============", loginOptionY);
-        printCentered("=   >LOGIN<   =", loginOptionY + 1);
-        printCentered("===============", loginOptionY + 2);
+        printCentered("...............", loginOptionY);
+        printCentered(":  > LOGIN <  :", loginOptionY + 1);
+        printCentered("...............", loginOptionY + 2);
         resetColor();
     }
     else {
-        setColor(BRIGHT_WHITE, BLACK);
-        printCentered("===============", loginOptionY);
-        printCentered("=    LOGIN    =", loginOptionY + 1);
-        printCentered("===============", loginOptionY + 2);
+        setColor(GRAY, BLACK);
+        printCentered("...............", loginOptionY);
+        printCentered(":    LOGIN    :", loginOptionY + 1);
+        printCentered("...............", loginOptionY + 2);
         resetColor();
     }
 
@@ -169,19 +169,52 @@ void displayUserOptions(int selected) {
 
     if (selected == 1) {
         setColor(LIGHT_YELLOW, BLACK);
-        printCentered("===============", registerOptionY);
-        printCentered("=   >SIGNUP<  =", registerOptionY + 1);
-        printCentered("===============", registerOptionY + 2);
+        printCentered("...............", registerOptionY);
+        printCentered(":  > SIGNUP < :", registerOptionY + 1);
+        printCentered("...............", registerOptionY + 2);
         resetColor();
     }
     else {
-        setColor(BRIGHT_WHITE, BLACK);
-        printCentered("===============", registerOptionY);
-        printCentered("=   SIGNUP    =", registerOptionY + 1);
-        printCentered("===============", registerOptionY + 2);
+        setColor(GRAY, BLACK);
+        printCentered("...............", registerOptionY);
+        printCentered(":    SIGNUP   :", registerOptionY + 1);
+        printCentered("...............", registerOptionY + 2);
         resetColor();
     }
 }
+
+void displayLoginTitle() {
+    system("cls");
+
+    setColor(YELLOW, BLACK);
+    printCentered("   __       _____     ______ _______ __   __  ", 1);
+    printCentered("  |  |    /  ___  \\ /  _____|__   __ |  \\ |  |  ", 2);
+    printCentered("  |  |   |  |   |  |  | ____   |  |  |   \\|  |  ", 3);
+    printCentered("  |  |   |  |   |  |  ||_   |  |  |  |  .    |  ", 4);
+    printCentered("  |  |___|  |___|  |  |__|  |__|  |__|  |\\   |  ", 5);
+    printCentered(" |______ \\_______/ \\_______|________|__| \\__|  ", 6);
+    printCentered("                                              ", 8);
+    resetColor();
+
+    newLine(1);
+}
+
+void displaySignUpTitle() {
+    system("cls");
+
+    setColor(YELLOW, BLACK);
+    printCentered("      ______ ______ _____ _   _ _    _ _____", 1);
+    printCentered("      / _____|_  __/  ____| \\ | | |  | |  __ \\", 2);
+    printCentered("     |  (__    | ||  |  __|  \\| | |  | | |__) |", 3);
+    printCentered("     \\___  \\  | ||  | |_ | . ` | |  | |  ___/", 4);
+    printCentered(" _____) |_| ||  |__| | |\\  | |__| | |", 5);
+    printCentered("|______/|_____\\______|_| \\_|\\____/|_|", 6);
+    printCentered("                                              ", 8);
+    resetColor();
+
+    newLine(1);
+}
+
 
 void adminMenu(Riddle* riddlesHead, string& filename) {
     int selected = 0;

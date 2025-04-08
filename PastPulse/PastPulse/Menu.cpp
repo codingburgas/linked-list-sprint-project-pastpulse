@@ -215,7 +215,6 @@ void displaySignUpTitle() {
     newLine(1);
 }
 
-
 void adminMenu(Riddle* riddlesHead, string& filename) {
     int selected = 0;
     bool adminRunning = true;
@@ -225,9 +224,9 @@ void adminMenu(Riddle* riddlesHead, string& filename) {
 
         for (int i = 0; i < 4; i++) {
             if (i == selected)
-                cout << "> ";  
+                cout << "> ";
             else
-                cout << "  ";  
+                cout << "  ";
 
             if (i == 0) cout << "Add Riddle\n";
             if (i == 1) cout << "Edit Riddle\n";
@@ -237,21 +236,24 @@ void adminMenu(Riddle* riddlesHead, string& filename) {
 
         char key = _getch(); //Read a single character
 
-        if (key == 72) {  
+        if (key == 72) {
             selected = (selected > 0) ? selected - 1 : 3;
         }
-        else if (key == 80) {  
+        else if (key == 80) {
             selected = (selected < 3) ? selected + 1 : 0;
         }
         else if (key == 13) { //Enter
             switch (selected) {
             case 0:
+                system("cls");
                 addRiddle(riddlesHead, filename);
                 break;
             case 1:
+                system("cls");
                 editRiddle(riddlesHead, filename);
                 break;
             case 2:
+                system("cls");
                 deleteRiddle(riddlesHead, filename);
                 break;
             case 3:
@@ -312,6 +314,7 @@ void menu() {
                             }
                             else {
                                 printCentered("Log in failed", 15);
+                                running = true;
                             }
                         }
                         else if (roleSelected == 1) {  //"USER" is selected

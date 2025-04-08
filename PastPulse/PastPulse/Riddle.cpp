@@ -131,7 +131,7 @@ void addRiddle(Riddle* head, string& filename) {
 		newRiddle->answerHints.push_back(answerHint);
 	}
 	// Add riddle final answer
-	cout << "Write the falid final answer: ";
+	cout << "Write the valid final answer: ";
 	while (true) {
 		getline(cin, newRiddle->answer);
 		if (!newRiddle->answer.empty()) {
@@ -185,11 +185,10 @@ void addRiddle(Riddle* head, string& filename) {
 			cout << "Try again: ";
 		}
 	}
-
-	cout << "Enter complexity from 1 to 10: " << endl;
+	cout << "Enter complexity from 1 to 3: " << endl;
 	while (true) {
 		cin >> newRiddle->complexity;
-		if (cin.fail() || newRiddle->complexity > 10 || newRiddle->complexity < 1) {
+		if (cin.fail() || newRiddle->complexity > 3 || newRiddle->complexity < 1) {
 			cin.clear();
 			cin.ignore(1000, '\n');
 			cout << "Invalid input!";

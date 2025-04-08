@@ -43,22 +43,44 @@ bool isValidPassword(const string& password) {
 	return true;
 }
 
+string getHiddenPassword() {
+	string password;
+	char ch;
+	while (true) {
+		ch = _getch();
+		if (ch == 13) break;
+		else if (ch == 8) {
+			if (!password.empty()) {
+				cout << "\b \b";
+				password.pop_back();
+			}
+		}
+		else {
+			password += ch;
+			cout << '*';
+		}
+	}
+	cout << endl;
+	return password;
+}
+
 bool isAdmin() {
 	displayLoginTitle();
 	string username;
-	string password = "admin-123";
 	int attempts = 0;
-	while (attempts < 3) {  //Allow up to 3 login attempts
-		printCentered("Enter username: ", 9);
+
+	while (attempts < 3) {
+		cout << "Enter admin username: ";
 		cin >> username;
-		printCentered("Enter password: ", 11);
-		cin >> password;
+		cout << "Enter admin password: ";
+		string password = getHiddenPassword();
+
 		if (adminLogin(username, password)) {
 			return true;
 		}
 		else {
 			attempts++;
-			printCentered("Incorrect password!", 13);
+			cout << "Incorrect username or password!";
 		}
 	}
 	return false;

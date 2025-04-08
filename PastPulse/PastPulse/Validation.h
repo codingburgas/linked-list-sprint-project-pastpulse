@@ -4,3 +4,4 @@
 bool isValidPassword(const string& password);
 bool autehnticate(const json& users, const string& username, const string& password);
 bool isAdmin();
+string getHiddenPassword();

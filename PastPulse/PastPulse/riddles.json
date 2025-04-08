@@ -1,5 +1,27 @@
 [
     {
+        "answer": "p",
+        "answerHints": [
+            "p",
+            "p",
+            "p",
+            "p"
+        ],
+        "complexity": 2,
+        "facts": [
+            "p"
+        ],
+        "hints": [
+            "p",
+            "p",
+            "p",
+            "p"
+        ],
+        "introduction": "p",
+        "name": "p",
+        "period": "After WWI"
+    },
+    {
         "answer": "September Uprising",
         "answerHints": [
             "1923",
@@ -142,5 +164,27 @@
         "introduction": "At the end of the 19th century, in the heart of the Balkans, an uprising is planned, which shakes the veins of an empire. Despite the bloody suppression, this rebellion forever changed the destiny of a people.",
         "name": "Echo of Freedom",
         "period": "Before"
+    },
+    {
+        "answer": "2",
+        "answerHints": [
+            "p",
+            "p",
+            "p",
+            "2"
+        ],
+        "complexity": 3,
+        "facts": [
+            "p"
+        ],
+        "hints": [
+            "p",
+            "p",
+            "p",
+            "p"
+        ],
+        "introduction": "p",
+        "name": "p",
+        "period": "Before WWI"
     }
 ]

@@ -11,6 +11,7 @@
 #include <chrono>
 #include <thread>
 #include <windows.h>
+#include <sstream>
 
 using namespace std;
 using json = nlohmann::json;

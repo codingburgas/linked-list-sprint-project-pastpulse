@@ -3,36 +3,7 @@
 #include "Admin.h"
 #include "Riddle.h"
 #include "Validation.h"
-
-
-enum ConsoleColor {
-    BLACK = 0,
-    BLUE = 1,
-    GREEN = 2,
-    AQUA = 3,
-    RED = 4,
-    PURPLE = 5,
-    YELLOW = 6,
-    WHITE = 7,
-    GRAY = 8,
-    LIGHT_BLUE = 9,
-    LIGHT_GREEN = 10,
-    LIGHT_AQUA = 11,
-    LIGHT_RED = 12,
-    LIGHT_PURPLE = 13,
-    LIGHT_YELLOW = 14,
-    BRIGHT_WHITE = 15
-};
-
-HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); //Get the standard output handle
-
-void setColor(ConsoleColor text, ConsoleColor background = BLACK) {
-    SetConsoleTextAttribute(hConsole, text + (background << 4));
-}
-
-void resetColor() {
-    SetConsoleTextAttribute(hConsole, WHITE); //Reset the console text color to white
-}
+#include "Colors.h"
 
 using json = nlohmann::json;  //Use the nlohmann json namespace
 using namespace std;
@@ -61,7 +32,7 @@ void newLine(int newLines)
 }
 void displayMenu(int selected) {
     system("cls");
-    setColor(YELLOW);
+    setColor(YELLOW, BLACK);
     printCentered("  _____          _   _____       _           ", 1);
     printCentered(" |  __ \\        | | |  __ \\     | |          ", 2);
     printCentered(" | |__) __ _ ___| |_| |__) _   _| |___  ___  ", 3);
@@ -77,14 +48,14 @@ void displayMenu(int selected) {
 
 
     if (selected == 0) {
-        setColor(RED);
+        setColor(RED, BLACK);
         printCentered("===============", startY);
         printCentered("=   >START<   =", startY + 1);
         printCentered("===============", startY + 2);
         resetColor();
     }
     else {
-        setColor(LIGHT_RED);
+        setColor(LIGHT_RED, BLACK);
         printCentered("===============", startY);
         printCentered("=    START    =", startY + 1);
         printCentered("===============", startY + 2);
@@ -95,14 +66,14 @@ void displayMenu(int selected) {
 
 
     if (selected == 1) {
-        setColor(RED);
+        setColor(RED, BLACK);
         printCentered("===============", leaveY);
         printCentered("=   >LEAVE<   =", leaveY + 1);
         printCentered("===============", leaveY + 2);
         resetColor();
     }
     else {
-        setColor(LIGHT_RED);
+        setColor(LIGHT_RED, BLACK);
         printCentered("===============", leaveY);
         printCentered("=    LEAVE    =", leaveY + 1);
         printCentered("===============", leaveY + 2);
@@ -113,7 +84,7 @@ void displayMenu(int selected) {
 void displayRoleMenu(int selected) {
     system("cls");
 
-    setColor(YELLOW); 
+    setColor(YELLOW, BLACK);
     printCentered("   _____      _           _     _____       _      ", 1);
     printCentered("  / ____|    | |         | |   |  __ \\     | |     ", 2);
     printCentered(" | (___   ___| | ___  ___| |_  | |__) |___ | | ___ ", 3);
@@ -128,14 +99,14 @@ void displayRoleMenu(int selected) {
     int userOptionY = 12;
 
     if (selected == 0) {
-        setColor(LIGHT_YELLOW);
+        setColor(LIGHT_YELLOW, BLACK);
         printCentered("===============", adminOptionY);
         printCentered("=   >ADMIN<   =", adminOptionY + 1);
         printCentered("===============", adminOptionY + 2);
         resetColor();
     }
     else {
-        setColor(BRIGHT_WHITE);
+        setColor(BRIGHT_WHITE, BLACK);
         printCentered("===============", adminOptionY);
         printCentered("=    ADMIN    =", adminOptionY + 1);
         printCentered("===============", adminOptionY + 2);
@@ -146,14 +117,14 @@ void displayRoleMenu(int selected) {
 
 
     if (selected == 1) {
-        setColor(LIGHT_YELLOW);
+        setColor(LIGHT_YELLOW, BLACK);
         printCentered("===============", userOptionY);
         printCentered("=   >USER<   =", userOptionY + 1);
         printCentered("===============", userOptionY + 2);
         resetColor();
     }
     else {
-        setColor(BRIGHT_WHITE);
+        setColor(BRIGHT_WHITE, BLACK);
         printCentered("===============", userOptionY);
         printCentered("=    USER    =", userOptionY + 1);
         printCentered("===============", userOptionY + 2);
@@ -163,15 +134,15 @@ void displayRoleMenu(int selected) {
 void displayUserOptions(int selected) {
     system("cls");
 
-    setColor(YELLOW);
-    printCentered("  _    _                     ____        _   _             ", 1);
-    printCentered(" | |  | |                   |  _ \\      | | (_)            ", 2);
-    printCentered(" | |  | |_ __   ___ _ __    | |_) | ___ | |_ _ _ __   __ _ ", 3);
-    printCentered(" | |  | | '_ \\ / _ \\ '__|   |  _ < / _ \\| __| | '_ \\ / _` |", 4);
-    printCentered(" | |__| | | | |  __/ |      | |_) | (_) | |_| | | | | (_| |", 5);
-    printCentered("  \\____/|_| |_|\\___|_|      |____/ \\___/ \\__|_|_| |_|\\__, |", 6);
-    printCentered("                                                      __/ |", 7);
-    printCentered("                                                     |___/ ", 8);
+    setColor(YELLOW, BLACK);
+    printCentered("   _    _                  ____        _   _                 ", 1);
+    printCentered("  | |  | |                / __ \\      | | (_)                ", 2);
+    printCentered("  | |  | |___  ___ _ __  | |  | |_ __ | |_ _  ___  _ __  ___ ", 3);
+    printCentered("  | |  | / __|/ _ \\ '__| | |  | | '_ \\| __| |/ _ \\| '_ \\/ __|", 4);
+    printCentered("  | |__| \\__ \\  __/ |    | |__| | |_) | |_| | (_) | | | \\__ \\", 5);
+    printCentered("   \\____/|___/\\___|_|     \\____/| .__/ \\__|_|\\___/|_| |_|___/", 6);
+    printCentered("                                | |                          ", 7);
+    printCentered("                                |_|                          ", 8);
     resetColor();
 
     newLine(1);
@@ -180,14 +151,14 @@ void displayUserOptions(int selected) {
     int registerOptionY = 14;
 
     if (selected == 0) {
-        setColor(LIGHT_YELLOW);
+        setColor(LIGHT_YELLOW, BLACK);
         printCentered("===============", loginOptionY);
         printCentered("=   >LOGIN<   =", loginOptionY + 1);
         printCentered("===============", loginOptionY + 2);
         resetColor();
     }
     else {
-        setColor(BRIGHT_WHITE);
+        setColor(BRIGHT_WHITE, BLACK);
         printCentered("===============", loginOptionY);
         printCentered("=    LOGIN    =", loginOptionY + 1);
         printCentered("===============", loginOptionY + 2);
@@ -197,14 +168,14 @@ void displayUserOptions(int selected) {
     newLine(1);
 
     if (selected == 1) {
-        setColor(LIGHT_YELLOW);
+        setColor(LIGHT_YELLOW, BLACK);
         printCentered("===============", registerOptionY);
         printCentered("=   >SIGNUP<  =", registerOptionY + 1);
         printCentered("===============", registerOptionY + 2);
         resetColor();
     }
     else {
-        setColor(BRIGHT_WHITE);
+        setColor(BRIGHT_WHITE, BLACK);
         printCentered("===============", registerOptionY);
         printCentered("=   SIGNUP    =", registerOptionY + 1);
         printCentered("===============", registerOptionY + 2);

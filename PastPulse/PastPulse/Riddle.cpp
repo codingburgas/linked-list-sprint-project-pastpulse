@@ -2,6 +2,7 @@
 #include "Validation.h"
 #include "Menu.h"
 #include "Simulator.h"
+#include "Colors.h"
 
 bool openFile(ifstream& file, const string& filename) {
 	file.open(filename);
@@ -440,10 +441,14 @@ bool askHint(Riddle* riddle) {
 		}
 		getline(cin, userAnswer);
 		if (userAnswer != riddle->answerHints[i]) {
+			setColor(RED,BLACK);
 			cout << "Wrong asnwer. The correct answer is: " << riddle->answerHints[i] << endl;
+			resetColor();
 		}
 		else {
+			setColor(GREEN, BLACK);
 			cout << "Correct answer" << endl;
+			resetColor();
 		}
 	}
 	return true;
@@ -457,81 +462,85 @@ void displayRiddles(Riddle* head) {
 	}
 	// Pointer to the current list item
 	Riddle* current = head;
-		printCentered("  _________      .__                ___________.__             __________.__    .___  .___.__          ", 5);
-		printCentered(" /   _____/ ____ |  |___  __ ____   \\__    ___/|  |__   ____   \\______   \\__| __| _/__| _/|  |   ____  ", 6);
-		printCentered(" \\_____  \\ /  _ \\|  |\\  \\/ // __ \\    |    |   |  |  \_/ __ \\   |       _/  |/ __ |/ __ | |  | _/ __ \\ ", 7);
-		printCentered(" /        (  <_> )  |_\\   /\\  ___/    |    |   |   Y  \\  ___/   |    |   \\  / /_/ / /_/ | |  |_\\  ___/ ", 8);
-		printCentered("/_______  /\____/|____/\\_/  \\___  >   |____|   |___|  /\\___  >  |____|_  /__\\____ \\____ | |____/\\___  >", 9);
-		printCentered("        \\/                      \\/                  \\/     \\/          \\/        \\/    \\/           \\/ ", 10);
-		newLine(2);
-		cout << "Riddle Name: " << current->name << endl;
-		cout << "Introduction: " << current->introduction << endl;
-		
-		askHint(current);
-		string finalAnswer;
-			cout << "Correct Answer (RIDDLE): ";
-			getline(cin, finalAnswer);
+	printCentered("   _____       _             _______ _            _____  _     _     _ _      ", 5);
+	printCentered("  / ____|     | |           |__   __| |          |  __ \\(_)   | |   | | |     ", 6);
+	printCentered(" | (___   ___ | |_   _____     | |  | |__   ___  | |__) |_  __| | __| | | ___ ", 7);
+	printCentered("  \\___ \\ / _ \\| \\ \\ / / _ \\    | |  | '_ \\ / _ \\ |  _  /| |/ _ |/ _ | |/ _ \\", 8);
+	printCentered("  ____) | (_) | |\ V /  __/    | |  | | | |  __/ | | \\ \\| | (_| | (_| | |  __/", 9);
+	printCentered(" |_____/ \\___/|_| \\_/ \___|    |_|  |_| |_|\\___| |_|  \\_\\_|\\__,_|\\__,_|_|\\___|", 10);
+	newLine(2);
+	cout << "Riddle Name: " << current->name << endl;
+	cout << "Introduction: " << current->introduction << endl;
 
-			if (finalAnswer == current->answer) {
-				cout << "Congratulations, your final answer is correct!" << endl;
+	askHint(current);
+	string finalAnswer;
+	cout << "Correct Answer (RIDDLE): ";
+	getline(cin, finalAnswer);
+
+	if (finalAnswer == current->answer) {
+		setColor(GREEN, BLACK);
+		cout << "Congratulations, your final answer is correct!" << endl;
+		resetColor();
+	}
+	else {
+		setColor(RED,BLACK);
+		cout << "Your final answer is wrong. The correct answer is: " << current->answer << endl;
+		resetColor();
+	}
+	cout << "Fun facts for " << current->name;
+	for (size_t i = 0; i < current->facts.size(); i++)
+	{
+		cout << " - " << current->facts[i] << endl;
+	}
+	cin.ignore();
+	cout << "Period " << current->period << endl;
+	cout << "Complexity " << current->complexity << endl;
+	cin.ignore();
+	// Move to the next riddle in the list
+	current = current->next;
+	newLine(2);
+	const char* options[] = { "Lead this uprising", "Solve new riddle", "Go back to the main menu" };
+	int selected = 0;
+	int totalOptions = 3;
+
+	while (true) {
+		system("cls");
+		printCentered("Use Arrow Keys to Navigate and Enter to Select", 5);
+		for (int i = 0; i < totalOptions; i++) {
+			if (i == selected) {
+				printCentered("> " + string(options[i]), 7 + i);
 			}
 			else {
-				cout << "Your final answer is wrong. The correct answer is: " << current->answer << endl;
-			}
-		cout << "Fun facts for " << current->name;
-		for (size_t i = 0; i < current->facts.size(); i++)
-		{
-			cout << " - " << current->facts[i] << endl;
-		}
-		cin.ignore();
-		cout << "Period " << current->period << endl;
-		cout << "Complexity " << current->complexity << endl;
-		cin.ignore();
-		// Move to the next riddle in the list
-		current = current->next;
-		// Add an empty row
-		newLine(2);
-		// Options for actions after the user solves the riddle
-		const char* options[] = { "Lead this uprising", "Solve new riddle", "Go back to the main menu" };
-		int selected = 0;
-		int totalOptions = 3;
-
-		while (true) {
-			system("cls");
-			printCentered("Use Arrow Keys to Navigate and Enter to Select", 5);
-			for (int i = 0; i < totalOptions; i++) {
-				if (i == selected) {
-					printCentered("> " + string(options[i]), 7 + i);
-				}
-				else {
-					printCentered("  " + string(options[i]), 7 + i);
-				}
-			}
-
-			char key = _getch();
-
-			if (key == 72) { // Up arrow key
-				if (selected > 0) selected--;
-			}
-			else if (key == 80) { // Down arrow key
-				if (selected < totalOptions - 1) selected++;
-			}
-			else if (key == 13) { // Enter key
-				switch (selected) {
-				case 0:
-					leading();
-					break;
-				case 1:
-					system("cls");
-					startFilteredRiddle(head);
-					break;
-				case 2:
-					menu();
-					break;
-				}
+				printCentered("  " + string(options[i]), 7 + i);
 			}
 		}
+
+		char key = _getch();
+
+		if (key == 72) { // Up arrow key
+			if (selected > 0) selected--;
+		}
+		else if (key == 80) { // Down arrow key
+			if (selected < totalOptions - 1) selected++;
+		}
+		else if (key == 13) { // Enter key
+			switch (selected) {
+			case 0:
+				leading();
+				break;
+			case 1:
+				system("cls");
+				startFilteredRiddle(head);
+				break;
+			case 2:
+				menu();
+				break;
+			}
+		}
+	}
+
 }
+
 
 void startFilteredRiddle(Riddle* riddlesHead) {
 	string chosenPeriod;

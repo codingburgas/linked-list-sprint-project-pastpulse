@@ -126,6 +126,16 @@ void solveTheRiddleText()
     printCentered("  ____) | (_) | |\ V /  __/    | |  | | | |  __/ | | \\ \\| | (_| | (_| | |  __/", 9);
     printCentered(" |_____/ \\___/|_| \\_/ \___|    |_|  |_| |_|\\___| |_|  \\_\\_|\\__,_|\\__,_|_|\\___|", 10);
 }
+
+void leadUsToWin()
+{
+    printCentered("  _                    _               _         __          ___       ", 1);
+    printCentered(" | |                  | |             | |        \\ \\        / (_)      ", 2);
+    printCentered(" | |     ___  __ _  __| |  _   _ ___  | |_ ___    \\ \\  /\\  / / _ _ __  ", 3);
+    printCentered(" | |    / _ \\/ _` |/ _` | | | | / __| | __/ _ \\    \\ \\/  \\/ / | | '_ \\ ", 4);
+    printCentered(" | |___|  __/ (_| | (_| | | |_| \\__ \\ | || (_) |    \\  /\\  /  | | | | |", 5);
+    printCentered(" |______\\___|\\__,_|\\__,_|  \\__,_|___/  \\__\\___/      \\/  \\/   |_|_| |_|", 6);
+}
 void options(string option1,string option2,int selected,int y1,int y2)
 {
     string contentSelectedFirst = ":  > " + option1 + " <  :";

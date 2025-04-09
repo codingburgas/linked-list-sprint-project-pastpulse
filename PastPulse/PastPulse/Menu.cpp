@@ -240,7 +240,7 @@ void menu() {
                                         if (userLogin(users)) {
                                             cout << "Login successful!" << endl;
                                             userRunning = false;
-                                            system("clr");
+                                            system("cls");
                                             displaySelectTitle();
                                             startFilteredRiddle(riddlesHead);
                                           

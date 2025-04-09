@@ -491,13 +491,15 @@ void displayRiddles(Riddle* head) {
 		setColor(GREEN, BLACK);
 		cout << "Congratulations, your final answer is correct!" << endl;
 		resetColor();
+		this_thread::sleep_for(chrono::seconds(3));
 	}
 	else {
 		setColor(RED,BLACK);
 		cout << "Your final answer is wrong. The correct answer is: " << current->answer << endl;
 		resetColor();
+		this_thread::sleep_for(chrono::seconds(3));
 	}
-	system("clr");
+	system("cls");
 	displayFactsTitle();
 	//cout << "Fun facts for " << current->name;
 	for (size_t i = 0; i < current->facts.size(); i++)

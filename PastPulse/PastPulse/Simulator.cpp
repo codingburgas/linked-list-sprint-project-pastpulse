@@ -3,6 +3,7 @@
 #include "Riddle.h"
 #include "Questions.h"
 #include "Colors.h"
+#include "DrawText.h"
 
 void leading() {
     system("cls");
@@ -12,12 +13,7 @@ void leading() {
     Riddle* riddlesHead = loadRiddlesFromFile(filename);
     
     vector<Question> questions = loadQuestions("questions.txt");
-    printCentered("  _                    _               _         __          ___       ", 1);
-    printCentered(" | |                  | |             | |        \\ \\        / (_)      ", 2);
-    printCentered(" | |     ___  __ _  __| |  _   _ ___  | |_ ___    \\ \\  /\\  / / _ _ __  ", 3);
-    printCentered(" | |    / _ \\/ _` |/ _` | | | | / __| | __/ _ \\    \\ \\/  \\/ / | | '_ \\ ", 4);
-    printCentered(" | |___|  __/ (_| | (_| | | |_| \\__ \\ | || (_) |    \\  /\\  /  | | | | |", 5);
-    printCentered(" |______\\___|\\__,_|\\__,_|  \\__,_|___/  \\__\\___/      \\/  \\/   |_|_| |_|", 6);
+    leadUsToWin();
      
     newLine(2);
     for (const auto& q : questions) {

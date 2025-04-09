@@ -25,7 +25,11 @@ The goal of the project is to combine fun with education, making history more ac
 2. First, you choose which period you want to be given a riddle from - before or after the First World War.
 3. Then you choose the difficulty you want from 1 to 3 and you get your first clue. The clue is given in the form of a question and you have to answer it.
 4. After answering the 4 questions you have to enter the answer to the riddle - what is the uprising? Three interesting facts about this uprising appear, and then you can choose to solve another puzzle or switch to the simulator.
-
+# ⚔️ Simulator mode
+1. You become the leader of this uprising and you have to make decisions about the uprising - how big your army will be or how many weapons you will have.
+2. Several questions are asked and there are three answers to each.
+3. You answer to each one and in the end it comes back to you whether the uprising will be successful or not.
+<br>
 
 
 # 🛠️💻 Languages, Frameworks, and Tools

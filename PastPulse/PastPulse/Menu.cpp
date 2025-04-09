@@ -4,6 +4,7 @@
 #include "Riddle.h"
 #include "Validation.h"
 #include "Colors.h"
+#include "DrawText.h"
 
 using json = nlohmann::json;  //Use the nlohmann json namespace
 using namespace std;
@@ -32,169 +33,39 @@ void newLine(int newLines)
 }
 void displayMenu(int selected) {
     system("cls");
-    setColor(YELLOW, BLACK);
-    printCentered("  _____          _   _____       _           ", 1);
-    printCentered(" |  __ \\        | | |  __ \\     | |          ", 2);
-    printCentered(" | |__) __ _ ___| |_| |__) _   _| |___  ___  ", 3);
-    printCentered(" |  ___/ _` / __| __|  ___| | | | / __|/ _ \\ ", 4);
-    printCentered(" | |  | (_| \\__ \\ |_| |   | |_| | \\__ \\  __/ ", 5);
-    printCentered(" |_|   \\__,_|___/\\__|_|    \\__,_|_|___/\\___| ", 6);
-    resetColor();
+
+    pastPulse();
 
     newLine(2);
 
-    int startY = 9;
-    int leaveY = 13;
+    options("START","LEAVE",selected,10,14);
 
 
-    if (selected == 0) {
-        setColor(LIGHT_PURPLE, BLACK);
-        printCentered("...............", startY);
-        printCentered(":  > START <  :", startY + 1);
-        printCentered("...............", startY + 2);
-        resetColor();
-    }
-    else {
-        setColor(GRAY, BLACK);
-        printCentered("...............", startY);
-        printCentered(":    START    :", startY + 1);
-        printCentered("...............", startY + 2);
-        resetColor();
-    }
-
-    newLine(1);
-
-
-    if (selected == 1) {
-        setColor(LIGHT_PURPLE, BLACK);
-        printCentered("...............", leaveY);
-        printCentered(":  > LEAVE <  :", leaveY + 1);
-        printCentered("...............", leaveY + 2);
-        resetColor();
-    }
-    else {
-        setColor(GRAY, BLACK);
-        printCentered("...............", leaveY);
-        printCentered(":    LEAVE    :", leaveY + 1);
-        printCentered("...............", leaveY + 2);
-        resetColor();
-    }
 }
 
 void displayRoleMenu(int selected) {
     system("cls");
 
-    setColor(YELLOW, BLACK);
-    printCentered("   _____      _           _     _____       _      ", 1);
-    printCentered("  / ____|    | |         | |   |  __ \\     | |     ", 2);
-    printCentered(" | (___   ___| | ___  ___| |_  | |__) |___ | | ___ ", 3);
-    printCentered("  \\___ \\ / _ \\ |/ _ \\/ __| __| |  _  // _ \\| |/ _ \\", 4);
-    printCentered("  ____) |  __/ |  __/ (__| |_  | | \\ \\ (_) | |  __/", 5);
-    printCentered(" |_____/ \\___|_|\\___|\\___|\\__| |_|  \\_\\___/|_|\\___|", 6);
-    resetColor();
+    selectRole();
 
     newLine(1);
 
-    int adminOptionY = 9;
-    int userOptionY = 12;
-
-    if (selected == 0) {
-        setColor(LIGHT_BLUE, BLACK);
-        printCentered("...............", adminOptionY);
-        printCentered(":  > ADMIN <  :", adminOptionY + 1);
-        printCentered("...............", adminOptionY + 2);
-        resetColor();
-    }
-    else {
-        setColor(GRAY, BLACK);
-        printCentered("...............", adminOptionY);
-        printCentered(":    ADMIN    :", adminOptionY + 1);
-        printCentered("...............", adminOptionY + 2);
-        resetColor();
-    }
-
-    newLine(1);
-
-
-    if (selected == 1) {
-        setColor(LIGHT_BLUE, BLACK);
-        printCentered("...............", userOptionY);
-        printCentered(":  > USER <   :", userOptionY + 1);
-        printCentered("...............", userOptionY + 2);
-        resetColor();
-    }
-    else {
-        setColor(GRAY, BLACK);
-        printCentered("...............", userOptionY);
-        printCentered(":    USER    :", userOptionY + 1);
-        printCentered("...............", userOptionY + 2);
-        resetColor();
-    }
+    options("ADMIN", "USER ", selected, 9, 13);
 }
 void displayUserOptions(int selected) {
     system("cls");
 
-    setColor(YELLOW, BLACK);
-    printCentered("   _    _                  ____        _   _                 ", 1);
-    printCentered("  | |  | |                / __ \\      | | (_)                ", 2);
-    printCentered("  | |  | |___  ___ _ __  | |  | |_ __ | |_ _  ___  _ __  ___ ", 3);
-    printCentered("  | |  | / __|/ _ \\ '__| | |  | | '_ \\| __| |/ _ \\| '_ \\/ __|", 4);
-    printCentered("  | |__| \\__ \\  __/ |    | |__| | |_) | |_| | (_) | | | \\__ \\", 5);
-    printCentered("   \\____/|___/\\___|_|     \\____/| .__/ \\__|_|\\___/|_| |_|___/", 6);
-    printCentered("                                | |                          ", 7);
-    printCentered("                                |_|                          ", 8);
-    resetColor();
+    userOptions();
 
     newLine(1);
 
-    int loginOptionY = 11;
-    int registerOptionY = 14;
-
-    if (selected == 0) {
-        setColor(LIGHT_YELLOW, BLACK);
-        printCentered("...............", loginOptionY);
-        printCentered(":  > LOGIN <  :", loginOptionY + 1);
-        printCentered("...............", loginOptionY + 2);
-        resetColor();
-    }
-    else {
-        setColor(GRAY, BLACK);
-        printCentered("...............", loginOptionY);
-        printCentered(":    LOGIN    :", loginOptionY + 1);
-        printCentered("...............", loginOptionY + 2);
-        resetColor();
-    }
-
-    newLine(1);
-
-    if (selected == 1) {
-        setColor(LIGHT_YELLOW, BLACK);
-        printCentered("...............", registerOptionY);
-        printCentered(":  > SIGNUP < :", registerOptionY + 1);
-        printCentered("...............", registerOptionY + 2);
-        resetColor();
-    }
-    else {
-        setColor(GRAY, BLACK);
-        printCentered("...............", registerOptionY);
-        printCentered(":    SIGNUP   :", registerOptionY + 1);
-        printCentered("...............", registerOptionY + 2);
-        resetColor();
-    }
+    options("LOGIN", "SIGNUP", selected,11,15);
 }
 
 void displayLoginTitle() {
     system("cls");
 
-    setColor(YELLOW, BLACK);
-    printCentered("   __       _____     ______ _______ __   __  ", 1);
-    printCentered("  |  |    /  ___  \\ /  _____|__   __ |  \\ |  |  ", 2);
-    printCentered("  |  |   |  |   |  |  | ____   |  |  |   \\|  |  ", 3);
-    printCentered("  |  |   |  |   |  |  ||_   |  |  |  |  .    |  ", 4);
-    printCentered("  |  |___|  |___|  |  |__|  |__|  |__|  |\\   |  ", 5);
-    printCentered(" |______ \\_______/ \\_______|________|__| \\__|  ", 6);
-    printCentered("                                              ", 8);
-    resetColor();
+    loginText();
 
     newLine(1);
 }
@@ -202,15 +73,7 @@ void displayLoginTitle() {
 void displaySignUpTitle() {
     system("cls");
 
-    setColor(YELLOW, BLACK);
-    printCentered("      ______ ______ _____ _   _ _    _ _____", 1);
-    printCentered("      / _____|_  __/  ____| \\ | | |  | |  __ \\", 2);
-    printCentered("     |  (__    | ||  |  __|  \\| | |  | | |__) |", 3);
-    printCentered("     \\___  \\  | ||  | |_ | . ` | |  | |  ___/", 4);
-    printCentered(" _____) |_| ||  |__| | |\\  | |__| | |", 5);
-    printCentered("|______/|_____\\______|_| \\_|\\____/|_|", 6);
-    printCentered("                                              ", 8);
-    resetColor();
+    signupText();
 
     newLine(1);
 }
@@ -218,15 +81,7 @@ void displaySignUpTitle() {
 void displayRiddleTitle() {
     system("cls");
 
-    setColor(YELLOW, BLACK);
-    printCentered("  _____  _____ _____  _____  _      ______ ", 1);
-    printCentered(" |  __ \\|_   _|  __ \\|  __ \\| |    |  ____|", 2);
-    printCentered(" | |__) | | | | |  | | |  | | |    | |__   ", 3);
-    printCentered(" |  _  /  | | | |  | | |  | | |    |  __|  ", 4);
-    printCentered(" | | \\ \\ _| |_| |__| | |__| | |____| |____ ", 5);
-    printCentered(" |_|  \\_\\_____|_____/|_____/|______|______|", 6);
-    printCentered("                                              ", 8);
-    resetColor();
+    riddleText();
 
     newLine(1);
 }
@@ -234,15 +89,7 @@ void displayRiddleTitle() {
 void displayAdminTitle() {
     system("cls");
 
-    setColor(YELLOW, BLACK);
-    printCentered("           _____  __  __ _____ _   _ ", 1);
-    printCentered("     /\\   |  __ \\|  \\/  |_   _| \\ | |", 2);
-    printCentered("    /  \\  | |  | | \\  / | | | |  \\| |", 3);
-    printCentered("   / /\\ \\ | |  | | |\\/| | | | | . ` |", 4);
-    printCentered("  / ____ \\| |__| | |  | |_| |_| |\\  |", 5);
-    printCentered(" /_/    \\_\\_____/|_|  |_|_____|_| \\_|", 6);
-    printCentered("                                              ", 8);
-    resetColor();
+    adminText();
 
     newLine(1);
 }
@@ -250,15 +97,7 @@ void displayAdminTitle() {
 void displaySelectTitle() {
     system("cls");
 
-    setColor(YELLOW, BLACK);
-    printCentered("    _____ ______ _      ______ _____ _______", 1);
-    printCentered("  / ____|  ____| |    |  ____/ ____|__   __|", 2);
-    printCentered("  | (___ | |__  | |    | |__ | |       | |  ", 3);
-    printCentered("  \\___ \\|  __| | |    |  __|| |       | |   ", 4);
-    printCentered("  ____) | |____| |____| |___| |____   | |   ", 5);
-    printCentered(" |_____/|______|______|______\\_____|  |_|   ", 6);
-    printCentered("                                              ", 8);
-    resetColor();
+    selectText();
 
     newLine(1);
 }
@@ -266,15 +105,7 @@ void displaySelectTitle() {
 void displayFactsTitle() {
     system("cls");
 
-    setColor(YELLOW, BLACK);
-    printCentered(" ______      _____ _______ _____ ", 1);
-    printCentered("|  ____/\\   / ____|__   __/ ____|", 2);
-    printCentered("| |__ /  \\ | |       | | | (___  ", 3);
-    printCentered("|  __/ /\\ \\| |       | |  \\___ \\ ", 4);
-    printCentered(" | | / ____ \\ |____   | |  ____) |", 5);
-    printCentered(" |_|/_/    \\_\\_____|  |_| |_____/ ", 6);
-    printCentered("                                              ", 8);
-    resetColor();
+    factText();
 
     newLine(1);
 }

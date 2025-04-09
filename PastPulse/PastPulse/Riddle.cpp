@@ -3,6 +3,7 @@
 #include "Menu.h"
 #include "Simulator.h"
 #include "Colors.h"
+#include "DrawText.h"
 
 bool openFile(ifstream& file, const string& filename) {
 	file.open(filename);
@@ -470,12 +471,7 @@ void displayRiddles(Riddle* head) {
 	}
 	// Pointer to the current list item
 	Riddle* current = head;
-	printCentered("   _____       _             _______ _            _____  _     _     _ _      ", 5);
-	printCentered("  / ____|     | |           |__   __| |          |  __ \\(_)   | |   | | |     ", 6);
-	printCentered(" | (___   ___ | |_   _____     | |  | |__   ___  | |__) |_  __| | __| | | ___ ", 7);
-	printCentered(" \\___ \\ / _ \\| \\ \\ / / _ \\    | |  | '_ \\ / _ \\ |  _  /| |/ _ |/ _ | |/ _ \\", 8);
-	printCentered("  ____) | (_) | |\ V /  __/    | |  | | | |  __/ | | \\ \\| | (_| | (_| | |  __/", 9);
-	printCentered(" |_____/ \\___/|_| \\_/ \___|    |_|  |_| |_|\\___| |_|  \\_\\_|\\__,_|\\__,_|_|\\___|", 10);
+	solveTheRiddleText();
 	newLine(3);
 	setColor(YELLOW, BLACK);
 	cout << "Riddle Name: " << current->name << endl;

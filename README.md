@@ -53,9 +53,9 @@ The goal of the project is to combine fun with education, making history more ac
 </div>
 
 # 📁 Documents
-+ [Presentation](./PastPulse/PastPulse/Documents/Presentation-PastPulse.pptx)
-+ [Documentation](./PastPulse/PastPulse/Documents/Documentation-PasPulse.docx)
-+ [QA Documentation](./PastPulse/PastPulse/Documents/)
++ [Presentation](./Documents/Presentation-PastPulse.pptx)
++ [Documentation](./Documents/Documentation-PasPulse.docx)
++ [QA Documentation](./Documents)
 
 # 👥 Team Members
 
